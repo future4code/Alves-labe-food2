@@ -5,6 +5,7 @@ import TelaCadastro from "../pages/Cadastro/TelaCadastro/TelaCadastro";
 import TelaHome from "../pages/Home/TelaHome";
 import TelaPerfil from "../pages/Perfil/TelaPerfil";
 import TelaRestaurante from "../pages/Restaurantes/TelaRestaurantes";
+import TelaDetalhe from "../pages/Restaurantes/TelaRestaurantes";
 
 const Router = () => {
     return (
@@ -14,7 +15,8 @@ const Router = () => {
                 <Route path="signup" element={<TelaCadastro />} />
                 <Route path="home" element={<TelaHome />} />
                 <Route path="perfil" element={<TelaPerfil/>} />
-                <Route path="restaurante/:id" element={<TelaRestaurante />} />
+                <Route path="restaurantes" element={<TelaRestaurantes />} />
+                <Route path="restaurantes/:id" element={<TelaDetalhe />} />
             </Routes>
         </BrowserRouter>
     )
