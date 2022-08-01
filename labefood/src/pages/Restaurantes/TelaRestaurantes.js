@@ -1,13 +1,13 @@
+
 import React, { useContext, useEffect, useState } from 'react'
 import GlobalContext from '../../global/GlobalContext';
 // import axios from 'axios';
 // import { BASE_URL } from '../../constants/url';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import Footer from '../../components/footer/Footer'
+import Header from '../../components/header/Header'
+import backButton from '../../assets/back-button.png'
+import { goBack } from '../../router/coordenator'
+import { useNavigate } from 'react-router-dom'
 
 
 const TelaRestaurantes = () => {
@@ -19,6 +19,15 @@ const TelaRestaurantes = () => {
 
   return (
     <div>
+     <Header
+        backButton={
+          <img
+            src={backButton}
+            onClick={() => goBack(navigate)}
+          />
+        }
+        name="Restaurante"
+      />
       {
         states.restaurantes.map((element) => {
           return (
@@ -28,9 +37,9 @@ const TelaRestaurantes = () => {
           )
         })
       }
+ <Footer />
     </div>
   )
-
 }
 
 export default TelaRestaurantes
