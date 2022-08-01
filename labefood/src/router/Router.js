@@ -10,9 +10,9 @@ const Router = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route index element={<TelaHome />} />
-                <Route path="sigup" element={<TelaCadastro />} />
-                <Route path="login" element={<TelaLogin />} />
+                <Route index element={<TelaLogin/>} />
+                <Route path="signup" element={<TelaCadastro />} />
+                <Route path="home" element={<TelaHome />} />
                 <Route path="perfil" element={<TelaPerfil/>} />
                 <Route path="restaurante/:id" element={<TelaRestaurante />} />
             </Routes>
