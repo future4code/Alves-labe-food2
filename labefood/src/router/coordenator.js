@@ -12,4 +12,16 @@ export const goToHome = (navigate) => {
 
 export const goToSignUp = (navigate) => {
     navigate('/signup')
-} 
+}
+
+export const goToShopCart = (navigate) => {
+    navigate('/shopcart')
+}
+
+export const goBack = (navigate) => {
+    navigate(-1)
+}
+
+export const goToAddress = (navigate) => {
+    navigate('/endereco')
+}
