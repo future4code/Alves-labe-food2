@@ -1,11 +1,11 @@
-import GlobalContext from "./GlobalStateContext";
+import GlobalContext from './GlobalContext';
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Login, Signup } from "../services/user";
 import { GetRestaurants, GetRestaurantDetail } from "../services/restaurants";
 
 const GlobalState = (props) => {
-    const [restaurantes, setRestaurantes] = useState([])
+    const [restaurantes, setRestaurantes] = useState(["alo"])
     const [restauranteDetalhe, setRestauranteDetalhe] = useState([])
 
     useEffect(() => {
@@ -15,14 +15,14 @@ const GlobalState = (props) => {
             }
           })
             .then((res) => {
-                setRestaurantes(res.data)
+                setRestaurantes(res)
                 console.log(res.data)
             }).catch((err) => {
                 console.log(err.response)
             })
     }, [])
 
-    const states = { restaurantes, restauranteDetalhe }
+    const states = { restaurantes, restauranteDetalhe}
     const setters = { setRestaurantes, setRestauranteDetalhe }
 
     return (

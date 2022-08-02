@@ -3,20 +3,18 @@ import React, { useContext, useEffect, useState } from 'react'
 import GlobalContext from '../../global/GlobalContext';
 // import axios from 'axios';
 // import { BASE_URL } from '../../constants/url';
-import Footer from '../../components/Footer/Footer'
-import Header from '../../components/Header/Header'
+import Footer from '../../components/footer/Footer'
+import Header from '../../components/header/Header'
 import backButton from '../../assets/back-button.png'
 import { goBack } from '../../router/coordenator'
 import { useNavigate } from 'react-router-dom'
 
 
-const TelaRestaurantes = () => {
-
+const TelaRestaurantes = (props) => {
+  console.log(props)
   const { states, setters } = useContext(GlobalContext)
   const [restaurantes, setRestaurantes] = useState([])
   const navigate = useNavigate()
-
-  // console.log(states.restaurantes)
 
   return (
     <div>
@@ -29,7 +27,8 @@ const TelaRestaurantes = () => {
         }
         name="Restaurante"
       />
-      {
+
+      {/* {
         states.restaurantes.map((element) => {
           return (
             <div>
@@ -37,7 +36,8 @@ const TelaRestaurantes = () => {
             </div>
           )
         })
-      }
+      } */}
+
       <Footer />
     </div>
   )

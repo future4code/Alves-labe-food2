@@ -8,9 +8,10 @@ import TelaLogin from './pages/Login/TelaLogin/TelaLogin';
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
+      <section >
       <Router />
-      {/* <TelaLogin/> */}
-    </ThemeProvider>
+      </section>
+      </ThemeProvider>
     
   );
 }
