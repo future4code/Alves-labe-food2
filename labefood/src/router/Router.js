@@ -6,7 +6,7 @@ import TelaHome from "../pages/Home/TelaHome";
 import TelaPerfil from "../pages/Perfil/TelaPerfil";
 import TelaEndereco from "../pages/Cadastro/TelaEndereco/TelaEndereco"
 import TelaRestaurantes from "../pages/Restaurantes/TelaRestaurantes";
-import TelaDetalhe from "../pages/Restaurantes/TelaRestaurantes";
+import TelaDetalhe from "../pages/Restaurantes/TelaDetalhe/TelaDetalhe";
 
 
 const Router = () => {
