@@ -6,6 +6,7 @@ import shoppingCart from '../../assets/shopping-cart.png'
 import homePage from '../../assets/homepage.png'
 import avatar from '../../assets/avatar.png'
 
+
 export default function Footer() {
     const navigate = useNavigate()
 

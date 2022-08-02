@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import useForm from "../../../hooks/useForm";
 import { useNavigate } from "react-router";
 
-const [Loading, setLoading] = useState(false);
-const [Password, setPassword] = useState(false);
 
 const TelaCadastro = () => {
-  const [form, onChange, clear] = useForm({
+const [Loading, setLoading] = useState(false);
+const [Password, setPassword] = useState(false);
+const [form, onChange, clear] = useForm({
     name: "",
     email: "",
     cpf: "",

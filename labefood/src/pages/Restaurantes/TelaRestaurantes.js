@@ -3,8 +3,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import GlobalContext from '../../global/GlobalContext';
 // import axios from 'axios';
 // import { BASE_URL } from '../../constants/url';
-import Footer from '../../components/Footer/Footer'
-import Header from '../../components/Header/Header'
+import Footer from '../../components/footer/Footer'
+import Header from '../../components/header/Header'
 import backButton from '../../assets/back-button.png'
 import { goBack } from '../../router/coordenator'
 import { useNavigate } from 'react-router-dom'
