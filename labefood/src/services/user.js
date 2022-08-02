@@ -25,3 +25,4 @@ export const Signup = (body, clear, navigate) => {
       console.log(err)
     })
 }
+
