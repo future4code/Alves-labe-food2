@@ -1,20 +1,28 @@
-import { BASE_URL } from "../constants/urls";
-import axios from "axios";
-import { goToAdress } from "../router/coordenator";
+import { BASE_URL } from "../constants/url"
+import axios from "axios"
 
-export const signUp = (body, clear, setLoading) => {
-  setLoading(true);
-  axios
-    .post(`${BASE_URL}/signup`, body)
+export const Login = (body, clear, navigate) => {
+ 
+    axios.post(`${BASE_URL}/login`, body)
+        .then((res) => {
+            localStorage.setItem('token', res.data.token)
+            console.log(res.data)
+            navigate("/")
+        }).catch((err) => {
+            console.log(err.response)
+        })
+}
+
+export const Signup = (body, clear, navigate) => {
+
+    axios.post(`${BASE_URL}/user/signup`, body)
     .then((res) => {
-      localStorage.setItem("token", res.data.token);
-      window.alert("Cadastro efetuado com sucesso!");
-      clear();
-      setLoading(false);
-      goToAdress("/endereco");
+      localStorage.setItem('token', res.data.token)
+      console.log("Usuario criado com sucesso")
     })
-    .catch((err) => {
-      setLoading(false);
-      window.alert(err.response.data.message);
-    });
-};
+    .catch ((err) => {
+      alert('Erro no login')
+      console.log(err)
+    })
+}
+

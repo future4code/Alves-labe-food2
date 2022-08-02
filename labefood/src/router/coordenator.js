@@ -1,19 +1,27 @@
 export const goToLogin = (navigate) => {
-    navigate('login')
-}
-
-export const goToListRecipes = (navigate) => {
     navigate('/')
 }
 
-export const goToAddRecipes = (navigate) => {
-    navigate('add-recipes')
+export const goToPerfil = (navigate) => {
+    navigate('/perfil')
 }
 
-// export const goToDetailRecipes = (navigate) => {
-//     navigate(`list-detail/${id}`)
-// }
+export const goToHome = (navigate) => {
+    navigate('/home')
+}
 
 export const goToSignUp = (navigate) => {
-    navigate('signup')
-} 
+    navigate('/signup')
+}
+
+export const goToShopCart = (navigate) => {
+    navigate('/shopcart')
+}
+
+export const goBack = (navigate) => {
+    navigate(-1)
+}
+
+export const goToAddress = (navigate) => {
+    navigate('/endereco')
+}
