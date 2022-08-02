@@ -10,8 +10,9 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalState>
+        <section>
         <Router />
-        {/* <TelaLogin/> */}
+        </section>
       </GlobalState>
     </ThemeProvider>
 

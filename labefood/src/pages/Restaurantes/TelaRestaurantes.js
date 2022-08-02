@@ -1,26 +1,23 @@
 
 import React, { useContext, useEffect, useState } from 'react'
 import GlobalContext from '../../global/GlobalContext';
-// import axios from 'axios';
-// import { BASE_URL } from '../../constants/url';
 import Footer from '../../components/footer/Footer'
 import Header from '../../components/header/Header'
 import backButton from '../../assets/back-button.png'
+import InputBusca from './InputBusca/InputBusca';
 import { goBack } from '../../router/coordenator'
 import { useNavigate } from 'react-router-dom'
 
+import * as C from './styled'
 
-
-const TelaRestaurantes = () => {
+const TelaRestaurantes = (props) => {
 
   const { states, setters } = useContext(GlobalContext)
   const [restaurantes, setRestaurantes] = useState([])
   const navigate = useNavigate()
 
-  console.log(states)
-
   return (
-    <div>
+    <C.Container>
       <Header
         backButton={
           <img
@@ -28,19 +25,30 @@ const TelaRestaurantes = () => {
             onClick={() => goBack(navigate)}
           />
         }
-        name="Restaurante"
+        name="FutureEats"
       />
-      {/* {
-        states.restaurantes.map((element) => {
-          return (
-            <div>
-              {console.log(element)}
-            </div>
-          )
-        })
-      } */}
+
+      <InputBusca />
+
+      <C.ContainerRestaurantes>
+        {
+          states.restaurantes.restaurants.map((rest) => {
+            return (
+              <C.CardRestaurante key={rest.id}>
+                <img src={rest.logoUrl} />
+                <h3 color={"primary"}>{rest.name} </h3>
+                <C.ContainerDados>
+                  <p>{rest.deliveryTime - Number(10)} - {rest.deliveryTime} min</p>
+                  <p>Frete: R${rest.shipping},00 </p>
+                </C.ContainerDados>
+              </C.CardRestaurante>
+            )
+          })
+        }
+      </C.ContainerRestaurantes>
+
       <Footer />
-    </div>
+    </C.Container>
   )
 }
 
