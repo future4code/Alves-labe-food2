@@ -1,7 +1,7 @@
 import React from 'react'
 import { goToHome, goToPerfil, goToShopCart } from '../../router/coordenator'
 import { useNavigate } from 'react-router-dom'
-import { IconDiv, MainDiv } from './Styled'
+import {  MainDiv } from './Styled'
 import shoppingCart from '../../assets/shopping-cart.png'
 import homePage from '../../assets/homepage.png'
 import avatar from '../../assets/avatar.png'
