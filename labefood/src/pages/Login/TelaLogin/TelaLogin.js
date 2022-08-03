@@ -29,8 +29,9 @@ const TelaLogin = () => {
     .then((response) => {
       localStorage.setItem('token', response.data.token)
       console.log(response)
+      navigate("/restaurantes")
       if (response.data.user.hasAddress === true) {
-        navigate("/home")} else {navigate("/signup")}
+        navigate("/restaurantes")} else {navigate("/signup")}
         }).catch((erro) => {
       console.log(erro.message)
     })
