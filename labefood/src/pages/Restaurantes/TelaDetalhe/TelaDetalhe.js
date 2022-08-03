@@ -23,6 +23,7 @@ export default function TelaDetalhe() {
     console.log(productCategory)
     //APENAS PARA ESTRUTURAÇÃO
     const [details, setDetails] = useState([])
+    const [addProduct, setAddProduct] = useState([])
     // useEffect(() => {
     //     const categories = details.products?.map((product) => product.category)
     //     const newCategories = categories?.filter((product, i) => {
@@ -32,7 +33,7 @@ export default function TelaDetalhe() {
     // }, [details])
     const getDetails = () => {
         axios.get(
-            `${BASE_URL}/restaurants/1`, {
+            `${BASE_URL}/restaurants/${states.id}`, {
             headers: {
                 auth: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImMzZ0pYa01Gb3FJd21YV1BpRExlIiwibmFtZSI6IlZpY3RvciIsImVtYWlsIjoidmljdG9yTGVAZnV0dXJlNC5jb20iLCJjcGYiOiIxMTEuNTQ2LjI1Ni00NCIsImhhc0FkZHJlc3MiOnRydWUsImFkZHJlc3MiOiJSLiBBZm9uc28gQnJheiwgMTc3LCA3MSAtIFZpbGEgTi4gQ29uY2Vpw6fDo28iLCJpYXQiOjE2NTk0NjI0NjB9.jKqwtomLRmOUpSi9UGY9_j4hwZ_PryEJG2YsrAfSC6s"
             }
@@ -45,9 +46,10 @@ export default function TelaDetalhe() {
     }
     //APENAS PARA ESTRUTURAÇÃO
 
-    // console.log(productCategory)
-
-
+    const adicionarProduto = (product) => {
+        console.log(product)
+        setAddProduct([...states.produtos, product])
+    }
 
     const chooseScreen = () => {
         if (details.length === 0) {
@@ -77,6 +79,7 @@ export default function TelaDetalhe() {
                                     description={product.description}
                                     price={product.price}
                                 />
+                                <button onClick={() => adicionarProduto(product)}>Adicionar ao Carrinho</button>
                             </MainDishesDiv>
                         )
                     })

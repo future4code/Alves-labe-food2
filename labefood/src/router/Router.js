@@ -7,6 +7,7 @@ import TelaEndereco from "../pages/Cadastro/TelaEndereco/TelaEndereco"
 import TelaRestaurantes from "../pages/Restaurantes/TelaRestaurantes";
 import TelaDetalhe from "../pages/Restaurantes/TelaDetalhe/TelaDetalhe";
 import TelaBusca from "../pages/Restaurantes/Busca/TelaBusca";
+import TelaCarrinho from "../pages/Carrinho/TelaCarrinho";
 
 
 
@@ -21,6 +22,7 @@ const Router = () => {
                 <Route path="restaurantes" element={<TelaRestaurantes />} />
                 <Route path="restaurantes/:id" element={<TelaDetalhe />} />
                 <Route path="busca" element={<TelaBusca />} />
+                <Route path="carrinho" element={<TelaCarrinho />} />
             </Routes>
         </BrowserRouter>
     )

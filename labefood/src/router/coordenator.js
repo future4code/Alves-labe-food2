@@ -30,3 +30,7 @@ export const goToAddress = (navigate) => {
 export const goToBusca = (navigate) => {
     navigate('/busca')
 }
+
+export const goToDetail = (navigate, id) => {
+    navigate(`/restaurantes/${id}`)
+}
