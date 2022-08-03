@@ -13,23 +13,23 @@ import axios from 'axios'
 
 export default function TelaDetalhe() {
     const { states } = useContext(GlobalContext)
-    const [productsByCategory, setProductsByCategory] = useState([])
     const [productCategory, setProductCategory] = useState([])
     const navigate = useNavigate()
 
     useEffect(() => {
         getDetails()
-        const categories = details.products?.map((product) => product.category)
-        const newCategories = categories?.filter((product, i) => {
-            return newCategories.indexOf(product) === i
-        })
-        // console.log(newCategories)
-        // console.log(categories)
+
     }, [])
-    // console.log(productCategory)
+    console.log(productCategory)
     //APENAS PARA ESTRUTURAÇÃO
     const [details, setDetails] = useState([])
-
+    // useEffect(() => {
+    //     const categories = details.products?.map((product) => product.category)
+    //     const newCategories = categories?.filter((product, i) => {
+    //         return newCategories.indexOf(product) === i
+    //     })
+    //     setProductCategory(newCategories)
+    // }, [details])
     const getDetails = () => {
         axios.get(
             `${BASE_URL}/restaurants/1`, {
@@ -45,6 +45,7 @@ export default function TelaDetalhe() {
     }
     //APENAS PARA ESTRUTURAÇÃO
 
+    // console.log(productCategory)
 
 
 
@@ -57,10 +58,10 @@ export default function TelaDetalhe() {
                     <InfoDiv>
                         <img alt="restaurante" src={details.logoUrl} />
                         <h5>{details.name}</h5>
-                        <p>{details.description}</p>
+                        <p>{details.category}</p>
                         <ShippingDiv>
                             <p>{details.deliveryTime} - {details.deliveryTime + 10} min</p>
-                            <p>Frete R${details.shipping},00</p>
+                            <p>Frete {details.shipping.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
                         </ShippingDiv>
                         <p>{details.address}</p>
                     </InfoDiv>

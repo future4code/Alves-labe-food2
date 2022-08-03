@@ -7,7 +7,7 @@ export const MainDiv = styled.div`
     display: flex;
     align-items: center;
 
-    width: 360px;
+    width: 100%;
     height: 44px;
     border-top: none;
     border-bottom: solid gray 1px;
