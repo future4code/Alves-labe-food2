@@ -5,8 +5,9 @@ import TelaCadastro from "../pages/Cadastro/TelaCadastro/TelaCadastro";
 import TelaPerfil from "../pages/Perfil/TelaPerfil";
 import TelaEndereco from "../pages/Cadastro/TelaEndereco/TelaEndereco"
 import TelaRestaurantes from "../pages/Restaurantes/TelaRestaurantes";
-import TelaDetalhe from "../pages/Restaurantes/TelaRestaurantes";
+import TelaDetalhe from "../pages/Restaurantes/TelaDetalhe/TelaDetalhe";
 import TelaBusca from "../pages/Restaurantes/Busca/TelaBusca";
+
 
 
 const Router = () => {
