@@ -31,7 +31,7 @@ const TelaRestaurantes = (props) => {
       <InputBusca />
 
       <C.ContainerRestaurantes>
-        {
+        {/* {
           states.restaurantes.restaurants.map((rest) => {
             return (
               <C.CardRestaurante key={rest.id}>
@@ -44,7 +44,7 @@ const TelaRestaurantes = (props) => {
               </C.CardRestaurante>
             )
           })
-        }
+        } */}
       </C.ContainerRestaurantes>
 
       <Footer />
