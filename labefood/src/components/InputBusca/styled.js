@@ -1,22 +1,25 @@
 import styled from "styled-components";
-import Lupa from '../../../assets/search.svg'
+
 
 export const ContainerInput = styled.div `
     display:flex;
-    justify-content:center;
+    padding-left: 10px;
+    /* justify-content:center; */
     align-items:center;
     margin-top:60px;
     margin-bottom: 20px;
+    border:1px solid #b8b8b8;
+    width:310px;
 `;
 
 
 export const Input = styled.input`
-    width: 310px;
+    width: 200px;
     height: 26px;
     padding: 16px 8px 16px 17px;
-    border-radius: 2px;
-    
+    border:none;
     outline:none;
-    border:1px solid #b8b8b8;
+    font-size:14px;
+    
 
 `;

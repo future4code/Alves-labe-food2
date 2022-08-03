@@ -36,9 +36,9 @@ const TelaSplash = styled.div`
    <div className="App">
      <ThemeProvider theme={theme}>
          <GlobalState>
-        // <section>
+        {/* <section> */}
             <Router />
-          //  </section>
+         {/* </section> */}
            </GlobalState>
          </ThemeProvider>
    </div>
