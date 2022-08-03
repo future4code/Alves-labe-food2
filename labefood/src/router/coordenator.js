@@ -6,9 +6,10 @@ export const goToPerfil = (navigate) => {
     navigate('/perfil')
 }
 
-export const goToHome = (navigate) => {
-    navigate('/home')
+export const goToRestaurants = (navigate) => {
+    navigate("/restaurantes")
 }
+
 
 export const goToSignUp = (navigate) => {
     navigate('/signup')
@@ -24,4 +25,8 @@ export const goBack = (navigate) => {
 
 export const goToAddress = (navigate) => {
     navigate('/endereco')
+}
+
+export const goToBusca = (navigate) => {
+    navigate('/busca')
 }

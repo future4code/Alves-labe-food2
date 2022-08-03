@@ -1,10 +1,11 @@
 import React from 'react'
-import { goToHome, goToPerfil, goToShopCart } from '../../router/coordenator'
+import { goToRestaurants, goToPerfil, goToShopCart } from '../../router/coordenator'
 import { useNavigate } from 'react-router-dom'
 import {  MainDiv } from './Styled'
 import shoppingCart from '../../assets/shopping-cart.png'
 import homePage from '../../assets/homepage.png'
 import avatar from '../../assets/avatar.png'
+
 
 export default function Footer() {
     const navigate = useNavigate()
@@ -13,7 +14,7 @@ export default function Footer() {
         <MainDiv>
             <div>
                 <button
-                    onClick={() => goToHome(navigate)}
+                    onClick={() => goToRestaurants(navigate)}
                 ><img src={homePage} /></button>
             </div>
             <div>
