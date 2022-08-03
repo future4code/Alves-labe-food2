@@ -1,4 +1,4 @@
-import GlobalContext from "./GlobalStateContext";
+import GlobalContext from "./GlobalContext";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Login, Signup } from "../services/user";
@@ -13,7 +13,7 @@ const GlobalState = (props) => {
             headers: {
                 Authorization: localStorage.getItem('token')
             }
-          })
+        })
             .then((res) => {
                 setRestaurantes(res.data)
                 console.log(res.data)
@@ -24,12 +24,13 @@ const GlobalState = (props) => {
 
     const states = { restaurantes, restauranteDetalhe }
     const setters = { setRestaurantes, setRestauranteDetalhe }
+    
+    console.log(restaurantes)
 
     return (
-        <GlobalContext.Provider value={{ states, setters }}>
-             {props.children}
+        <GlobalContext.Provider value={{states, setters}}>
+            {props.children}
         </GlobalContext.Provider>
     )
 }
-
 export default GlobalState

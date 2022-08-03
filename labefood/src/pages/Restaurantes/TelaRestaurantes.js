@@ -17,7 +17,7 @@ const TelaRestaurantes = () => {
   const [restaurantes, setRestaurantes] = useState([])
   const navigate = useNavigate()
 
-  // console.log(states.restaurantes)
+  console.log(states)
 
   return (
     <div>
@@ -30,7 +30,7 @@ const TelaRestaurantes = () => {
         }
         name="Restaurante"
       />
-      {
+      {/* {
         states.restaurantes.map((element) => {
           return (
             <div>
@@ -38,7 +38,7 @@ const TelaRestaurantes = () => {
             </div>
           )
         })
-      }
+      } */}
       <Footer />
     </div>
   )
