@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import ImgSplashScreen  from './assets/SplashScreen.png'
 
 const App = () => {
+
   const [isLoading, setIsLoading] = useState(true);
  useEffect(() => {
    setTimeout(() => {
@@ -35,7 +36,9 @@ const TelaSplash = styled.div`
    <div className="App">
      <ThemeProvider theme={theme}>
          <GlobalState>
+        // <section>
             <Router />
+          //  </section>
            </GlobalState>
          </ThemeProvider>
    </div>
