@@ -3,8 +3,9 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { goToSignUp } from '../../../router/coordenator'
-
-
+import LogoLogin from "../../../assets/logo-future-eats-invert.png";
+import { ScreenContainer, FormContainer, NewContainer, ButtonNew, LoginButton, ImgLogin} from './Styled'
+import { TextField } from "@material-ui/core";
 
 const TelaLogin = () => {
   const navigate =  useNavigate()
@@ -38,22 +39,39 @@ const TelaLogin = () => {
   }
 
   return (
-    <div>
-      <h4>Entrar</h4>
+    <ScreenContainer>
+          <ImgLogin src={LogoLogin} />
+        <h4>Entrar</h4>
         <form onSubmit={OnSubmitLogin}>
-          <input
+        <FormContainer>
+          <TextField
           value={email}
           onChange={OnChangeEmail}
-          type='email'></input>
-          <input
+          type='email'
+          label={"Email"}
+          variant={"outlined"}
+          margin={"normal"}
+          placeholder={"email@email.com"} />
+          <TextField
           value={password}
           onChange={OnChangePassword}
-          type='password'></input>
-          <button> Entrar </button>
-        </form>
-      <h4> Não Possui cadastro?</h4> <button onClick={() => goToSignUp(navigate,"/signup" )} > Clique Aqui</button>
+          type='password'
+          label={"Senha"}
+          variant={"outlined"}
+          margin={"normal"}
+          placeholder={"Minimo 6 caracteres"}
+          />
+          <LoginButton> Entrar </LoginButton>
+        </FormContainer>
+          </form>
 
-    </div>
+        <NewContainer>
+        <h4> Não Possui cadastro?</h4>
+        <ButtonNew onClick={() => goToSignUp(navigate,"/signup" )} > Clique Aqui</ButtonNew>
+        </NewContainer>
+      
+
+    </ScreenContainer>
 
   )
 }
