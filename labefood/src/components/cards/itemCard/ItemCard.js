@@ -10,7 +10,7 @@ export default function ItemCard(props) {
         <InfoDiv>
             <h3>{props.name}</h3>
             <p>{props.description}</p>
-            <h4>R${props.price}</h4>
+            <h4>{props.price.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</h4>
         </InfoDiv>
         
     </MainDiv>
