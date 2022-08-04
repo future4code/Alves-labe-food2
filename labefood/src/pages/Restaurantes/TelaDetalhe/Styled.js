@@ -1,18 +1,22 @@
 import styled from "styled-components";
 
 export const MainDiv = styled.div`
-
+    width: auto;
+    height: 630px;
 `
 export const DetailsDiv = styled.div`
     padding-top: 61px;
     display: grid;
     justify-items: center;
     gap:16px;
+    
 `
 export const InfoDiv = styled.div`
     display: grid;
     gap: 8px;
     width: 328px;
+
+
 
     img{
         width: 328px;
@@ -33,6 +37,7 @@ export const MainDishesDiv = styled.div`
     display: grid;
     gap: 8px;
     width: 328px;
+    
 
     hr{
         height: 1px;
@@ -46,4 +51,12 @@ export const ShippingDiv = styled.div`
     p{
         width: 104px;
     }
+`
+
+export const ContainerCategorias = styled.div `
+    overflow-y: auto;
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
 `

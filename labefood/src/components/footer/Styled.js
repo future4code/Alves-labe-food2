@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
 export const MainDiv = styled.div`
-    /* position: fixed; */
+    /* position: fixed;
+    bottom:0; */
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -12,7 +13,7 @@ export const MainDiv = styled.div`
     border-top: solid grey 1px;
     background-color: white;
     @media(min-width: 500px) {
-  width: 400px;
+    width: 400px;
 
   }
 

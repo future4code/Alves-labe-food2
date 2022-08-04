@@ -6,8 +6,7 @@ export const ContainerInput = styled.div `
     padding-left: 10px;
     /* justify-content:center; */
     align-items:center;
-    margin-top:60px;
-    margin-bottom: 20px;
+    margin: 8px 16px;
     border:1px solid #b8b8b8;
     width:310px;
 `;
@@ -20,6 +19,4 @@ export const Input = styled.input`
     border:none;
     outline:none;
     font-size:14px;
-    
-
 `;

@@ -15,8 +15,10 @@ export const MainDiv = styled.div`
         height: 112px;
         border-bottom-left-radius: 8px;
         border-top-left-radius: 8px;
+        object-fit:cover;
     }
 `
+
 export const InfoDiv = styled.div`
     display: grid;
     padding: 18px;
