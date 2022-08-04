@@ -1,12 +1,12 @@
 
 import React, { useContext, useEffect, useState } from 'react'
 import GlobalContext from '../../global/GlobalContext';
-import CardRestaurantes from '../../components/cardRestaurantes/CardRestaurantes';
+import CardRestaurantes from '../../components/cards/cardRestaurantes/CardRestaurantes';
 import Footer from '../../components/footer/Footer'
 import Header from '../../components/header/Header'
 import backButton from '../../assets/back-button.png'
 import InputBusca from '../../components/InputBusca/InputBusca';
-import { goToBusca, goBack } from '../../router/coordenator'
+import { goToBusca, goBack, goToDetail } from '../../router/coordenator'
 import { useNavigate } from 'react-router-dom'
 import * as C from './styled'
 import Box from '@mui/material/Box';
@@ -22,7 +22,6 @@ const TelaRestaurantes = (props) => {
   const [value, setValue] = useState(0)
   const [category, setCategory] = useState("")
   const navigate = useNavigate()
-
 
   useEffect(() => {
     switch (value) {
@@ -59,6 +58,12 @@ const TelaRestaurantes = (props) => {
     };
 
   })
+  
+  const pegarId = (id) => {
+    setters.setId(id)
+    console.log(id)
+    goToDetail(navigate, id)
+  }
 
   const onChangeBusca = (e) => {
     setResultadoBusca(e.target.value)

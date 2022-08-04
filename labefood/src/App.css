@@ -23,29 +23,12 @@ section {
 /* box-shadow: 0 0 15px #5cb646; */
 
 
-@media(min-width: 415px) {
-  * {
-    max-width: 415px;
-    position: static;
-  }
-  
+@media(min-width: 500px) {
+
   body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: solid red 1px;
-    position: fixed;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top:50%;
+    width: 400px ;
+    margin-left: 30%;
   }
   
-  section {
-    min-width: 415px;
-    display: flex;
-    border: 1px solid;
-    background-color: white;
-    border-radius: 10px;
-    height: 600px;
-  }
+
 }
