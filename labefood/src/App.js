@@ -20,13 +20,14 @@ const App = () => {
  display: block;
  margin: 0 auto;
  border-color: red;
- width: 100vw;
+ width: 30vw;
  align-items: center;
  color: black;
+ padding-top: 30%;
 `;
 const TelaSplash = styled.div`
   background-color: black;
-  width: 100vw;
+  /* width: 100vw; */
   height: 100vh;
 `
  return isLoading ?
