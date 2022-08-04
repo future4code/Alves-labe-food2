@@ -134,7 +134,7 @@ const TelaCadastro = () => {
           <TextField
             name={"confirm_password"}
             value={form.password}
-            onchange={onchange}
+            onchange={onChange}
             label={"confirmar"}
             variant={"outlined"}
             fullWidth

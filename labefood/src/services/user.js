@@ -1,5 +1,6 @@
 import { BASE_URL } from "../constants/url";
 import axios from "axios";
+import { goToAddress } from "../router/coordenator";
 
 export const Login = (body, clear, navigate) => {
   axios
@@ -20,6 +21,7 @@ export const Signup = (body, clear, navigate) => {
     .then((res) => {
       localStorage.setItem("token", res.data.token);
       console.log("Usuario criado com sucesso");
+      goToAddress(navigate);
     })
     .catch((err) => {
       alert("Erro no login");

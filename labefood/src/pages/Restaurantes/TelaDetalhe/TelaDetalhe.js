@@ -49,6 +49,9 @@ export default function TelaDetalhe() {
             console.log(error)
         })
     }
+    //APENAS PARA ESTRUTURAÇÃO
+
+    // console.log(productCategory)
 
     const adicionarProduto = (product) => {
         setters.setCarrinho([...states.carrinho, product])
