@@ -23,9 +23,8 @@ export default function TelaDetalhe() {
         getDetails()
 
     }, [])
-   
-    
-    
+
+    //APENAS PARA ESTRUTURAÇÃO
     // useEffect(() => {
     //     const categories = details.products?.map((product) => product.category)
     //     const newCategories = categories?.filter((product, i) => {
@@ -47,6 +46,9 @@ export default function TelaDetalhe() {
             console.log(error)
         })
     }
+    //APENAS PARA ESTRUTURAÇÃO
+
+    // console.log(productCategory)
 
     const adicionarProduto = (product) => {
         setters.setCarrinho([...states.carrinho, product])
