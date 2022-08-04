@@ -8,9 +8,13 @@ export const MainDiv = styled.div`
     bottom: 45px;
     
     height: 49px;
-    width: 360px;
+    width: 100%;
     border-top: solid grey 1px;
     background-color: white;
+    @media(min-width: 500px) {
+  width: 400px;
+
+  }
 
     button{
         border: 0;
