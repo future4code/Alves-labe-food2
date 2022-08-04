@@ -14,9 +14,30 @@ import CardCarrinho from '../../components/cards/cardCarrinho/CardCarrinho'
 const TelaCarrinho = () => {
     const { states, setters } = useContext(GlobalContext)
     const [carrinho, setCarrinho] = useState(states.carrinho)
+    const [frete, setFrete] = useState()
+    const [price, setTotalPrice] = useState(0)
     const navigate = useNavigate()
 
-    console.log(states.restaurantes)
+    // console.log(states.carrinho)
+
+    useEffect (() => {
+
+        states.restaurantes.map((res) => {
+            if (res.id == states.id) {
+                setFrete(res.shipping)
+            }
+        })
+
+        let totalPrice = 0
+        if (states.carrinho.length > 0) {
+            states.carrinho.forEach(element => {
+                totalPrice = totalPrice + element.price
+                const subTotal = totalPrice + frete
+                setTotalPrice(subTotal)
+            });
+        } 
+         
+    }, [])
 
     return (
         <C.Container >
@@ -61,6 +82,17 @@ const TelaCarrinho = () => {
                         })
                 }
             </C.Carrinho>
+
+            <>
+                <p>Frete: R${frete},00</p>
+                <p>SUBTOTAL</p>
+                <p>{price}</p>
+
+
+
+
+
+            </>
             <Footer />
         </C.Container>
     )
