@@ -55,19 +55,14 @@ const TelaRestaurantes = (props) => {
       </Box>
 
       <C.ContainerRestaurantes>
-<<<<<<< HEAD
         {
           states.restaurantes.map((rest) => {
             
-=======
-        {/* {
-          states.restaurantes.restaurants.map((rest) => {
->>>>>>> master
             return (
               <CardRestaurantes key={rest.id} restaurantes={rest} />
             )
           })
-        } */}
+        } 
       </C.ContainerRestaurantes>
 
       <Footer />
