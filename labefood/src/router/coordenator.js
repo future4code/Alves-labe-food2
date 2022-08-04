@@ -16,7 +16,7 @@ export const goToSignUp = (navigate) => {
 }
 
 export const goToShopCart = (navigate) => {
-    navigate('/shopcart')
+    navigate('/carrinho')
 }
 
 export const goBack = (navigate) => {

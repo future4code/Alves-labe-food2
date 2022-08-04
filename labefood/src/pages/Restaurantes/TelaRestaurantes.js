@@ -1,7 +1,7 @@
 
 import React, { useContext, useEffect, useState } from 'react'
 import GlobalContext from '../../global/GlobalContext';
-import CardRestaurantes from '../../components/cardRestaurantes/CardRestaurantes';
+import CardRestaurantes from '../../components/cards/cardRestaurantes/CardRestaurantes';
 import Footer from '../../components/footer/Footer'
 import Header from '../../components/header/Header'
 import backButton from '../../assets/back-button.png'

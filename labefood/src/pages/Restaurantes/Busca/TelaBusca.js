@@ -6,7 +6,7 @@ import backButton from '../../../assets/back-button.png'
 import { goBack } from '../../../router/coordenator'
 import { useNavigate } from 'react-router-dom'
 import InputBusca from '../../../components/InputBusca/InputBusca'
-import CardRestaurantes from "../../../components/cardRestaurantes/CardRestaurantes"
+import CardRestaurantes from "../../../components/cards/cardRestaurantes/CardRestaurantes"
 import * as C from './styled'
 
 const TelaBusca = (props) => {
