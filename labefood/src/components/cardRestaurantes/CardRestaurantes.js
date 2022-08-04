@@ -2,7 +2,7 @@ import React from 'react'
 import * as C from './styled'
 
 const CardRestaurantes = (props) => {
-    console.log(props.restaurantes)
+    // console.log(props.restaurantes)
     return (
         <C.CardRestaurante >
             <img src={props.restaurantes.logoUrl} />

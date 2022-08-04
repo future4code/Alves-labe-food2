@@ -20,7 +20,6 @@ export default function TelaDetalhe() {
         getDetails()
 
     }, [])
-    console.log(productCategory)
     //APENAS PARA ESTRUTURAÇÃO
     const [details, setDetails] = useState([])
     // useEffect(() => {
@@ -46,8 +45,6 @@ export default function TelaDetalhe() {
     //APENAS PARA ESTRUTURAÇÃO
 
     // console.log(productCategory)
-
-
 
     const chooseScreen = () => {
         if (details.length === 0) {
