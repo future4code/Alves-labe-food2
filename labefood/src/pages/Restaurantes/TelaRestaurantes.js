@@ -1,4 +1,3 @@
-
 import React, { useContext, useEffect, useState } from 'react'
 import GlobalContext from '../../global/GlobalContext';
 import CardRestaurantes from '../../components/cards/cardRestaurantes/CardRestaurantes';
@@ -117,23 +116,18 @@ const TelaRestaurantes = (props) => {
     })
     return card
   }
+
   return (
     <C.Container>
-
       <Header
-        backButton={
-          <img
-            src={backButton}
-            onClick={() => goBack(navigate)}
-          />
-        }
+        backButton={<img src={backButton} onClick={() => goBack(navigate)} />}
         name="FutureEats"
       />
 
-      <C.ContainerInput
-        onClick={() => goToBusca(navigate)}>
+      <C.ContainerInput onClick={() => goToBusca(navigate)}>
         <InputBusca />
       </C.ContainerInput>
+
 
       <Box sx={{ width: '100%' }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -188,10 +182,11 @@ const TelaRestaurantes = (props) => {
             {chooseCard()}
           </TabPanel>
         </C.ContainerRestaurantes>
-      </Box>
+      </Box> 
+      
       <Footer />
     </C.Container>
-  )
-}
+  );
+};
 
-export default TelaRestaurantes
+export default TelaRestaurantes;
