@@ -9,11 +9,12 @@ const GlobalState = (props) => {
     const [restaurantes, setRestaurantes] = useState([])
     const [profile, setProfile] = useState([])
     const [id, setId] = useState([])
+    const [carrinho, setCarrinho] = useState([])
 
     useEffect((restaurantId) => {
        axios.get(`${BASE_URL}/restaurants`, {
             headers: {
-                auth: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImlNY2lRQVRDcUMwZUdGWm5KSUlkIiwibmFtZSI6Ik1pY2hlbGxlIiwiZW1haWwiOiJtaWNoZWxsZWRhcm9zYUBnbWFpbC5jb20iLCJjcGYiOiI3NjUuODc2Ljk0NS0zNCIsImhhc0FkZHJlc3MiOnRydWUsImFkZHJlc3MiOiJSLiBBZm9uc28gQnJheiwgMTc3LCA3MSAtIFZpbGEgTi4gQ29uY2Vpw6fDo28iLCJpYXQiOjE2NTk0NjExMDd9.H1JwODe3GfT_8cLIihz233Hk-05AekDySrMmCERdLLo"
+                auth:localStorage.getItem('token')
             }
         })
             .then((res) => {
@@ -25,7 +26,8 @@ const GlobalState = (props) => {
 
         axios.get(`${BASE_URL}/profile`, {
             headers: {
-                auth: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImlNY2lRQVRDcUMwZUdGWm5KSUlkIiwibmFtZSI6Ik1pY2hlbGxlIiwiZW1haWwiOiJtaWNoZWxsZWRhcm9zYUBnbWFpbC5jb20iLCJjcGYiOiI3NjUuODc2Ljk0NS0zNCIsImhhc0FkZHJlc3MiOnRydWUsImFkZHJlc3MiOiJSLiBBZm9uc28gQnJheiwgMTc3LCA3MSAtIFZpbGEgTi4gQ29uY2Vpw6fDo28iLCJpYXQiOjE2NTk0NjExMDd9.H1JwODe3GfT_8cLIihz233Hk-05AekDySrMmCERdLLo"
+                auth:localStorage.getItem('token')
+                // auth: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImlNY2lRQVRDcUMwZUdGWm5KSUlkIiwibmFtZSI6Ik1pY2hlbGxlIiwiZW1haWwiOiJtaWNoZWxsZWRhcm9zYUBnbWFpbC5jb20iLCJjcGYiOiI3NjUuODc2Ljk0NS0zNCIsImhhc0FkZHJlc3MiOnRydWUsImFkZHJlc3MiOiJSLiBBZm9uc28gQnJheiwgMTc3LCA3MSAtIFZpbGEgTi4gQ29uY2Vpw6fDo28iLCJpYXQiOjE2NTk0NjExMDd9.H1JwODe3GfT_8cLIihz233Hk-05AekDySrMmCERdLLo"
             }
         }).then((res) => {
             setProfile(res.data.user)
@@ -36,8 +38,8 @@ const GlobalState = (props) => {
 
     },[])
 
-    const states = { restaurantes, profile, id}
-    const setters = { setRestaurantes, setProfile, setId }
+    const states = { restaurantes, profile, id, carrinho}
+    const setters = { setRestaurantes, setProfile, setId, setCarrinho }
 
     return (
         <GlobalContext.Provider value={{ states, setters }}>

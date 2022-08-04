@@ -1,8 +1,8 @@
 import styled from "styled-components"
 
 export const MainDiv = styled.div`
-    position: fixed;
-    top:0;
+    /* position: fixed;
+    top:0; */
     background-color: white;
     display: flex;
     align-items: center;

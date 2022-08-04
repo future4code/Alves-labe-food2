@@ -9,16 +9,17 @@ import { useContext } from 'react'
 import * as C from './styled'
 import { BASE_URL } from '../../constants/url'
 import axios from 'axios'
+import CardCarrinho from '../../components/cards/cardCarrinho/CardCarrinho'
 
 const TelaCarrinho = () => {
     const { states, setters } = useContext(GlobalContext)
-    const [carrinho, setCarrinho] = useState([])
+    const [carrinho, setCarrinho] = useState(states.carrinho)
     const navigate = useNavigate()
 
-    console.log(states)
+    console.log(states.restaurantes)
 
     return (
-        <C.Container>
+        <C.Container >
             <Header
                 backButton={
                     <img
@@ -34,19 +35,32 @@ const TelaCarrinho = () => {
                 <p>{states.profile.address}</p>
             </C.Endereco>
 
+            <C.ContainerInfo>
+                {states.restaurantes.map((res) => {
+                    if (res.id == states.id) {
+                        // console.log(res)
+                        return (
+                            <div>
+                                <C.Title>{res.name}</C.Title>
+                                <C.Info>{res.address}</C.Info>
+                                <C.Info>{res.deliveryTime - 10} - {res.deliveryTime}min</C.Info>
+                            </div>
+                        )
+                    }
+                })}
+            </C.ContainerInfo>
+
             <C.Carrinho>
                 {
-                    carrinho.length === 0 ? <div>Carrinho Vazio</div> :
+                    states.carrinho.length === 0 ? <p>Carrinho Vazio</p> :
                         carrinho.map((produtos, indice) => {
+
                             return (
-                                <p>{produtos}</p>
+                                <CardCarrinho produtos={produtos} indice={indice + 1} />
                             )
                         })
                 }
             </C.Carrinho>
-
-
-
             <Footer />
         </C.Container>
     )
