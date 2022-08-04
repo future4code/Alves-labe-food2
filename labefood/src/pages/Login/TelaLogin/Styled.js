@@ -8,6 +8,10 @@ export const ScreenContainer= styled.div`
     gap: 20px;
     align-items: center;
     margin-top: 40px;
+    @media(min-width: 500px) {
+  width: 400px;
+  justify-content: none;
+  }
 `
 export const FormContainer = styled.div`
     display: flex;
@@ -16,6 +20,10 @@ export const FormContainer = styled.div`
     gap: 5px;
     margin: 5px;
     width: 80vw;
+    @media(min-width: 500px) {
+  width: 400px;
+
+  }
 `
 export const NewContainer = styled.div`
     display: flex;

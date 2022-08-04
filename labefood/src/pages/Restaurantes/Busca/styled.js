@@ -2,9 +2,10 @@ import styled from "styled-components";
 
 export const ContainerInput = styled.div `
     display:flex;
-    align-items:center;
-    justify-content:center;
-    width: 360px;
-   
+    /* align-items:center; */
+    /* justify-content:center; */
+    width: auto;
+    height: 630px;
+
 `;
 

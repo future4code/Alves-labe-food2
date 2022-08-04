@@ -3,8 +3,8 @@ import styled from "styled-components"
 export const Container = styled.section`
     display: flex;
     flex-direction:column;
-    width: 100%;
-    height: 100%;
+    width: auto;
+    height: 630px;
     overflow:hidden;
 `;
 
@@ -22,6 +22,9 @@ export const ContainerRestaurantes = styled.div `
     &:hover{
         overflow-y: auto;
     }
+    ::-webkit-scrollbar {
+        display: none;
+}
 `;
 
 

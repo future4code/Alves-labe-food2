@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Header from '../../../components/header/Header'
+import Footer from '../../../components/footer/Footer'
 import { goBack } from '../../../router/coordenator'
 import { useNavigate } from 'react-router-dom'
 import backButton from '../../../assets/back-button.png'
@@ -9,20 +10,21 @@ import ItemCard from '../../../components/cards/itemCard/ItemCard'
 import { MainDiv, InfoDiv, DetailsDiv, MainDishesDiv, ShippingDiv } from './Styled'
 
 import axios from 'axios'
+import { SettingsPowerSharp } from '@material-ui/icons'
 
 
 export default function TelaDetalhe() {
-    const { states } = useContext(GlobalContext)
+    const { states, setters } = useContext(GlobalContext)
     const [productCategory, setProductCategory] = useState([])
     const navigate = useNavigate()
-
+    const [details, setDetails] = useState([])
+    
     useEffect(() => {
         getDetails()
 
     }, [])
-    console.log(productCategory)
+
     //APENAS PARA ESTRUTURAÇÃO
-    const [details, setDetails] = useState([])
     // useEffect(() => {
     //     const categories = details.products?.map((product) => product.category)
     //     const newCategories = categories?.filter((product, i) => {
@@ -32,9 +34,10 @@ export default function TelaDetalhe() {
     // }, [details])
     const getDetails = () => {
         axios.get(
-            `${BASE_URL}/restaurants/1`, {
+            `${BASE_URL}/restaurants/${states.id}`, {
             headers: {
-                auth: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImMzZ0pYa01Gb3FJd21YV1BpRExlIiwibmFtZSI6IlZpY3RvciIsImVtYWlsIjoidmljdG9yTGVAZnV0dXJlNC5jb20iLCJjcGYiOiIxMTEuNTQ2LjI1Ni00NCIsImhhc0FkZHJlc3MiOnRydWUsImFkZHJlc3MiOiJSLiBBZm9uc28gQnJheiwgMTc3LCA3MSAtIFZpbGEgTi4gQ29uY2Vpw6fDo28iLCJpYXQiOjE2NTk0NjI0NjB9.jKqwtomLRmOUpSi9UGY9_j4hwZ_PryEJG2YsrAfSC6s"
+                auth:localStorage.getItem('token')
+                // auth: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImMzZ0pYa01Gb3FJd21YV1BpRExlIiwibmFtZSI6IlZpY3RvciIsImVtYWlsIjoidmljdG9yTGVAZnV0dXJlNC5jb20iLCJjcGYiOiIxMTEuNTQ2LjI1Ni00NCIsImhhc0FkZHJlc3MiOnRydWUsImFkZHJlc3MiOiJSLiBBZm9uc28gQnJheiwgMTc3LCA3MSAtIFZpbGEgTi4gQ29uY2Vpw6fDo28iLCJpYXQiOjE2NTk0NjI0NjB9.jKqwtomLRmOUpSi9UGY9_j4hwZ_PryEJG2YsrAfSC6s"
             }
         }
         ).then((response) => {
@@ -47,7 +50,10 @@ export default function TelaDetalhe() {
 
     // console.log(productCategory)
 
-
+    const adicionarProduto = (product) => {
+        setters.setCarrinho([...states.carrinho, product])
+        console.log(states.carrinho)
+    }
 
     const chooseScreen = () => {
         if (details.length === 0) {
@@ -77,6 +83,7 @@ export default function TelaDetalhe() {
                                     description={product.description}
                                     price={product.price}
                                 />
+                                <button onClick={() => adicionarProduto(product)}>Adicionar ao Carrinho</button>
                             </MainDishesDiv>
                         )
                     })
@@ -98,6 +105,8 @@ export default function TelaDetalhe() {
                 name="Restaurante"
             />
             {chooseScreen()}
+
+            <Footer />
         </MainDiv>
     )
 }

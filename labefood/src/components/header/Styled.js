@@ -1,8 +1,8 @@
 import styled from "styled-components"
 
 export const MainDiv = styled.div`
-    position: fixed;
-    top:0;
+    /* position: fixed;
+    top:0; */
     background-color: white;
     display: flex;
     align-items: center;
@@ -11,10 +11,9 @@ export const MainDiv = styled.div`
     height: 44px;
     border-top: none;
     border-bottom: solid gray 1px;
-    @media(min-width: 415px) {
-        transform: translate(-50%, -50%);
-        left:50%;
-        top:20px;
+    @media(min-width: 500px) {
+        width: 400px;
+
     }
 `;
 export const BackButtonDiv = styled.div`
@@ -22,9 +21,12 @@ export const BackButtonDiv = styled.div`
     cursor:pointer;
 `;
 export const NameDiv = styled.div`
-    position: fixed;
+    position: relative;
     transform: translate(-50%, -50%);
-    left: 50%;
-    top: 22px;
+    left: 40%;
+    top: 25%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
 `;
 
