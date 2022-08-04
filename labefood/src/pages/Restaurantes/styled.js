@@ -22,6 +22,9 @@ export const ContainerRestaurantes = styled.div `
     &:hover{
         overflow-y: auto;
     }
+    ::-webkit-scrollbar {
+        display: none;
+}
 `;
 
 
