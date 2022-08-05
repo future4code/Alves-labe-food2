@@ -125,11 +125,16 @@ const TelaPerfil = () => {
   const [inforTrip, setInforTrip] = useState([])
   const navigate = useNavigate()
 
+  useEffect(() => {
+    pegarPerfil()
+    pegarHitorico()
+  }, [])
+
   //const token = localStorage.getItem('token')
   //const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imo4RU1taGRUcVlzNllGVkpjb0duIiwibmFtZSI6IkJydW5hIiwiZW1haWwiOiJicnVuYXRlc3RlMUBtc24uY29tIiwiY3BmIjoiMTIxLjExMS4xMzEtMTEiLCJoYXNBZGRyZXNzIjp0cnVlLCJhZGRyZXNzIjoiUi4gQWZvbnNvIEJyYXosIDE3NywgNzEgLSBWaWxhIE4uIENvbmNpw6fDo28iLCJpYXQiOjE2NTk1MzM3MDF9.7lyecVc09ilJtMYHz9QB3xYxEcE6eRmnQGYFGNDpDOs"
+  const token = localStorage.getItem('token')
   function pegarPerfil() {
 
-  const token = localStorage.getItem('token')
  
   function pegarPerfil ()  {
 
@@ -150,14 +155,7 @@ const TelaPerfil = () => {
 
       })
   }
-  useEffect(() => {
-    pegarPerfil()
-
-
-  }, [])}
-
-
-  
+  }
 
 
   function pegarHitorico() {
@@ -178,10 +176,8 @@ const TelaPerfil = () => {
 
       })
   }
-  useEffect(() => {
-    pegarHitorico()
+ 
 
-  }, [])
   console.log(inforTrip.orders)
 
   const card = inforTrip.orders?.map((orders, indice) => {
