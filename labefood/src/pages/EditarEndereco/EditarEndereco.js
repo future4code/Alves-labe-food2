@@ -6,16 +6,30 @@ import styled from 'styled-components'
 import Footer from '../../components/footer/Footer'
 import { goBack } from '../../router/coordenator'
 import { useNavigate } from 'react-router-dom'
+import { TextField } from "@material-ui/core";
+import IconButton from "@material-ui/core/IconButton";
 
 const PaiDeTodos = styled.div`
 display: grid;
+
 `
 
 const PaidaSessoes = styled.div`
 grid-template-rows:100vh;
 display: grid;
-margin: 75px 20px 0px 16px;
+margin: 60px 20px 0px 16px;
+align-items: center;
+justify-content: center;
 `
+const Button = styled.button`
+height: 45px;
+width: 80%;
+background-color: #65b153 ;
+align-items: center;
+justify-content: center;
+`
+
+
 
 
 const EditarEndereco = () => {
@@ -28,18 +42,73 @@ const EditarEndereco = () => {
         />
         <PaidaSessoes>
         <form>
-                  <div>
-                  <label for="nome"></label>
-	                <input type='text' id='nome' name='nome'  placeholder="Seu nome" required />
-                  </div>
-                  <label for="email"></label>
-	              <input name="email" id="email" />
-			
-                  <div>
-                  <label for="cpf"></label>
-	                <input type='cpf' id='cpf' name=''  placeholder="" required />
-                  </div>
-                </form>
+        <TextField
+            name={"street"}
+            label={"Logradouro"}
+            variant={"outlined"}
+            fullWidth
+            margin={"normal"}
+            required
+            type={"text"}
+            placeholder={"Rua / Av."}
+          />
+
+          <TextField
+            name={"number"}
+            label={"Número"}
+            variant={"outlined"}
+            fullWidth
+            margin={"normal"}
+            required
+            type={"number"}
+            placeholder={"Número"}
+          />
+
+          <TextField
+            name={"complement"}
+            label={"Complemento"}
+            variant={"outlined"}
+            fullWidth
+            margin={"normal"}
+            type={"text"}
+            placeholder={"Apto. / Bloco"}
+          />
+
+          <TextField
+            name={"neighbourhood"}
+            label={"Bairro"}
+            variant={"outlined"}
+            fullWidth
+            margin={"normal"}
+            required
+            type={"text"}
+            placeholder={"Bairro"}
+          />
+
+          <TextField
+            name={"city"}
+            label={"Cidade"}
+            variant={"outlined"}
+            fullWidth
+            margin={"normal"}
+            required
+            type={"text"}
+            placeholder={"Cidade"}
+          />
+
+          <TextField
+            name={"state"}
+            label={"Estado"}
+            variant={"outlined"}
+            fullWidth
+            margin={"normal"}
+            required
+            type={"text"}
+            placeholder={"Estado"}
+          />
+          <Button>Enviar</Button>
+
+        </form>
 
         </PaidaSessoes>
         <Footer/>
