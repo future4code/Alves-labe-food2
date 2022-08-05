@@ -3,13 +3,14 @@ import styled from "styled-components"
 export const Container = styled.section `
    display: flex;
    flex-direction:column;
-   border:1px solid;
+   width:100%;
    height: auto;
+   margin-top:5vh;
 `;
 
 export const Endereco = styled.div `
   
-   height: 76px;
+   height: 10vh;
    background-color:#eeeeee;
 
    h4{
@@ -33,11 +34,17 @@ export const Carrinho = styled.div`
    align-items:center;
 `;
 
+export const CarrinhoVazio = styled.div `
+   margin: 20px;
+`
+
 export const ContainerInfo = styled.div `
    /* border:1px solid; */
    display:flex;
    flex-direction:column;
    justify-content:center;
+   flex-wrap:wrap;
+   height: auto;
 `
 
 export const Title = styled.p `
@@ -52,7 +59,68 @@ export const Info = styled.p `
    font-size: 16px;
    margin: 8px 16px;
 
+`;
+
+export const ContainerFretePreco = styled.div `
+   display:flex;
+   flex-direction:column;
 `
+
+export const Frete = styled.p `
+   text-align: right;
+   margin-right: 20px;
+`
+
+export const SubTotal = styled.div`
+   display:flex;
+   justify-content: space-between;
+   margin: 5px 20px;
+   align-items: center;
+`
+
+export const Valor = styled.p`
+   font-size: 18px;
+   font-weight: bold;
+   color: #5cb646;
+`
+
+export const ContainerPagamento = styled.div `
+   margin: 10px 16px 15%;
+
+   p{
+      font-size: 16px;
+      margin-bottom: 5px;
+   }
+
+`
+
+export const CheckBox = styled.div`
+   margin-top: 10px;
+   /* flex-direction:column;
+   display:flex; */
+
+   label{
+      margin-left: 10px;
+   }
+
+`
+
+export const Button = styled.button `
+   display:flex;
+   align-items: center;
+   justify-content: center;
+   align-self:center;
+   width: 328px;
+   height: 42px;
+   font-size: 16px;
+   background-color: #5cb646;
+   border: none;
+   cursor:pointer;
+
+   margin-bottom: 25%;
+
+`
+
 
 
 

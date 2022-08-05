@@ -13,15 +13,48 @@ import CardCarrinho from '../../components/cards/cardCarrinho/CardCarrinho'
 import restaurantImg from '../../assets/homepage.png'
 import shoppingCartImg from '../../assets/active-shopping-cart.png'
 import avatarImg from '../../assets/avatar.png'
+import useForm from '../../hooks/useForm'
+import { ConfirmOrder } from '../../services/restaurants'
 
 const TelaCarrinho = () => {
     const { states, setters } = useContext(GlobalContext)
     const [carrinho, setCarrinho] = useState(states.carrinho)
     const [frete, setFrete] = useState(0)
     const [price, setTotalPrice] = useState(0)
+    const [pagamento, setPagamento] = useState("")
+    const [order, setOrder] = useState([])
+
     const navigate = useNavigate()
 
-    // console.log(states.carrinho)
+    // const checarMetodoPagamento = setPagamento(document.querySelector("input[name='pagamento']").value)
+
+    const onChangeMoney = (e) => {
+        // console.log(e.target.value)
+        setPagamento(e.target.value)
+    }
+
+    const onChangeCard = (e) => {
+        setPagamento(e.target.value)
+    }
+
+    const confirmarPedido = () => {
+        states.carrinho.map((product) => {
+            // console.log(product)
+            const produto = {
+                "products": [{
+                    "id": product.id,
+                    "quantity": product.quantity,
+                }],
+                "paymentMethod": pagamento
+            }
+
+            return (
+                ConfirmOrder(states.id, produto, setOrder, navigate)
+            )
+
+        })
+
+    }
 
     useEffect(() => {
 
@@ -34,7 +67,7 @@ const TelaCarrinho = () => {
         let totalPrice = 0
         if (states.carrinho.length > 0) {
             states.carrinho.forEach(element => {
-                totalPrice = totalPrice + element.price
+                totalPrice = totalPrice + element.price * element.quantity
                 const subTotal = totalPrice + frete
                 setTotalPrice(subTotal.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }))
             });
@@ -76,27 +109,46 @@ const TelaCarrinho = () => {
 
             <C.Carrinho>
                 {
-                    states.carrinho.length === 0 ? <p>Carrinho Vazio</p> :
+                    states.carrinho.length === 0 ? <C.CarrinhoVazio>Carrinho Vazio</C.CarrinhoVazio> :
                         carrinho.map((produtos, indice) => {
-                            console.log(carrinho)
 
                             return (
-                                <CardCarrinho produtos={produtos} indice={produtos.quantity} />
+                                <>
+                                    <CardCarrinho produtos={produtos} indice={produtos.quantity} />
+
+                                </>
                             )
                         })
                 }
             </C.Carrinho>
 
-            <>
-                <p>Frete: {frete.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
-                <p>SUBTOTAL</p>
-                <p>{price}</p>
+            <C.ContainerFretePreco>
+                <C.Frete>Frete: {frete.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</C.Frete>
+                <C.SubTotal>
+                    <p>SUBTOTAL</p>
+                    <C.Valor>{price}</C.Valor>
+                </C.SubTotal>
+            </C.ContainerFretePreco>
 
 
+            <C.ContainerPagamento>
+                <p>Forma de Pagamento</p>
+                <hr />
 
+                <C.CheckBox>
+                    <input type="radio" name="pagamento" id="dinheiro" value="money" onChange={onChangeMoney} />
+                    <label for="dinheiro">Dinheiro</label>
+                </C.CheckBox>
 
+                <C.CheckBox>
+                    <input type="radio" name="pagamento" id="cartao" value="cardcredit" onChange={onChangeCard} />
+                    <label for="cartao-de-credito">Cartão de Crédito</label>
+                </C.CheckBox>
 
-            </>
+            </C.ContainerPagamento>
+
+            <C.Button type='submit' onClick={() => confirmarPedido()}>Confirmar</C.Button>
+
             <Footer
                 restaurantImg={restaurantImg}
                 shoppingCartImg={shoppingCartImg}

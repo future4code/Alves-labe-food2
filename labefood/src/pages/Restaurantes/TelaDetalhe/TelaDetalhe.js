@@ -12,6 +12,9 @@ import axios from 'axios'
 import { SettingsPowerSharp } from '@material-ui/icons'
 import { GetRestaurantDetail } from '../../../services/restaurants'
 import Swal from 'sweetalert2'
+import restaurantImg from '../../../assets/active-homepage.png'
+import shoppingCartImg from '../../../assets/shopping-cart.png'
+import avatarImg from '../../../assets/avatar.png'
 
 
 export default function TelaDetalhe() {
@@ -134,6 +137,11 @@ export default function TelaDetalhe() {
                 name="Restaurante"
             />
             {chooseScreen()}
+
+            <Footer 
+            restaurantImg={restaurantImg}
+            shoppingCartImg={shoppingCartImg}
+            avatarImg={avatarImg}/>
         </MainDiv>
     )
 }

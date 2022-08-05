@@ -23,7 +23,7 @@ section {
 /* box-shadow: 0 0 15px #5cb646; */
 
 
-@media(min-width: 500px) {
+/* @media(min-width: 500px) {
 
   body {
     position: relative;
@@ -32,9 +32,39 @@ section {
     height:650px;
     border: solid 1px black;
     margin-top: 10px;
-
-
   }
-  
+} */
 
+/* Phone */
+@media screen and (max-width:414px) {
+  body {
+    position: relative;
+    max-width: 414px ;
+    height: 100%;
+    margin-top: 10px;
+  }
+}
+
+/* Tablet */
+@media screen and (min-width:414px) and (max-width:912px) {
+  body {
+    position: relative;
+    max-width: 912px ;
+    height: 100%;
+    margin-top: 10px;
+    margin:auto;
+  }
+}
+
+/* Desktop */
+@media screen and (min-width:913px) {
+  body {
+    position: relative;
+    width: 400px ;
+    margin-left: 30%;
+    min-height:650px;
+    height: 100%;
+    border: solid 1px #aaaa;
+    margin-top: 10px;
+  }
 }
