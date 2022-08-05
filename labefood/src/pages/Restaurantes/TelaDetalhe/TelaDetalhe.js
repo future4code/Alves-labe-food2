@@ -134,8 +134,6 @@ export default function TelaDetalhe() {
                 name="Restaurante"
             />
             {chooseScreen()}
-
-            <Footer />
         </MainDiv>
     )
 }

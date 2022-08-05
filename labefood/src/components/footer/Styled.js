@@ -12,7 +12,7 @@ export const MainDiv = styled.div`
     border-top: solid grey 1px;
     background-color: white;
     @media(min-width: 500px) {
-    width: 500px;
+    width: 400px;
 
   }
 
