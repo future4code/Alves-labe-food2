@@ -7,7 +7,7 @@ import homePage from '../../assets/homepage.png'
 import avatar from '../../assets/avatar.png'
 
 
-export default function Footer() {
+export default function Footer(props) {
     const navigate = useNavigate()
 
     return (
@@ -15,17 +15,17 @@ export default function Footer() {
             <div>
                 <button
                     onClick={() => goToRestaurants(navigate)}
-                ><img src={homePage} /></button>
+                ><img src={props.restaurantImg} /></button>
             </div>
             <div>
                 <button
                     onClick={() => goToShopCart(navigate)}
-                ><img src={shoppingCart} /></button>
+                ><img src={props.shoppingCartImg} /></button>
             </div>
             <div>
                 <button
                     onClick={() => goToPerfil(navigate)}
-                ><img src={avatar} /></button>
+                ><img src={props.avatarImg} /></button>
             </div>
         </MainDiv>
     )

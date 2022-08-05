@@ -13,6 +13,9 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
+import restaurantImg from '../../assets/active-homepage.png'
+import shoppingCartImg from '../../assets/shopping-cart.png'
+import avatarImg from '../../assets/avatar.png'
 
 const TelaRestaurantes = (props) => {
 
@@ -184,7 +187,11 @@ const TelaRestaurantes = (props) => {
         </C.ContainerRestaurantes>
       </Box> 
       
-      <Footer />
+      <Footer
+      restaurantImg={restaurantImg}
+      shoppingCartImg={shoppingCartImg}
+      avatarImg={avatarImg}
+       />
     </C.Container>
   );
 };
