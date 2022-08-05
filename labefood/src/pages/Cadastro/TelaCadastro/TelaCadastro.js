@@ -18,6 +18,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from "@material-ui/core/IconButton";
 import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
 import { withStyles } from "@material-ui/core/styles";
+import { goBack } from "../../../router/coordenator"
 
 const StyledButton = withStyles({
   root: {
@@ -42,9 +43,9 @@ const TelaCadastro = () => {
     setPassword(!Password);
   };
 
-  const goBack = () => {
-    navigate.goBack();
-  };
+  // const goBack = () => {
+  //   navigate.goBack();
+  // };
 
   const onMouseDownPassword = () => {
     setPassword(!Password);
@@ -52,7 +53,7 @@ const TelaCadastro = () => {
 
   const onSubmitForm = (event) => {
     event.preventDefault();
-    Signup(form, clear, navigate, setLoading);
+    Signup(form, clear, navigate);
   };
 
   return (
