@@ -26,8 +26,14 @@ section {
 @media(min-width: 500px) {
 
   body {
+    position: relative;
     width: 400px ;
     margin-left: 30%;
+    height:650px;
+    border: solid 1px black;
+    margin-top: 10px;
+
+
   }
   
 

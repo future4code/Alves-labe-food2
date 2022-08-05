@@ -6,13 +6,15 @@ export const MainDiv = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
+
     
-    height: 49px;
+    height: 60px;
     width: 100%;
     border-top: solid grey 1px;
     background-color: white;
     @media(min-width: 500px) {
     width: 400px;
+
 
   }
 
