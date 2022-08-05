@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import Footer from '../../components/footer/Footer'
 import { goBack } from '../../router/coordenator'
 import { useNavigate } from 'react-router-dom'
+import { TextField } from "@material-ui/core";
 
 const PaiDeTodos = styled.div`
 display: grid;
@@ -83,17 +84,40 @@ const navigate = useNavigate()
         />
         <PaidaSessoes>
         <form>
-                  <div>
-                  <label for="nome"></label>
-	                <InputEdit type='text' id='nome' name='nome'   placeholder="Seu nome" required />
-                  </div>
-                  <label for="email"></label>
-	              <input name="email" id="email"  />
+
+	              <TextField 
+                           name={"name"}
+                           label={"Nome"}
+                           variant={"outlined"}
+                           fullWidth
+                           margin={"normal"}
+                           required
+                           type={"text"}
+                           placeholder={"Nome e sobrenome"}
+ 
+                 />
+
+	              <TextField 
+                name="email" 
+                label={"E-mail"}
+                variant={"outlined"}
+                fullWidth
+                margin={"normal"}
+                required
+                type={"email"}
+                placeholder={"email@email.com"}  />
 			
-                  <div>
-                  <label for="cpf"></label>
-	                <input type='cpf' id='cpf' name=''  placeholder="" required />
-                  </div>
+	              <TextField 
+                id='cpf' 
+                name='cpf'   
+                label={"CPF"}
+                variant={"outlined"}
+                fullWidth
+                margin={"normal"}
+                required
+                type={"number"}
+                placeholder={"000.000.000-00 (apenas números)"}
+                inputProps={{ pattern: "^d{3}.d{3}.d{3}-d{2}$" }} />
                 </form>
 
         </PaidaSessoes>
