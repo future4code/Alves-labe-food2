@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import useForm from "../../../hooks/useForm";
 import { useNavigate } from "react-router";
@@ -18,7 +17,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from "@material-ui/core/IconButton";
 import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
 import { withStyles } from "@material-ui/core/styles";
-import { goBack } from "../../../router/coordenator"
+import { goBack } from "../../../router/coordenator";
 
 const StyledButton = withStyles({
   root: {
@@ -29,31 +28,37 @@ const StyledButton = withStyles({
 })(Button);
 
 const TelaCadastro = () => {
-  const [form, onChange, clear] = useForm({
+  const [form, handleInputChange, clear] = useForm({
     name: "",
     email: "",
     cpf: "",
     password: "",
   });
   const [Loading, setLoading] = useState(false);
-  const [Password, setPassword] = useState(false);
+  const [confirm, setConfirm] = useState("");
   const navigate = useNavigate();
 
+  const onChangeConfirm = (event) => {
+    setConfirm(event.target.value);
+  };
+
   const onClickPassword = () => {
-    setPassword(!Password);
+    setConfirm(!confirm);
+  };
+
+  const onMouseDownPassword = () => {
+    setConfirm(!confirm);
   };
 
   // const goBack = () => {
   //   navigate.goBack();
   // };
 
-  const onMouseDownPassword = () => {
-    setPassword(!Password);
-  };
-
   const onSubmitForm = (event) => {
     event.preventDefault();
-    Signup(form, clear, navigate);
+    if (confirm === form.password) {
+      Signup(form, clear, navigate);
+    }
   };
 
   return (
@@ -69,7 +74,7 @@ const TelaCadastro = () => {
           <TextField
             name={"name"}
             value={form.name}
-            onChange={onChange}
+            onChange={handleInputChange}
             label={"Nome"}
             variant={"outlined"}
             fullWidth
@@ -82,7 +87,7 @@ const TelaCadastro = () => {
           <TextField
             name={"email"}
             value={form.email}
-            onChange={onChange}
+            onChange={handleInputChange}
             label={"E-mail"}
             variant={"outlined"}
             fullWidth
@@ -95,7 +100,7 @@ const TelaCadastro = () => {
           <TextField
             name={"cpf"}
             value={form.cpf}
-            onChange={onChange}
+            onChange={handleInputChange}
             label={"CPF"}
             variant={"outlined"}
             fullWidth
@@ -109,13 +114,13 @@ const TelaCadastro = () => {
           <TextField
             name={"password"}
             value={form.password}
-            onChange={onChange}
+            onChange={handleInputChange}
             label={"Senha"}
             variant={"outlined"}
             fullWidth
             margin={"normal"}
             required
-            type={Password ? "text" : "password"}
+            type={confirm ? "text" : "password"}
             placeholder={"Mínimo de 6 caracteres"}
             inputProps={{ pattern: "^.{6,}" }}
             InputProps={{
@@ -126,22 +131,22 @@ const TelaCadastro = () => {
                     onClick={onClickPassword}
                     onMouseDown={onMouseDownPassword}
                   >
-                    {Password ? <Visibility /> : <VisibilityOff />}
+                    {confirm ? <Visibility /> : <VisibilityOff />}
                   </IconButton>
                 </InputAdornment>
               ),
             }}
           />
           <TextField
-            name={"confirm_password"}
-            value={form.password}
-            onchange={onChange}
+            name={"password-confirm"}
+            value={confirm.password}
+            onchange={onChangeConfirm}
             label={"confirmar"}
             variant={"outlined"}
             fullWidth
             margin={"normal"}
             required
-            type={Password ? "text" : "password"}
+            type={confirm ? "text" : "password"}
             placeholder={"confirme a senha anterior"}
             inputprops={{ pattern: "^.{6}" }}
             InputProps={{
@@ -152,7 +157,7 @@ const TelaCadastro = () => {
                     onClick={onClickPassword}
                     onMouseDown={onMouseDownPassword}
                   >
-                    {Password ? <Visibility /> : <VisibilityOff />}
+                    {confirm ? <Visibility /> : <VisibilityOff />}
                   </IconButton>
                 </InputAdornment>
               ),
