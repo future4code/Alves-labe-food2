@@ -16,6 +16,8 @@ import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
 import { withStyles } from "@material-ui/core/styles";
 import useProtectedPage from "../../../hooks/useProtectedPage";
 import { goToLogin } from "../../../router/coordenator";
+import { goBack } from "../../../router/coordenator"
+
 
 const StyledButton = withStyles({
   root: {
@@ -38,9 +40,9 @@ const TelaEndereco = () => {
   const navigate = useNavigate();
   useProtectedPage();
 
-  const goBack = () => {
-    navigate.goBack();
-  };
+  // const goBack = () => {
+  //   navigate.goBack();
+  // };
 
   const onSubmitForm = (event) => {
     event.preventDefault();
