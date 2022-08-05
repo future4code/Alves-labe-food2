@@ -14,7 +14,7 @@ import CardCarrinho from '../../components/cards/cardCarrinho/CardCarrinho'
 const TelaCarrinho = () => {
     const { states, setters } = useContext(GlobalContext)
     const [carrinho, setCarrinho] = useState(states.carrinho)
-    const [frete, setFrete] = useState()
+    const [frete, setFrete] = useState(0)
     const [price, setTotalPrice] = useState(0)
     const navigate = useNavigate()
 
@@ -33,7 +33,7 @@ const TelaCarrinho = () => {
             states.carrinho.forEach(element => {
                 totalPrice = totalPrice + element.price
                 const subTotal = totalPrice + frete
-                setTotalPrice(subTotal)
+                setTotalPrice(subTotal.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }))
             });
         } 
          
@@ -75,16 +75,17 @@ const TelaCarrinho = () => {
                 {
                     states.carrinho.length === 0 ? <p>Carrinho Vazio</p> :
                         carrinho.map((produtos, indice) => {
+                            console.log(carrinho)
 
                             return (
-                                <CardCarrinho produtos={produtos} indice={indice + 1} />
+                                <CardCarrinho produtos={produtos} indice={produtos.quantity} />
                             )
                         })
                 }
             </C.Carrinho>
 
             <>
-                <p>Frete: R${frete},00</p>
+                <p>Frete: {frete.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
                 <p>SUBTOTAL</p>
                 <p>{price}</p>
 

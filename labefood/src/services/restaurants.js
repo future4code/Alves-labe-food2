@@ -23,8 +23,7 @@ export const GetRestaurantDetail = (id, setRestauranteDetalhe) => {
         }
       })
         .then((res) => {
-            setRestauranteDetalhe(res.data.results)
-            console.log(res.data.results)
+            setRestauranteDetalhe(res.data.restaurant)
         }).catch((err) => {
             console.log(err.response)
         })

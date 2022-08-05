@@ -12,7 +12,7 @@ const CardCarrinho = (props) => {
             <C.Text>
                 <C.Nome>{props.produtos.name}</C.Nome>
                 <C.Description>{props.produtos.description}</C.Description>
-                <C.Price>R${props.produtos.price}</C.Price>
+                <C.Price>{props.produtos.price.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</C.Price>
             </C.Text>
             <C.ContainerButton>
                 <C.RetanguloIndice>
