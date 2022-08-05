@@ -133,8 +133,7 @@ const TelaPerfil = () => {
   //const token = localStorage.getItem('token')
   //const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imo4RU1taGRUcVlzNllGVkpjb0duIiwibmFtZSI6IkJydW5hIiwiZW1haWwiOiJicnVuYXRlc3RlMUBtc24uY29tIiwiY3BmIjoiMTIxLjExMS4xMzEtMTEiLCJoYXNBZGRyZXNzIjp0cnVlLCJhZGRyZXNzIjoiUi4gQWZvbnNvIEJyYXosIDE3NywgNzEgLSBWaWxhIE4uIENvbmNpw6fDo28iLCJpYXQiOjE2NTk1MzM3MDF9.7lyecVc09ilJtMYHz9QB3xYxEcE6eRmnQGYFGNDpDOs"
   const token = localStorage.getItem('token')
-  function pegarPerfil() {
-
+ 
  
   function pegarPerfil ()  {
 
@@ -155,7 +154,7 @@ const TelaPerfil = () => {
 
       })
   }
-  }
+  
 
 
   function pegarHitorico() {
@@ -213,7 +212,7 @@ const TelaPerfil = () => {
           </section>
 
           <Editor>
-            <ButtonEditor type="button"> <img src={Edit} alt="Botão Editar perfil" /></ButtonEditor>
+            <ButtonEditor  type="button" onClick={() => goToEditPerfil(navigate)}> <img src={Edit} alt="Botão Editar perfil" /></ButtonEditor>
           </Editor>
         </CardPessoa>
         <CardEndereco>
@@ -222,7 +221,7 @@ const TelaPerfil = () => {
             <LetraEndereco>{dataTrip.address}</LetraEndereco>
           </section>
           <Editor>
-            <ButtonEditor type="button"> <img src={Edit} alt="Botão Editar endereço" /></ButtonEditor>
+            <ButtonEditor type="button" onClick={() => goToEditEndereco(navigate)}> <img src={Edit} alt="Botão Editar endereço" /></ButtonEditor>
           </Editor>
         </CardEndereco>
 
