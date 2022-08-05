@@ -8,9 +8,10 @@ import GlobalContext from '../../../global/GlobalContext'
 import { BASE_URL } from '../../../constants/url'
 import ItemCard from '../../../components/cards/itemCard/ItemCard'
 import { MainDiv, InfoDiv, DetailsDiv, MainDishesDiv, ShippingDiv, ContainerCategorias } from './Styled'
-
 import axios from 'axios'
 import { SettingsPowerSharp } from '@material-ui/icons'
+import { GetRestaurantDetail } from '../../../services/restaurants'
+import Swal from 'sweetalert2'
 
 
 export default function TelaDetalhe() {
@@ -19,10 +20,10 @@ export default function TelaDetalhe() {
     const navigate = useNavigate()
     const [details, setDetails] = useState([])
 
-    console.log(details.products)
+    // console.log(details.products)
 
     useEffect(() => {
-        getDetails()
+        GetRestaurantDetail(states.id, setDetails)
 
     }, [])
 
@@ -34,29 +35,49 @@ export default function TelaDetalhe() {
     //     })
     //     setProductCategory(newCategories)
     // }, [productCategory])
+    // useEffect(() => {
+    //     const categories =
+    //       cardProducts && cardProducts.map((product) => product.category);
+    //     const newCategories = categories?.filter((item, i) => {
+    //       return categories.indexOf(item) === i;
+    //     });
+    //     setCategories(categories);
+    //   }, [cardProducts]);
 
-    const getDetails = () => {
-        axios.get(
-            `${BASE_URL}/restaurants/${states.id}`, {
-            headers: {
-                auth: localStorage.getItem('token')
-                // auth: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImMzZ0pYa01Gb3FJd21YV1BpRExlIiwibmFtZSI6IlZpY3RvciIsImVtYWlsIjoidmljdG9yTGVAZnV0dXJlNC5jb20iLCJjcGYiOiIxMTEuNTQ2LjI1Ni00NCIsImhhc0FkZHJlc3MiOnRydWUsImFkZHJlc3MiOiJSLiBBZm9uc28gQnJheiwgMTc3LCA3MSAtIFZpbGEgTi4gQ29uY2Vpw6fDo28iLCJpYXQiOjE2NTk0NjI0NjB9.jKqwtomLRmOUpSi9UGY9_j4hwZ_PryEJG2YsrAfSC6s"
-            }
-        }
-        ).then((response) => {
-            setDetails(response.data.restaurant)
-        }).catch((error) => {
-            console.log(error)
-        })
+    const asdsa = (e) => {
+        console.log(e.target.value)
     }
-    //APENAS PARA ESTRUTURAÇÃO
-
-    // console.log(productCategory)
 
     const adicionarProduto = (product) => {
-        setters.setCarrinho([...states.carrinho, product])
-        console.log(states.carrinho)
+
+        Swal.fire({
+            text: 'Selecione a quantidade desejada',
+            input: 'select',
+            onChange: { asdsa },
+            inputOptions: {
+                1: 1,
+                2: 2,
+                3: 3,
+                4: 4,
+                5: 5,
+                6: 6,
+                7: 7,
+                8: 8,
+                9: 9,
+                10: 10
+            },
+            inputPlaceholder: 'Quantidade',
+            inputValidator: (value) => {
+                const newProduct = {
+                    ...product,
+                    quantity: value
+                }
+                setters.setCarrinho([...states.carrinho, newProduct])
+
+            }
+        })
     }
+    console.log(states.carrinho)
 
     const chooseScreen = () => {
         if (details.length === 0) {
@@ -65,7 +86,7 @@ export default function TelaDetalhe() {
             return (
                 <DetailsDiv>
 
-                    
+
                     <InfoDiv>
                         <img alt="restaurante" src={details.logoUrl} />
                         <h5>{details.name}</h5>
