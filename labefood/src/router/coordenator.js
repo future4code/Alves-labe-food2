@@ -34,3 +34,10 @@ export const goToBusca = (navigate) => {
 export const goToDetail = (navigate, id) => {
     navigate(`/restaurantes/${id}`)
 }
+export const goToEditPerfil = (navigate) => {
+    navigate(`/editarPerfil`)
+}
+
+export const goToEditEndereco = (navigate) => {
+    navigate(`/editarEndereco`)
+}

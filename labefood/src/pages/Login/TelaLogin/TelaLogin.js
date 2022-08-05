@@ -35,6 +35,7 @@ const TelaLogin = () => {
         navigate("/restaurantes")} else {navigate("/signup")}
         }).catch((erro) => {
       console.log(erro.message)
+      alert("Usuário incorreto ou não exite!!")
     })
   }
 

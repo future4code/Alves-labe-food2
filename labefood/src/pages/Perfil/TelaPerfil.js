@@ -7,6 +7,8 @@ import { Icon } from '@mui/material'
 import Footer from '../../components/footer/Footer'
 import Edit from "../../assets/edit.png"
 import { style } from '@mui/system'
+import { useNavigate } from 'react-router-dom'
+import { goBack, goToEditEndereco, goToEditPerfil } from '../../router/coordenator'
 
 
 const PaiDeTodos = styled.div`
@@ -45,6 +47,13 @@ justify-content: center;
 const ButtonEditor = styled.button`
 background-color: rgba(255,255,255,.0);
 border: none;
+&:hover{
+  background-color: #dcd7d3;
+}
+&:active{
+  background-color: #7f7f7f;
+
+}
 `
 const H2Historico = styled.h2`
 margin-left: 16px ;
@@ -108,8 +117,8 @@ margin: 9px 16px 7px 16px;
 const TelaPerfil = () => {
   const [dataTrip, setDataTrip] = useState([])
   const [inforTrip, setInforTrip] = useState([])
-  //const token = localStorage.getItem('token')
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imo4RU1taGRUcVlzNllGVkpjb0duIiwibmFtZSI6IkJydW5hIiwiZW1haWwiOiJicnVuYXRlc3RlMUBtc24uY29tIiwiY3BmIjoiMTIxLjExMS4xMzEtMTEiLCJoYXNBZGRyZXNzIjp0cnVlLCJhZGRyZXNzIjoiUi4gQWZvbnNvIEJyYXosIDE3NywgNzEgLSBWaWxhIE4uIENvbmNpw6fDo28iLCJpYXQiOjE2NTk1MzM3MDF9.7lyecVc09ilJtMYHz9QB3xYxEcE6eRmnQGYFGNDpDOs"
+  const token = localStorage.getItem('token')
+ 
   function pegarPerfil ()  {
     const url = "https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/profile"
 
@@ -133,7 +142,7 @@ const TelaPerfil = () => {
   
   },[])
 
-
+  const navigate = useNavigate()
 
 function pegarHitorico ()  {
   const urlH = "https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/orders/history"
@@ -166,18 +175,19 @@ console.log(inforTrip.orders)
      <CardHistoricoP key={indice}>
        <TituloHistorico>{orders.restaurantName}</TituloHistorico>
      <DataEndereco>24.02.2024</DataEndereco>
-    <Subtotal>Subtotal: {orders.totalPrice}</Subtotal>
+    <Subtotal>Subtotal: {orders.totalPrice}R$</Subtotal>
    </CardHistoricoP>
 
    )
 
   })
+
  
 
   return (
     <PaiDeTodos>
       <Header
-      backButton={<img src={backButton}/>}
+      backButton={<img onClick={() => goBack(navigate)} src={backButton}/>}
     name= "Perfil"
       />
       <PaidaSessoes>
@@ -189,7 +199,10 @@ console.log(inforTrip.orders)
         </section>
      
         <Editor>
-        <ButtonEditor type="button"> <img src={Edit} alt="Botão Editar perfil"  /></ButtonEditor>
+        <ButtonEditor 
+         type={"submite"} 
+        onClick={() => goToEditPerfil(navigate)}
+        > <img src={Edit} alt="Botão Editar perfil"  /></ButtonEditor>
         </Editor>  
       </CardPessoa>
       <CardEndereco>
@@ -198,7 +211,10 @@ console.log(inforTrip.orders)
         <LetraEndereco>{dataTrip.address}</LetraEndereco>
         </section>
         <Editor>
-        <ButtonEditor type="button"> <img src={Edit} alt="Botão Editar endereço"  /></ButtonEditor>
+        <ButtonEditor 
+                 type={"submite"} 
+                 onClick={() => goToEditEndereco(navigate)}
+        > <img src={Edit} alt="Botão Editar endereço"  /></ButtonEditor>
         </Editor>  
         </CardEndereco>  
 
