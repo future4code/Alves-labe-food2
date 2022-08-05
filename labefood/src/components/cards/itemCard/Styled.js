@@ -30,3 +30,64 @@ export const InfoDiv = styled.div`
         font-size: 12px;
     }
 `
+export const RetanguloIndice = styled.div `
+    width: 33px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height: 33px;
+    margin: 0 0 11px 16px;
+    /* padding: 5px; */
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border: 1px solid #5cb646;
+`;
+
+export const Indice = styled.p`
+    color: #5cb646;
+    font-size: 16px;
+`
+export const RetanguloBotaoRem = styled.div `
+    width: 90px;
+    height: 31px;
+    color: #e02020;
+    border: 1px solid #e02020;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-top-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+`
+export const RetanguloBotaoAdd = styled.div `
+    width: 90px;
+    height: 31px;
+    color: #e02020;
+    border: 1px solid #5cb646;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-top-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+`
+
+export const BotaoRemover = styled.button `
+    color: #e02020;
+    font-size: 12px;
+    background-color: transparent;
+    border:none;
+    cursor:pointer;
+`
+export const BotaoAdicionar = styled.button `
+    color: #5cb646;
+    font-size: 12px;
+    background-color: transparent;
+    border:none;
+    cursor:pointer;
+`
+export const ContainerButton = styled.div `
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items: end;
+
+`
