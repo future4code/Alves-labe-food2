@@ -8,6 +8,8 @@ import TelaRestaurantes from "../pages/Restaurantes/TelaRestaurantes";
 import TelaDetalhe from "../pages/Restaurantes/TelaDetalhe/TelaDetalhe";
 import TelaBusca from "../pages/Restaurantes/Busca/TelaBusca";
 import TelaCarrinho from "../pages/Carrinho/TelaCarrinho";
+import EditarEndereco from "../pages/EditarEndereco/EditarEndereco";
+import EditarPerfil from "../pages/editarPerfil/EditarPerfil";
 
 
 
@@ -23,6 +25,9 @@ const Router = () => {
                 <Route path="restaurantes/:id" element={<TelaDetalhe />} />
                 <Route path="busca" element={<TelaBusca />} />
                 <Route path="carrinho" element={<TelaCarrinho />} />
+                <Route path="editarPerfil" element={<EditarPerfil />} />
+                <Route path="editarEndereco" element={< EditarEndereco/>} />
+                
             </Routes>
         </BrowserRouter>
     )
