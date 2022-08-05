@@ -10,6 +10,9 @@ import * as C from './styled'
 import { BASE_URL } from '../../constants/url'
 import axios from 'axios'
 import CardCarrinho from '../../components/cards/cardCarrinho/CardCarrinho'
+import restaurantImg from '../../assets/homepage.png'
+import shoppingCartImg from '../../assets/active-shopping-cart.png'
+import avatarImg from '../../assets/avatar.png'
 
 const TelaCarrinho = () => {
     const { states, setters } = useContext(GlobalContext)
@@ -20,7 +23,7 @@ const TelaCarrinho = () => {
 
     // console.log(states.carrinho)
 
-    useEffect (() => {
+    useEffect(() => {
 
         states.restaurantes.map((res) => {
             if (res.id == states.id) {
@@ -35,8 +38,8 @@ const TelaCarrinho = () => {
                 const subTotal = totalPrice + frete
                 setTotalPrice(subTotal.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }))
             });
-        } 
-         
+        }
+
     }, [])
 
     return (
@@ -94,7 +97,11 @@ const TelaCarrinho = () => {
 
 
             </>
-            <Footer />
+            <Footer
+                restaurantImg={restaurantImg}
+                shoppingCartImg={shoppingCartImg}
+                avatarImg={avatarImg}
+            />
         </C.Container>
     )
 }

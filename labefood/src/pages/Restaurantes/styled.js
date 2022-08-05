@@ -4,7 +4,7 @@ export const Container = styled.section`
     display: flex;
     flex-direction:column;
     width: auto;
-    height: 630px;
+    /* height: 630px; */
     overflow:hidden;
 `;
 
@@ -21,9 +21,9 @@ export const ContainerRestaurantes = styled.div `
     align-items:center;
     overflow-y: auto;
 
-    ::-webkit-scrollbar {
+    /* ::-webkit-scrollbar {
         display: none;
-}
+} */
 `;
 
 

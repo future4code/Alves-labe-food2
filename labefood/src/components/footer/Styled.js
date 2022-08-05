@@ -2,11 +2,11 @@ import styled from 'styled-components'
 
 export const MainDiv = styled.div`
     position: fixed;
-    bottom:0; 
+    bottom:0;
     display: flex;
     justify-content: space-around;
     align-items: center;
-   // bottom: 45px;
+
     
     height: 60px;
     width: 100%;
