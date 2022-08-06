@@ -1,8 +1,11 @@
 import styled from "styled-components";
 
 export const MainDiv = styled.div`
+    display: flex;
+    flex-direction:column;
     width: auto;
-    height: 630px;
+    /* height: 630px; */
+    overflow:hidden;
 `
 export const DetailsDiv = styled.div`
     padding-top: 61px;

@@ -9,7 +9,7 @@ import TelaDetalhe from "../pages/Restaurantes/TelaDetalhe/TelaDetalhe";
 import TelaBusca from "../pages/Restaurantes/Busca/TelaBusca";
 import TelaCarrinho from "../pages/Carrinho/TelaCarrinho";
 import EditarEndereco from "../pages/EditarEndereco/EditarEndereco";
-import EditarPerfil from "../pages/editarPerfil/EditarPerfil";
+import EditarPerfil from "../pages/EditarPerfil/EditarPerfil";
 
 
 

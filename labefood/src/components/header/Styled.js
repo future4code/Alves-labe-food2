@@ -6,15 +6,23 @@ export const MainDiv = styled.div`
     background-color: white;
     display: flex;
     align-items: center;
-
-    width: 100%;
     height: 44px;
     border-top: none;
     border-bottom: solid gray 1px;
-    @media(min-width: 500px) {
-        width: 400px;
 
-    }
+    /* Phone */
+    @media screen and (max-width:414px) {
+    width: 100% ;
+}
+    /* Tablet */
+    @media screen and (min-width:280px) and (max-width:912px) {
+    width: 100% 
+}
+    /* Desktop */
+    @media screen and (min-width:913px) {
+    width: 400px;
+}
+    
 `;
 export const BackButtonDiv = styled.div`
     margin-left: 14px;

@@ -1,8 +1,8 @@
 import { BASE_URL } from "../constants/url"
 import axios from "axios"
-import {useNavigate} from 'react-router-dom'
 
-export const GetRestaurants = (restaurantes,setRestaurantes) => {
+
+export const GetRestaurants = (restaurantes, setRestaurantes) => {
     axios.get(`${BASE_URL}/restaurants`, {
         headers: {
             auth: localStorage.getItem('token')
@@ -27,4 +27,19 @@ export const GetRestaurantDetail = (id, setRestauranteDetalhe) => {
         }).catch((err) => {
             console.log(err.response)
         })
+}
+
+export const ConfirmOrder = (id, body, setOrder, navigate) => {
+    axios.post(`${BASE_URL}/restaurants/${id}/order`, body,  {
+        headers: {
+            auth: localStorage.getItem('token')
+        }
+    }).then((res) => {
+        console.log(res)
+        setOrder(res.data)
+        navigate("/")
+    }).catch((err) => {
+        console.log(err)
+        navigate("/restaurantes")
+    })
 }

@@ -16,7 +16,6 @@ import { useNavigate } from 'react-router-dom'
 import { goBack, goToEditEndereco, goToEditPerfil } from '../../router/coordenator'
 
 
-
 const PaiDeTodos = styled.div`
 display: grid;
 
@@ -124,6 +123,7 @@ margin: 9px 16px 7px 16px;
 const TelaPerfil = () => {
   const [dataTrip, setDataTrip] = useState([])
   const [inforTrip, setInforTrip] = useState([])
+  const data = new Date()
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -131,12 +131,15 @@ const TelaPerfil = () => {
     pegarHitorico()
   }, [])
 
-  //const token = localStorage.getItem('token')
-  //const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imo4RU1taGRUcVlzNllGVkpjb0duIiwibmFtZSI6IkJydW5hIiwiZW1haWwiOiJicnVuYXRlc3RlMUBtc24uY29tIiwiY3BmIjoiMTIxLjExMS4xMzEtMTEiLCJoYXNBZGRyZXNzIjp0cnVlLCJhZGRyZXNzIjoiUi4gQWZvbnNvIEJyYXosIDE3NywgNzEgLSBWaWxhIE4uIENvbmNpw6fDo28iLCJpYXQiOjE2NTk1MzM3MDF9.7lyecVc09ilJtMYHz9QB3xYxEcE6eRmnQGYFGNDpDOs"
+  
   const token = localStorage.getItem('token')
+<<<<<<< HEAD
+  function pegarPerfil() {
+=======
  
  
   function pegarPerfil ()  {
+>>>>>>> master
 
     const url = "https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/profile"
 
@@ -154,8 +157,13 @@ const TelaPerfil = () => {
         console.log(erro)
 
       })
+<<<<<<< HEAD
+  
+  }
+=======
   }
   
+>>>>>>> master
 
 
   function pegarHitorico() {
@@ -201,7 +209,7 @@ const TelaPerfil = () => {
     <PaiDeTodos>
       <Header
 
-        backButton={<img src={backButton} />}
+        backButton={<img src={backButton} onClick={() => goBack(navigate)}  />}
         name="Perfil"
       />
       <PaidaSessoes>
@@ -213,7 +221,11 @@ const TelaPerfil = () => {
           </section>
 
           <Editor>
+<<<<<<< HEAD
+            <ButtonEditor type="button"> <img src={Edit} onClick={() => goToEditPerfil(navigate)} alt="Botão Editar perfil" /></ButtonEditor>
+=======
             <ButtonEditor  type="button" onClick={() => goToEditPerfil(navigate)}> <img src={Edit} alt="Botão Editar perfil" /></ButtonEditor>
+>>>>>>> master
           </Editor>
         </CardPessoa>
         <CardEndereco>
@@ -222,7 +234,11 @@ const TelaPerfil = () => {
             <LetraEndereco>{dataTrip.address}</LetraEndereco>
           </section>
           <Editor>
+<<<<<<< HEAD
+            <ButtonEditor type="button"> <img src={Edit} onClick={() => goToEditEndereco(navigate)} alt="Botão Editar endereço" /></ButtonEditor>
+=======
             <ButtonEditor type="button" onClick={() => goToEditEndereco(navigate)}> <img src={Edit} alt="Botão Editar endereço" /></ButtonEditor>
+>>>>>>> master
           </Editor>
         </CardEndereco>
 

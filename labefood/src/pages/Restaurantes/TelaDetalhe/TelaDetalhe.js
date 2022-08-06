@@ -10,6 +10,14 @@ import ItemCard from '../../../components/cards/itemCard/ItemCard'
 import { MainDiv, InfoDiv, DetailsDiv, MainDishesDiv, ShippingDiv, ContainerCategorias } from './Styled'
 import { SettingsPowerSharp } from '@material-ui/icons'
 import { GetRestaurantDetail } from '../../../services/restaurants'
+<<<<<<< HEAD
+import Swal from 'sweetalert2'
+import restaurantImg from '../../../assets/active-homepage.png'
+import shoppingCartImg from '../../../assets/shopping-cart.png'
+import avatarImg from '../../../assets/avatar.png'
+
+=======
+>>>>>>> master
 
 export default function TelaDetalhe() {
     const { states, setters } = useContext(GlobalContext)
@@ -99,6 +107,11 @@ export default function TelaDetalhe() {
                 name="Restaurante"
             />
             {chooseScreen()}
+
+            <Footer 
+            restaurantImg={restaurantImg}
+            shoppingCartImg={shoppingCartImg}
+            avatarImg={avatarImg}/>
         </MainDiv>
     )
 }
