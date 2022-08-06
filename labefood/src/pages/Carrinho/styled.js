@@ -5,17 +5,11 @@ export const Container = styled.section `
    flex-direction:column;
    width:100%;
    height: auto;
-   margin-top:5vh;
+   margin-top: 25%;
 `;
 
 export const Endereco = styled.div `
-<<<<<<< HEAD
-  
    height: 10vh;
-=======
-   margin-top: 44px;
-   height: 76px;
->>>>>>> master
    background-color:#eeeeee;
 
    h4{

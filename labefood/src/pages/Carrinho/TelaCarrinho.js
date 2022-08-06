@@ -26,10 +26,7 @@ const TelaCarrinho = () => {
 
     const navigate = useNavigate()
 
-    // const checarMetodoPagamento = setPagamento(document.querySelector("input[name='pagamento']").value)
-
     const onChangeMoney = (e) => {
-        // console.log(e.target.value)
         setPagamento(e.target.value)
     }
 
@@ -37,9 +34,10 @@ const TelaCarrinho = () => {
         setPagamento(e.target.value)
     }
 
+    console.log(states.pedidoFeito)
+
     const confirmarPedido = () => {
         states.carrinho.map((product) => {
-            // console.log(product)
             const produto = {
                 "products": [{
                     "id": product.id,
@@ -49,11 +47,11 @@ const TelaCarrinho = () => {
             }
 
             return (
-                ConfirmOrder(states.id, produto, setOrder, navigate)
+                ConfirmOrder(states.id, produto, setOrder, setters.setPedidoFeito, navigate)
             )
 
         })
-
+        
     }
 
     useEffect(() => {
@@ -95,7 +93,7 @@ const TelaCarrinho = () => {
             <C.ContainerInfo>
                 {states.restaurantes.map((res) => {
                     if (res.id == states.id) {
-                        // console.log(res)
+
                         return (
                             <div>
                                 <C.Title>{res.name}</C.Title>
@@ -137,12 +135,12 @@ const TelaCarrinho = () => {
 
                 <C.CheckBox>
                     <input type="radio" name="pagamento" id="dinheiro" value="money" onChange={onChangeMoney} />
-                    <label for="dinheiro">Dinheiro</label>
+                    <label htmlFor="dinheiro">Dinheiro</label>
                 </C.CheckBox>
 
                 <C.CheckBox>
                     <input type="radio" name="pagamento" id="cartao" value="cardcredit" onChange={onChangeCard} />
-                    <label for="cartao-de-credito">Cartão de Crédito</label>
+                    <label htmlFor="cartao-de-credito">Cartão de Crédito</label>
                 </C.CheckBox>
 
             </C.ContainerPagamento>

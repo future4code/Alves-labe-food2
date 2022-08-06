@@ -10,14 +10,13 @@ import ItemCard from '../../../components/cards/itemCard/ItemCard'
 import { MainDiv, InfoDiv, DetailsDiv, MainDishesDiv, ShippingDiv, ContainerCategorias } from './Styled'
 import { SettingsPowerSharp } from '@material-ui/icons'
 import { GetRestaurantDetail } from '../../../services/restaurants'
-<<<<<<< HEAD
+
 import Swal from 'sweetalert2'
 import restaurantImg from '../../../assets/active-homepage.png'
 import shoppingCartImg from '../../../assets/shopping-cart.png'
 import avatarImg from '../../../assets/avatar.png'
 
-=======
->>>>>>> master
+
 
 export default function TelaDetalhe() {
     const { states, setters } = useContext(GlobalContext)
@@ -54,8 +53,6 @@ export default function TelaDetalhe() {
         } else {
             return (
                 <DetailsDiv>
-
-
                     <InfoDiv>
                         <img alt="restaurante" src={details.logoUrl} />
                         <h5>{details.name}</h5>

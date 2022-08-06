@@ -2,13 +2,14 @@ import styled from "styled-components"
 
 export const MainDiv = styled.div`
     position: fixed;
-    top:0; 
+    top:30px; 
+    z-index: 99;  
     background-color: white;
     display: flex;
     align-items: center;
-    height: 44px;
+    height: 64px;
     border-top: none;
-    border-bottom: solid gray 1px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 
     /* Phone */
     @media screen and (max-width:414px) {

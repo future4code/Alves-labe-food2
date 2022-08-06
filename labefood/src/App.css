@@ -6,22 +6,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* body {
-  display: flex;
-  align-items: center;
-  justify-content: center;  }  */
-/* background-color: rgb(10, 10, 14);
-
-/* 
-section {
-  display: flex;
-  border: 1px solid;
-  width: 360px;
-  height: 620px;
-  background-color: white;
-  border-radius: 10px;} */
-/* box-shadow: 0 0 15px #5cb646; */
-
 
 /* @media(min-width: 500px) {
 
@@ -38,20 +22,21 @@ section {
 /* Phone */
 @media screen and (max-width:414px) {
   body {
-    position: relative;
-    max-width: 414px ;
+    /* position: relative; */
+    max-width: 414px;;
+    width: 100%;
     height: 100%;
-    margin-top: 10px;
+    /* margin-top: 10px; */
   }
 }
 
 /* Tablet */
-@media screen and (min-width:414px) and (max-width:912px) {
+@media screen and (min-width:415px) and (max-width:912px) {
   body {
-    position: relative;
+    /* position: relative; */
     max-width: 912px ;
     height: 100%;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     margin:auto;
   }
 }
@@ -59,12 +44,17 @@ section {
 /* Desktop */
 @media screen and (min-width:913px) {
   body {
-    position: relative;
+    /* position: relative; */
     width: 400px ;
     margin-left: 30%;
     min-height:650px;
     height: 100%;
-    border: solid 1px #aaaa;
-    margin-top: 10px;
+    border: solid 1px #aaa;
+    /* background-image: url(./assets/celular.png);
+    background-attachment: fixed;
+    background-position: 50px 150px;
+    background-repeat: no-repeat; */
+    border-radius: 10px;
+    /* margin-top: 10px; */
   }
 }

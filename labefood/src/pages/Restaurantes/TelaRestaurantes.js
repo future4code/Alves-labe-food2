@@ -16,6 +16,7 @@ import PropTypes from 'prop-types';
 import restaurantImg from '../../assets/active-homepage.png'
 import shoppingCartImg from '../../assets/shopping-cart.png'
 import avatarImg from '../../assets/avatar.png'
+// import CardPedido from '../../components/cards/cardPedidoFeito'
 
 const TelaRestaurantes = (props) => {
 
@@ -58,9 +59,9 @@ const TelaRestaurantes = (props) => {
         setCategory('Mexicana')
         break
     };
-
-  })
   
+  })
+
   const pegarId = (id) => {
     setters.setId(id)
     console.log(id)
@@ -119,6 +120,13 @@ const TelaRestaurantes = (props) => {
     })
     return card
   }
+
+  // const pedidoFeito = () => {
+  //   if (states.pedidoFeito.length !== 0) {
+  //     return <CardPedido />
+  //   }
+  // }
+
 
   return (
     <C.Container>
@@ -185,13 +193,13 @@ const TelaRestaurantes = (props) => {
             {chooseCard()}
           </TabPanel>
         </C.ContainerRestaurantes>
-      </Box> 
-      
+      </Box>
+
       <Footer
-      restaurantImg={restaurantImg}
-      shoppingCartImg={shoppingCartImg}
-      avatarImg={avatarImg}
-       />
+        restaurantImg={restaurantImg}
+        shoppingCartImg={shoppingCartImg}
+        avatarImg={avatarImg}
+      />
     </C.Container>
   );
 };
