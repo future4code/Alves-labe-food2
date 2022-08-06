@@ -19,6 +19,7 @@ import { goBack, goToEditEndereco, goToEditPerfil } from '../../router/coordenat
 
 const PaiDeTodos = styled.div`
 display: grid;
+
 `
 
 const PaidaSessoes = styled.div`
