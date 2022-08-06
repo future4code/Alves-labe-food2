@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import Footer from '../../components/footer/Footer'
 import { goBack } from '../../router/coordenator'
 import { useNavigate } from 'react-router-dom'
+import { TextField } from "@material-ui/core";
 
 const PaiDeTodos = styled.div`
 display: grid;
@@ -28,8 +29,19 @@ const InputEdit = styled.input`
   letter-spacing: -0.39px;
   color: var(--black);
 `
+const Button = styled.button`
+height: 45px;
+width: 100%;
+background-color: #65b153 ;
+align-items: center;
+justify-content: center;
+border: none;
+font-weight: bold;
+` 
+
 
 const EditarPerfil = () => {
+  const navigate = useNavigate()
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [cpf, setCpf] = useState("")
@@ -47,25 +59,29 @@ const EditarPerfil = () => {
   const token = localStorage.getItem('token')
  
  
-  useEffect (() => {
-
-    editar()
+  // useEffect (() => {
+    
+  //   editar()
   
-  },[])
+  // },[])
   
-function editar () {
+function editar (event) {
+  
+  event.preventDefault()
   const url = "https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/profile"
   const body = {
     name: name,
     email: email,
     cpf: cpf
   }
+  console.log(body)
   axios.put(url, body, {
     headers: {
       auth: token
     }
   }) .then ((res) => {
     console.log(res)
+    navigate("/perfil")
 
 
    }).catch ((erro) => {
@@ -74,7 +90,7 @@ function editar () {
    })
 }
 //axios não funciona
-const navigate = useNavigate()
+// const navigate = useNavigate()
     return (
       <PaiDeTodos>
         <Header
@@ -82,18 +98,46 @@ const navigate = useNavigate()
       name= "Editar Perfil"
         />
         <PaidaSessoes>
-        <form>
-                  <div>
-                  <label for="nome"></label>
-	                <InputEdit type='text' id='nome' name='nome'   placeholder="Seu nome" required />
-                  </div>
-                  <label for="email"></label>
-	              <input name="email" id="email"  />
+        <form onSubmit={editar}>
+
+	              <TextField 
+                           name={"name"}
+                           label={"Nome"}
+                           variant={"outlined"}
+                           fullWidth
+                           margin={"normal"}
+                           required
+                           type={"text"}
+                           placeholder={"Nome e sobrenome"}
+                           onChange={chamarName}
+ 
+                 />
+
+	              <TextField 
+                name="email" 
+                label={"E-mail"}
+                variant={"outlined"}
+                fullWidth
+                margin={"normal"}
+                required
+                type={"email"}
+                placeholder={"email@email.com"} 
+                onChange={chamarEmail} />
 			
-                  <div>
-                  <label for="cpf"></label>
-	                <input type='cpf' id='cpf' name=''  placeholder="" required />
-                  </div>
+	              <TextField 
+                id='cpf' 
+                name='cpf'   
+                label={"CPF"}
+                variant={"outlined"}
+                fullWidth
+                margin={"normal"}
+                required
+                type={"number"}
+                placeholder={"000.000.000-00 (apenas números)"}
+                inputProps={{ pattern: "^d{3}.d{3}.d{3}-d{2}$" }}
+                onChange={chamarCpf} 
+                minlength="3" />
+                <Button> Salvar</Button>
                 </form>
 
         </PaidaSessoes>

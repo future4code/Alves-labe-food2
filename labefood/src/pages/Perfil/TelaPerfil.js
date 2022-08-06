@@ -18,6 +18,7 @@ import { goBack, goToEditEndereco, goToEditPerfil } from '../../router/coordenat
 
 const PaiDeTodos = styled.div`
 display: grid;
+
 `
 
 const PaidaSessoes = styled.div`
@@ -132,7 +133,13 @@ const TelaPerfil = () => {
 
   
   const token = localStorage.getItem('token')
+<<<<<<< HEAD
   function pegarPerfil() {
+=======
+ 
+ 
+  function pegarPerfil ()  {
+>>>>>>> master
 
     const url = "https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/profile"
 
@@ -150,8 +157,13 @@ const TelaPerfil = () => {
         console.log(erro)
 
       })
+<<<<<<< HEAD
   
   }
+=======
+  }
+  
+>>>>>>> master
 
 
   function pegarHitorico() {
@@ -209,7 +221,11 @@ const TelaPerfil = () => {
           </section>
 
           <Editor>
+<<<<<<< HEAD
             <ButtonEditor type="button"> <img src={Edit} onClick={() => goToEditPerfil(navigate)} alt="Botão Editar perfil" /></ButtonEditor>
+=======
+            <ButtonEditor  type="button" onClick={() => goToEditPerfil(navigate)}> <img src={Edit} alt="Botão Editar perfil" /></ButtonEditor>
+>>>>>>> master
           </Editor>
         </CardPessoa>
         <CardEndereco>
@@ -218,7 +234,11 @@ const TelaPerfil = () => {
             <LetraEndereco>{dataTrip.address}</LetraEndereco>
           </section>
           <Editor>
+<<<<<<< HEAD
             <ButtonEditor type="button"> <img src={Edit} onClick={() => goToEditEndereco(navigate)} alt="Botão Editar endereço" /></ButtonEditor>
+=======
+            <ButtonEditor type="button" onClick={() => goToEditEndereco(navigate)}> <img src={Edit} alt="Botão Editar endereço" /></ButtonEditor>
+>>>>>>> master
           </Editor>
         </CardEndereco>
 

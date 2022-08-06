@@ -6,40 +6,163 @@ import styled from 'styled-components'
 import Footer from '../../components/footer/Footer'
 import { goBack } from '../../router/coordenator'
 import { useNavigate } from 'react-router-dom'
+import { TextField } from "@material-ui/core";
+import IconButton from "@material-ui/core/IconButton";
 
 const PaiDeTodos = styled.div`
 display: grid;
 `
-
 const PaidaSessoes = styled.div`
 grid-template-rows:100vh;
 display: grid;
-margin: 75px 20px 0px 16px;
+margin: 1px 20px 0px 16px;
+align-items: center;
+justify-content: center;
+`
+const Button = styled.button`
+height: 45px;
+width: 100%;
+background-color: #65b153 ;
+align-items: center;
+justify-content: center;
+border: none;
+font-weight: bold;
 `
 
-
 const EditarEndereco = () => {
-    const navigate = useNavigate()
-    return (
+  const navigate = useNavigate()
+  const [street, setStreet] = useState("")
+  const [number, setNumber] = useState("")
+  const [neighbourhood, setNeighbourhood] = useState("")
+  const [city, setCity] = useState("")
+  const [complement, setComplement] = useState("")
+  const [state, setState] = useState("")
+
+  const OnChangeStreet = (event) => {   
+    setStreet( event.target.value )
+  }
+  const OnChangeNumber = (event) => {   
+    setNumber( event.target.value )
+  }
+  const OnChangeNeighbourhood = (event) => {   
+    setNeighbourhood( event.target.value )
+  }
+  const OnChangeCity = (event) => {   
+    setCity( event.target.value )
+  }
+  const OnChangeState= (event) => {   
+    setState( event.target.value )
+  }
+  const OnChangeComplement = (event) => {   
+    setComplement( event.target.value )
+  }
+  const token = localStorage.getItem('token')
+
+  function editar (event) {
+  
+    event.preventDefault()
+    const url = "https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/address"
+    const body = {
+      street: street,
+      number: number,
+      neighbourhood: neighbourhood,
+      city: city,
+      state: state,
+      complement: complement
+    }
+    console.log(body)
+    axios.put(url, body, {
+      headers: {
+        auth: token
+      }
+    }) .then ((res) => {
+      console.log(res)
+      navigate("/perfil")
+    }).catch ((erro) => {
+     console.log(erro)
+    })
+  }
+   return (
       <PaiDeTodos>
         <Header
         backButton={<img onClick={() => goBack(navigate)} src={backButton}/>}
       name= "Editar Endereço"
         />
         <PaidaSessoes>
-        <form>
-                  <div>
-                  <label for="nome"></label>
-	                <input type='text' id='nome' name='nome'  placeholder="Seu nome" required />
-                  </div>
-                  <label for="email"></label>
-	              <input name="email" id="email" />
-			
-                  <div>
-                  <label for="cpf"></label>
-	                <input type='cpf' id='cpf' name=''  placeholder="" required />
-                  </div>
-                </form>
+        <form onSubmit={editar}>
+        <TextField
+            name={"street"}
+            label={"Logradouro"}
+            variant={"outlined"}
+            fullWidth
+            margin={"normal"}
+            required
+            type={"text"}
+            placeholder={"Rua / Av."}
+            onChange={OnChangeStreet}
+          />
+
+          <TextField
+            name={"number"}
+            label={"Número"}
+            variant={"outlined"}
+            fullWidth
+            margin={"normal"}
+            required
+            type={"number"}
+            placeholder={"Número"}
+            onChange={OnChangeNumber}
+          />
+
+          <TextField
+            name={"complement"}
+            label={"Complemento"}
+            variant={"outlined"}
+            fullWidth
+            margin={"normal"}
+            type={"text"}
+            placeholder={"Apto. / Bloco"}
+            onChange={OnChangeComplement}
+          />
+
+          <TextField
+            name={"neighbourhood"}
+            label={"Bairro"}
+            variant={"outlined"}
+            fullWidth
+            margin={"normal"}
+            required
+            type={"text"}
+            placeholder={"Bairro"}
+            onChange={OnChangeNeighbourhood}
+          />
+
+          <TextField
+            name={"city"}
+            label={"Cidade"}
+            variant={"outlined"}
+            fullWidth
+            margin={"normal"}
+            required
+            type={"text"}
+            placeholder={"Cidade"}
+            onChange={OnChangeCity}
+          />
+
+          <TextField
+            name={"state"}
+            label={"Estado"}
+            variant={"outlined"}
+            fullWidth
+            margin={"normal"}
+            required
+            type={"text"}
+            placeholder={"Estado"}
+            onChange={OnChangeState}
+          />
+          <Button>Enviar</Button>
+
+        </form>
 
         </PaidaSessoes>
         <Footer/>

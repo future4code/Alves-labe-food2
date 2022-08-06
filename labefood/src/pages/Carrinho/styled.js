@@ -9,8 +9,13 @@ export const Container = styled.section `
 `;
 
 export const Endereco = styled.div `
+<<<<<<< HEAD
   
    height: 10vh;
+=======
+   margin-top: 44px;
+   height: 76px;
+>>>>>>> master
    background-color:#eeeeee;
 
    h4{
@@ -22,7 +27,8 @@ export const Endereco = styled.div `
    p{
       margin: 0 16px;
       font-size: 16px;
-      color: #b8b8b8
+      color: black;
+      font-weight: bold;
    }
 `;
 

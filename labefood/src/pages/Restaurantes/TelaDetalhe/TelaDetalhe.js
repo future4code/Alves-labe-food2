@@ -8,14 +8,16 @@ import GlobalContext from '../../../global/GlobalContext'
 import { BASE_URL } from '../../../constants/url'
 import ItemCard from '../../../components/cards/itemCard/ItemCard'
 import { MainDiv, InfoDiv, DetailsDiv, MainDishesDiv, ShippingDiv, ContainerCategorias } from './Styled'
-import axios from 'axios'
 import { SettingsPowerSharp } from '@material-ui/icons'
 import { GetRestaurantDetail } from '../../../services/restaurants'
+<<<<<<< HEAD
 import Swal from 'sweetalert2'
 import restaurantImg from '../../../assets/active-homepage.png'
 import shoppingCartImg from '../../../assets/shopping-cart.png'
 import avatarImg from '../../../assets/avatar.png'
 
+=======
+>>>>>>> master
 
 export default function TelaDetalhe() {
     const { states, setters } = useContext(GlobalContext)
@@ -27,7 +29,6 @@ export default function TelaDetalhe() {
 
     useEffect(() => {
         GetRestaurantDetail(states.id, setDetails)
-
     }, [])
 
     // useEffect(() => {
@@ -38,49 +39,14 @@ export default function TelaDetalhe() {
     //     })
     //     setProductCategory(newCategories)
     // }, [productCategory])
-    // useEffect(() => {
-    //     const categories =
-    //       cardProducts && cardProducts.map((product) => product.category);
-    //     const newCategories = categories?.filter((item, i) => {
-    //       return categories.indexOf(item) === i;
-    //     });
-    //     setCategories(categories);
-    //   }, [cardProducts]);
 
-    const asdsa = (e) => {
-        console.log(e.target.value)
-    }
-
-    const adicionarProduto = (product) => {
-
-        Swal.fire({
-            text: 'Selecione a quantidade desejada',
-            input: 'select',
-            onChange: { asdsa },
-            inputOptions: {
-                1: 1,
-                2: 2,
-                3: 3,
-                4: 4,
-                5: 5,
-                6: 6,
-                7: 7,
-                8: 8,
-                9: 9,
-                10: 10
-            },
-            inputPlaceholder: 'Quantidade',
-            inputValidator: (value) => {
-                const newProduct = {
-                    ...product,
-                    quantity: value
-                }
-                setters.setCarrinho([...states.carrinho, newProduct])
-
-            }
-        })
-    }
-    console.log(states.carrinho)
+    useEffect(() => {
+        const categories = details.products && details.products?.map((product) => product.category);
+        const newCategories = categories?.filter((item, i) => {
+            return categories.indexOf(item) === i;
+        });
+        setProductCategory(newCategories);
+    }, [details]);
 
     const chooseScreen = () => {
         if (details.length === 0) {
@@ -95,14 +61,18 @@ export default function TelaDetalhe() {
                         <h5>{details.name}</h5>
                         <p>{details.category}</p>
                         <ShippingDiv>
-                            <p>{details.deliveryTime} - {details.deliveryTime + 10} min</p>
+                            <p>{details.deliveryTime - 10} - {details.deliveryTime} min</p>
                             <p>Frete {details.shipping.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
                         </ShippingDiv>
                         <p>{details.address}</p>
                     </InfoDiv>
 
                     <ContainerCategorias>
-                        {details.products.map((product) => {
+                        <ItemCard
+                            categories={productCategory}
+                            products={details.products}
+                        />
+                        {/* {details.products.map((product) => {
                             return (
                                 <MainDishesDiv key={product.id}>
                                     <h4>{product.category}</h4>
@@ -118,7 +88,7 @@ export default function TelaDetalhe() {
                                 </MainDishesDiv>
                             )
                         })
-                        }
+                        } */}
                     </ContainerCategorias>
                 </DetailsDiv >
             )
