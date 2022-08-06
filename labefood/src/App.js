@@ -5,43 +5,58 @@ import theme from './constants/theme';
 import GlobalState from './global/GlobalState';
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import ImgSplashScreen  from './assets/SplashScreen.png'
-
+import ImgSplashScreen from './assets/SplashScreen.png'
+import Celular from "./assets/celular.png"
+import InfoCelular from './components/infoCelular/InfoCelular';
 const App = () => {
 
   const [isLoading, setIsLoading] = useState(true);
- useEffect(() => {
-   setTimeout(() => {
-     setIsLoading(false);
-   }, 1000);
- }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, []);
 
- const Override = styled.img`
- display: block;
- margin: 0 auto;
- border-color: red;
- width: 30vw;
- align-items: center;
- color: black;
- padding-top: 30%;
+   const Override = styled.img`
+   display: block;
+   margin: auto;
+   border-color: red;
+   width: 30vw;
+   align-items: center;
+   color: black;
+  `;
+  const TelaSplash = styled.div`
+  background: black;
+
+  @media screen and (max-width:414px) {
+    max-width: 414px ;
+    min-height: 100vh;
+    max-height: 915px;
+  }
+
+  @media screen and (min-width:913px) {
+    width: 400px ;
+    min-height:650px;
+    height: 100%;
+    border-radius: 10px;
+  }
+
 `;
-const TelaSplash = styled.div`
-  background-color: black;
-   width: 100vw; 
-  height: 100vh;
-`
- return isLoading ?
-      <TelaSplash>
-          <Override src={ImgSplashScreen} isLoading={isLoading}/>
-      </TelaSplash>:
-   <div className="App">
-     <ThemeProvider theme={theme}>
-         <GlobalState>
-        {/* <section> */}
-            <Router />
-         {/* </section> */}
-           </GlobalState>
-         </ThemeProvider>
-   </div>
+
+  return isLoading ?
+    <TelaSplash>
+
+      <Override src={ImgSplashScreen} isLoading={isLoading}/>
+      {/* <div className="ldBar" data-preset="circle" data-value="50"></div> */}
+     
+    </TelaSplash> :
+    <div className="App">
+      <ThemeProvider theme={theme}>
+        <GlobalState>
+          <InfoCelular />
+          <Router />
+        </GlobalState>
+      </ThemeProvider>
+    </div>
 }
 export default App;

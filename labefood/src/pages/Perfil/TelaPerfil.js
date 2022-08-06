@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Header from '../../components/header/Header'
 import backButton from '../../assets/back-button.png'
-import styled from 'styled-components'
-import { Icon } from '@mui/material'
 import Footer from '../../components/footer/Footer'
 import Edit from "../../assets/edit.png"
-import { style } from '@mui/system'
+import * as C from './styled'
 
 import restaurantImg from '../../assets/homepage.png'
 import shoppingCartImg from '../../assets/shopping-cart.png'
@@ -16,114 +14,11 @@ import { useNavigate } from 'react-router-dom'
 import { goBack, goToEditEndereco, goToEditPerfil } from '../../router/coordenator'
 
 
-const PaiDeTodos = styled.div`
-display: grid;
-
-`
-
-const PaidaSessoes = styled.div`
-grid-template-rows: 108px, 76px, 100vh;
-display: grid;
-`
-
-
-const CardPessoa = styled.section`
-margin-top: 44px;
-margin-left: 16px;
-display: grid;
-grid-template-columns: 85% 15% ;
-`
-const LetrasPessoa = styled.p`
-  font-family: Roboto;
-  font-size: 18px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: -0.39px;
-  color: var(--black);
-  margin: 8px 8px 0px 0px;
-  
-`
-const Editor = styled.section`
-display: flex;
-align-items: center;
-justify-content: center;
-`
-const ButtonEditor = styled.button`
-background-color: rgba(255,255,255,.0);
-border: none;
-&:hover{
-  background-color: #dcd7d3;
-}
-&:active{
-  background-color: #7f7f7f;
-
-}
-`
-const H2Historico = styled.h2`
-margin-left: 16px ;
-font-size: 16px;
-margin-top: 6px;
-`
-const Linha = styled.div`
-    border: 1px solid black;
-    margin: 8px 16px 0px 16px;
-    background-color: black;
-`
-const CardEndereco = styled.div`
-  height: 76px;
-  background-color: #eee;
-  display: grid;
-  margin-top:16px;
-  grid-template-columns: 85% 15%;
-`
-const TituloEndereco = styled.h2`
-  margin: 0 0 8px 16px;
-  font-family: Roboto;
-  font-size: 20px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: -0.39px;
-  color: var(--greyish);
-  color: #bfbfbf;
-`
-const LetraEndereco = styled.p`
-  font-family: Roboto;
-  font-size: 16px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: -0.39px;
-  color: var(--black);
-  margin: 16px 16px 0px 16px;
-`
-const CardHistoricoP = styled.p`
-margin: 8px 16px 0pc 16px;
-border: 1px solid green;
-border-radius: 8px;
-`
-const TituloHistorico = styled.h2`
-color:#5cb646;
-margin:8px 16px 0px 16px;
-font-size: 20px;
-`
-const DataEndereco = styled.h3`
-margin: 9px 16px 7px 16px;
-font-size: 12px;
-`
-const Subtotal = styled.h2`
-font-size: 24px;
-margin: 9px 16px 7px 16px;
-`
 
 const TelaPerfil = () => {
   const [dataTrip, setDataTrip] = useState([])
-  const [inforTrip, setInforTrip] = useState([])
-  const data = new Date()
+  const [restaurantes, setRestaurantes] = useState([])
+  const [data, setData] = useState(new Date())
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -133,13 +28,8 @@ const TelaPerfil = () => {
 
   
   const token = localStorage.getItem('token')
-<<<<<<< HEAD
+
   function pegarPerfil() {
-=======
- 
- 
-  function pegarPerfil ()  {
->>>>>>> master
 
     const url = "https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/profile"
 
@@ -157,13 +47,7 @@ const TelaPerfil = () => {
         console.log(erro)
 
       })
-<<<<<<< HEAD
-  
   }
-=======
-  }
-  
->>>>>>> master
 
 
   function pegarHitorico() {
@@ -176,7 +60,7 @@ const TelaPerfil = () => {
 
     })
       .then((res) => {
-        setInforTrip(res.data)
+        setRestaurantes(res.data)
 
 
       }).catch((erro) => {
@@ -184,20 +68,18 @@ const TelaPerfil = () => {
 
       })
   }
- 
 
-  console.log(inforTrip.orders)
 
-  const card = inforTrip.orders?.map((orders, indice) => {
+  const card = restaurantes.orders?.map((orders, indice) => {
 
 
 
     return (
-      <CardHistoricoP key={indice}>
-        <TituloHistorico>{orders.restaurantName}</TituloHistorico>
-        <DataEndereco>24.02.2024</DataEndereco>
-        <Subtotal>Subtotal: {orders.totalPrice}</Subtotal>
-      </CardHistoricoP>
+      <C.CardHistoricoP key={indice}>
+        <C.TituloHistorico>{orders.restaurantName}</C.TituloHistorico>
+        <C.DataEndereco>{data.getDate()}/{data.getMonth()}/{data.getFullYear()}</C.DataEndereco>
+        <C.Subtotal>Subtotal: {orders.totalPrice}</C.Subtotal>
+      </C.CardHistoricoP>
 
     )
 
@@ -206,55 +88,49 @@ const TelaPerfil = () => {
 
 
   return (
-    <PaiDeTodos>
+    <C.PaiDeTodos>
       <Header
-
         backButton={<img src={backButton} onClick={() => goBack(navigate)}  />}
         name="Perfil"
       />
-      <PaidaSessoes>
-        <CardPessoa>
+
+      <C.PaidaSessoes>
+        <C.CardPessoa>
           <section >
-            <LetrasPessoa>{dataTrip.name}</LetrasPessoa>
-            <LetrasPessoa>{dataTrip.email}</LetrasPessoa>
-            <LetrasPessoa>{dataTrip.cpf}</LetrasPessoa>
+            <C.LetrasPessoa>{dataTrip.name}</C.LetrasPessoa>
+            <C.LetrasPessoa>{dataTrip.email}</C.LetrasPessoa>
+            <C.LetrasPessoa>{dataTrip.cpf}</C.LetrasPessoa>
           </section>
 
-          <Editor>
-<<<<<<< HEAD
-            <ButtonEditor type="button"> <img src={Edit} onClick={() => goToEditPerfil(navigate)} alt="Botão Editar perfil" /></ButtonEditor>
-=======
-            <ButtonEditor  type="button" onClick={() => goToEditPerfil(navigate)}> <img src={Edit} alt="Botão Editar perfil" /></ButtonEditor>
->>>>>>> master
-          </Editor>
-        </CardPessoa>
-        <CardEndereco>
-          <section>
-            <TituloEndereco>Endereço cadastrado</TituloEndereco>
-            <LetraEndereco>{dataTrip.address}</LetraEndereco>
-          </section>
-          <Editor>
-<<<<<<< HEAD
-            <ButtonEditor type="button"> <img src={Edit} onClick={() => goToEditEndereco(navigate)} alt="Botão Editar endereço" /></ButtonEditor>
-=======
-            <ButtonEditor type="button" onClick={() => goToEditEndereco(navigate)}> <img src={Edit} alt="Botão Editar endereço" /></ButtonEditor>
->>>>>>> master
-          </Editor>
-        </CardEndereco>
+          <C.Editor>
+
+            <C.ButtonEditor type="button"> <img src={Edit} onClick={() => goToEditPerfil(navigate)} alt="Botão Editar perfil" /></C.ButtonEditor>
+
+          </C.Editor>
+        </C.CardPessoa>
+        <C.CardEndereco>
+          <C.InfosEndereco>
+            <C.TituloEndereco>Endereço cadastrado</C.TituloEndereco>
+            <C.LetraEndereco>{dataTrip.address}</C.LetraEndereco>
+          </C.InfosEndereco>
+          <C.Editor>
+            <C.ButtonEditor type="button"> <img src={Edit} onClick={() => goToEditEndereco(navigate)} alt="Botão Editar endereço" /></C.ButtonEditor>
+          </C.Editor>
+        </C.CardEndereco>
 
 
-        <H2Historico>Històrico de pedidos</H2Historico>
-        <Linha />
+        <C.H2Historico>Histórico de pedidos</C.H2Historico>
+        <C.Linha />
         <div>
           {card}
         </div>
-      </PaidaSessoes>
+      </C.PaidaSessoes>
       <Footer
         restaurantImg={restaurantImg}
         shoppingCartImg={shoppingCartImg}
         avatarImg={avatarImg}
       />
-    </PaiDeTodos>
+    </C.PaiDeTodos>
   )
 }
 

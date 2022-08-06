@@ -75,7 +75,7 @@ export default function ItemCard(props) {
       {props.categories && props.categories?.map((element, i) => {
         return (
           <MainDishesDiv key={i}>
-            <h4>{element}</h4>
+            <p>{element}</p>
             <hr />
             {props.products && props.products?.map((product) => {
               if (product.category == element) {
@@ -88,10 +88,11 @@ export default function ItemCard(props) {
                       <h3>{product.name}</h3>
                       <p>{product.description}</p>
                       <h4>{product.price.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</h4>
+                      </InfoDiv>
                       <ContainerButton>
                         {chooseButtons(product, product.id)}
                       </ContainerButton>
-                    </InfoDiv>
+                    
                   </MainDiv>
                 )
               }

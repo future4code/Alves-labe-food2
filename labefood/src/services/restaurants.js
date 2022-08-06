@@ -1,5 +1,6 @@
 import { BASE_URL } from "../constants/url"
 import axios from "axios"
+import Swal from "sweetalert2"
 
 
 export const GetRestaurants = (restaurantes, setRestaurantes) => {
@@ -35,9 +36,17 @@ export const ConfirmOrder = (id, body, setOrder, navigate) => {
             auth: localStorage.getItem('token')
         }
     }).then((res) => {
-        console.log(res)
-        setOrder(res.data)
-        navigate("/")
+        console.log(res.data)
+        setOrder(res.data.order)
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: `Seu pedido foi feito com sucesso `,
+            showConfirmButton: false,
+            timer: 1500
+          })
+        navigate("/restaurantes")
+
     }).catch((err) => {
         console.log(err)
         navigate("/restaurantes")

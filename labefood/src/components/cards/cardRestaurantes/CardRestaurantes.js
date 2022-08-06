@@ -11,7 +11,6 @@ const CardRestaurantes = (props) => {
 
     const pegarId = (id) => {
         setters.setId(id)
-        console.log(id)
         goToDetail(navigate, id)
       }
     

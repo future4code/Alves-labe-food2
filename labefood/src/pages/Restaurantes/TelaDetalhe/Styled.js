@@ -6,6 +6,7 @@ export const MainDiv = styled.div`
     width: auto;
     /* height: 630px; */
     overflow:hidden;
+    margin-top: 15%;
 `
 export const DetailsDiv = styled.div`
     padding-top: 61px;
@@ -15,15 +16,15 @@ export const DetailsDiv = styled.div`
     
 `
 export const InfoDiv = styled.div`
-    display: grid;
+    display: flex;
+    flex-direction:column;
     gap: 8px;
     width: 328px;
-
-
 
     img{
         width: 328px;
         height: 120px;
+        object-fit: cover;
         border-top-left-radius:12px;
         border-top-right-radius:12px;
     }
@@ -34,20 +35,20 @@ export const InfoDiv = styled.div`
     p{
         color: #b8b8b8;
         font-size: 16px;
+       
     }
 `
 export const MainDishesDiv = styled.div`
     display: grid;
     gap: 8px;
     width: 328px;
-    
+    margin: 10px 16px 15%;
 
-    hr{
-        height: 1px;
-        width: 328px;
-        background-color: #000000;
-        border: 0;
+    p{
+        margin: 16px 16px 8px;
+        font-size: 16px;
     }
+    
 `
 export const ShippingDiv = styled.div`
     display: flex;
