@@ -8,6 +8,9 @@ import { useNavigate } from 'react-router-dom'
 import InputBusca from '../../../components/InputBusca/InputBusca'
 import CardRestaurantes from "../../../components/cards/cardRestaurantes/CardRestaurantes"
 import * as C from './styled'
+import restaurantImg from '../../../assets/active-homepage.png'
+import shoppingCartImg from '../../../assets/shopping-cart.png'
+import avatarImg from '../../../assets/avatar.png'
 
 const TelaBusca = (props) => {
     const [resultadoBusca, setResultadoBusca] = useState("")
@@ -19,17 +22,19 @@ const TelaBusca = (props) => {
         setResultadoBusca(e.target.value)
     }
 
+    console.log(states.restaurantes)
+
     const chooseRestaurants = states.restaurantes.filter(rest => {
-            return rest.name.toLowerCase().includes(resultadoBusca.toLowerCase()) ||
-                rest.category.toLowerCase().includes(resultadoBusca.toLowerCase())
-        }).map((rest) => {
-            return (
-                <div key={rest.id} >
-                    <CardRestaurantes restaurantes={rest} />
-                </div>
-            )
-        })
-    
+        return rest.name.toLowerCase().includes(resultadoBusca.toLowerCase()) ||
+            rest.category.toLowerCase().includes(resultadoBusca.toLowerCase())
+    }).map((rest) => {
+        return (
+            <div key={rest.id} >
+                <CardRestaurantes restaurantes={rest} />
+            </div>
+        )
+    })
+
     const chooseScreen = () => {
         if (resultadoBusca == '') {
             return <h4>Busque por nome do restaurante</h4>
@@ -39,9 +44,10 @@ const TelaBusca = (props) => {
             return <h4>Restaurante não encontrado</h4>
         }
     }
-    
+
+
     return (
-        <div>
+        <C.ContainerBusca>
             <Header
                 backButton={
                     <img
@@ -62,9 +68,15 @@ const TelaBusca = (props) => {
 
             </C.ContainerInput>
 
-            {chooseScreen()}
-            <Footer />
-        </div>
+            <C.ContainerDiv>
+                {chooseScreen()}
+            </C.ContainerDiv>
+
+            <Footer
+                restaurantImg={restaurantImg}
+                shoppingCartImg={shoppingCartImg}
+                avatarImg={avatarImg} />
+        </C.ContainerBusca>
     )
 }
 
