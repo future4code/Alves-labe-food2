@@ -89,8 +89,10 @@ export const  LetraEndereco = styled.p`
   color: var(--black);
 `
 export const  CardHistoricoP = styled.p`
-margin: 8px 16px 0pc 16px;
-border: 1px solid green;
+/* margin: 8px 16px 0px 16px; */
+width: 328px;
+height: 102px;
+border: 1px solid #b8b8b8;
 border-radius: 8px;
 `
 export const  TituloHistorico = styled.h2`
@@ -102,7 +104,8 @@ export const  DataEndereco = styled.div`
 margin: 9px 16px 7px 16px;
 font-size: 12px;
 `
-export const  Subtotal = styled.h2`
-font-size: 24px;
-margin: 9px 16px 7px 16px;
+export const  Subtotal = styled.p`
+font-size: 16px;
+font-weight: bold;
+margin: 7px 16px 0;
 `

@@ -7,7 +7,7 @@ import backButton from '../../../assets/back-button.png'
 import GlobalContext from '../../../global/GlobalContext'
 import { BASE_URL } from '../../../constants/url'
 import ItemCard from '../../../components/cards/itemCard/ItemCard'
-import { MainDiv, InfoDiv, DetailsDiv, MainDishesDiv, ShippingDiv, ContainerCategorias } from './Styled'
+import * as C from './Styled'
 import { SettingsPowerSharp } from '@material-ui/icons'
 import { GetRestaurantDetail } from '../../../services/restaurants'
 
@@ -30,15 +30,6 @@ export default function TelaDetalhe() {
         GetRestaurantDetail(states.id, setDetails)
     }, [])
 
-    // useEffect(() => {
-    //     const categories = details.products &&  details.products.map((product) => product.category)
-    //     const newCategories = categories?.filter((product, i) => {
-    //         // console.log(product)
-    //         return newCategories.indexOf(product) === i
-    //     })
-    //     setProductCategory(newCategories)
-    // }, [productCategory])
-
     useEffect(() => {
         const categories = details.products && details.products?.map((product) => product.category);
         const newCategories = categories?.filter((item, i) => {
@@ -52,19 +43,19 @@ export default function TelaDetalhe() {
             return <h1>Carregando</h1>
         } else {
             return (
-                <DetailsDiv>
-                    <InfoDiv>
+                <C.ContainerTelaDetalhe>
+                    <C.InfoRestaurante>
                         <img alt="restaurante" src={details.logoUrl} />
                         <h5>{details.name}</h5>
                         <p>{details.category}</p>
-                        <ShippingDiv>
+                        <C.ContainerFrete>
                             <p>{details.deliveryTime - 10} - {details.deliveryTime} min</p>
                             <p>Frete {details.shipping.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
-                        </ShippingDiv>
+                        </C.ContainerFrete>
                         <p>{details.address}</p>
-                    </InfoDiv>
+                    </C.InfoRestaurante>
 
-                    <ContainerCategorias>
+                    <C.ContainerProdutos>
                         <ItemCard
                             categories={productCategory}
                             products={details.products}
@@ -86,14 +77,14 @@ export default function TelaDetalhe() {
                             )
                         })
                         } */}
-                    </ContainerCategorias>
-                </DetailsDiv >
+                    </C.ContainerProdutos>
+                </C.ContainerTelaDetalhe >
             )
         }
     }
 
     return (
-        <MainDiv>
+        <C.MainDiv>
             <Header
                 backButton={
                     <img
@@ -109,6 +100,6 @@ export default function TelaDetalhe() {
             restaurantImg={restaurantImg}
             shoppingCartImg={shoppingCartImg}
             avatarImg={avatarImg}/>
-        </MainDiv>
+        </C.MainDiv>
     )
 }

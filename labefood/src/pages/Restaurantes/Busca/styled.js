@@ -26,6 +26,7 @@ export const ContainerInput = styled.div `
     display:flex;
     justify-content:center;
     margin-top: 15%;
+
 `;
 
 export const ContainerDiv = styled.div`
