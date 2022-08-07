@@ -3,9 +3,25 @@ import styled from "styled-components"
 export const Container = styled.section `
    display: flex;
    flex-direction:column;
-   width:100%;
-   height: auto;
+   width: 100%;
    margin-top: 25%;
+
+/* Phone */
+@media screen and (max-width:414px) {
+   width: 100%;
+}
+
+/* Tablet */
+@media screen and (min-width:415px) and (max-width:912px) {
+    max-width: 912px ;
+    margin:auto;
+}
+
+/* Desktop */
+@media screen and (min-width:913px) {
+    width: 400px ;
+    /* border: solid 1px #aaa; */
+}
 `;
 
 export const Endereco = styled.div `

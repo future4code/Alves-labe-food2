@@ -1,8 +1,47 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import * as C from './styled'
+import Swal from 'sweetalert2'
+import GlobalContext from '../../../global/GlobalContext'
+import TelaCarrinho from '../../../pages/Carrinho/TelaCarrinho'
 
 const CardCarrinho = (props) => {
-    // console.log(props.produtos)
+    const { states, setters } = useContext(GlobalContext)
+    const [carrinho, setCarrinho] = useState(states.carrinho)
+    const [ qntCarrinho, setQntCarrinho] = useState(props.indice)
+
+    // console.log(states)
+
+
+    const removerProduto = (id , indice_product) => {
+        Swal.fire({
+            title: 'Tem certeza que quer remover esse produto do seu carrinho?',
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            showCancelButton: true,
+            confirmButtonText: 'Sim'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                carrinho.map((product) => {
+                    if(qntCarrinho >= 1 ) {
+                        setQntCarrinho(product.quantity - 1);
+                        setters.setCarrinho(product.quantity - 1)
+                    } else {
+                        carrinho.splice(indice_product, 1);
+                        setCarrinho(carrinho)
+                        setQntCarrinho(carrinho.length)
+                    }
+
+                })
+            } else if (result.isDenied) {
+                Swal.fire('Produto ainda está no carrinho')
+
+            }
+        })
+    };
+
+
+
+
 
     return (
         <C.ContainerCards>
@@ -16,10 +55,11 @@ const CardCarrinho = (props) => {
             </C.Text>
             <C.ContainerButton>
                 <C.RetanguloIndice>
-                    <C.Indice>{props.indice}</C.Indice>
+                    <C.Indice>{qntCarrinho}</C.Indice>
                 </C.RetanguloIndice>
                 <C.RetanguloBotao>
-                    <C.BotaoRemover>remover</C.BotaoRemover>
+                    {/* {console.log(props.indice)} */}
+                    <C.BotaoRemover onClick={() => removerProduto(props.produtos.id, props.indice)}>remover</C.BotaoRemover>
                 </C.RetanguloBotao>
             </C.ContainerButton>
         </C.ContainerCards>

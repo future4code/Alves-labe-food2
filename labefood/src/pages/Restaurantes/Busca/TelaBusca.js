@@ -20,10 +20,7 @@ const TelaBusca = (props) => {
 
     const onChangeBusca = (e) => {
         setResultadoBusca(e.target.value)
-        // console.log(e.target.value)
     }
-
-    console.log(states.restaurantes)
 
     const chooseRestaurants = states.restaurantes.filter(rest => {
         return rest.name.toLowerCase().includes(resultadoBusca.toLowerCase()) ||
