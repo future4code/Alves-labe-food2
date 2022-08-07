@@ -34,7 +34,7 @@ const TelaCarrinho = () => {
         setPagamento(e.target.value)
     }
 
-    console.log(states.pedidoFeito)
+    // console.log(states.pedidoFeito)
 
     const confirmarPedido = () => {
         states.carrinho.map((product) => {
@@ -51,7 +51,7 @@ const TelaCarrinho = () => {
             )
 
         })
-        
+
     }
 
     useEffect(() => {
