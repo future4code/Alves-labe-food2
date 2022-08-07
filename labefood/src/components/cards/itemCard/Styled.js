@@ -1,14 +1,17 @@
 import styled from "styled-components";
 
 export const MainDiv = styled.div`
-    display: grid;
-    grid-template-columns: 96px 232px;
+    display: flex;
+    justify-content: space-between;
+    /* flex-direction: column; */
+    /* display:grid; */
+    /* grid-template-columns: 96px 232px; */
     border: solid #b8b8b8 1px;
     border-radius:8px;
-    
     width: 328px;
-    height: 112px;
+    min-height: 112px;
     word-wrap: normal;
+    margin: 10px 0 10px;
 
     img{
         width: 96px;
@@ -19,13 +22,18 @@ export const MainDiv = styled.div`
     }
 `
 
-export const InfoDiv = styled.div`
-    display: grid;
-    padding: 18px;
+export const TextoProduto = styled.div`
+    display: flex;
+    justify-content: center;
+    flex-direction:column;
+    border:1px solid transparent;
+
     h3{
         color: #5cb646;
     }
+
     p{
+        margin:0;
         color: #b8b8b8;
         font-size: 12px;
     }
@@ -87,7 +95,7 @@ export const BotaoAdicionar = styled.button `
 export const ContainerButton = styled.div `
     display:flex;
     flex-direction:column;
-    justify-content:space-between;
+    justify-content:space-between; 
     align-items: end;
-
+    /* border: 1px solid; */
 `

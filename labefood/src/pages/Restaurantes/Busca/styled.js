@@ -6,6 +6,7 @@ export const ContainerInput = styled.div `
     justify-content:center;
     width: auto;
     height: 630px;
+    margin-top:15%;
 
 `;
 
