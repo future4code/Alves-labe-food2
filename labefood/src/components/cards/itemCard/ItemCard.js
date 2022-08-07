@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
-import { InfoDiv, MainDiv, RetanguloIndice, Indice, RetanguloBotaoAdd, RetanguloBotaoRem, BotaoRemover, ContainerButton, BotaoAdicionar } from './Styled'
-import { MainDishesDiv } from '../../../pages/Restaurantes/TelaDetalhe/Styled'
+import * as C from './Styled'
+import { ContainerCategorias } from '../../../pages/Restaurantes/TelaDetalhe/Styled'
 import GlobalContext from '../../../global/GlobalContext'
 import Swal from 'sweetalert2'
 
@@ -47,24 +47,24 @@ export default function ItemCard(props) {
     if (states.carrinho.length === 0) {
       return (
         <>
-          <RetanguloBotaoAdd>
-            <BotaoAdicionar
+          <C.RetanguloBotaoAdd>
+            <C.BotaoAdicionar
               onClick={() => adicionarProduto(product)}
-            >adicionar</BotaoAdicionar>
-          </RetanguloBotaoAdd>
+            >adicionar</C.BotaoAdicionar>
+          </C.RetanguloBotaoAdd>
         </>
       )
     } else {
       return (
         <>
-          <RetanguloIndice>
-            <Indice></Indice>
-          </RetanguloIndice>
-          <RetanguloBotaoRem>
-            <BotaoRemover
+          <C.RetanguloIndice>
+            <C.Indice></C.Indice>
+          </C.RetanguloIndice>
+          <C.RetanguloBotaoRem>
+            <C.BotaoRemover
               onClick={() => removerProduto(id)}
-            >remover</BotaoRemover>
-          </RetanguloBotaoRem>
+            >remover</C.BotaoRemover>
+          </C.RetanguloBotaoRem>
         </>
       )
     }
@@ -74,30 +74,33 @@ export default function ItemCard(props) {
     <>
       {props.categories && props.categories?.map((element, i) => {
         return (
-          <MainDishesDiv key={i}>
+          <ContainerCategorias key={i}>
             <p>{element}</p>
             <hr />
             {props.products && props.products?.map((product) => {
               if (product.category == element) {
                 return (
-                  <MainDiv key={product.id}>
+                  <C.MainDiv key={product.id}>
+
                     <div>
                       <img src={product.photoUrl} alt='Ilustração do alimento' />
                     </div>
-                    <InfoDiv>
+
+                    <C.TextoProduto>
                       <h3>{product.name}</h3>
                       <p>{product.description}</p>
                       <h4>{product.price.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</h4>
-                      </InfoDiv>
-                      <ContainerButton>
-                        {chooseButtons(product, product.id)}
-                      </ContainerButton>
+                    </C.TextoProduto>
                     
-                  </MainDiv>
+                    <C.ContainerButton>
+                      {chooseButtons(product, product.id)}
+                    </C.ContainerButton>
+
+                  </C.MainDiv>
                 )
               }
             })}
-          </MainDishesDiv>
+          </ContainerCategorias>
         )
       })}
     </>

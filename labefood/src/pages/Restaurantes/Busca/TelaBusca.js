@@ -17,6 +17,7 @@ const TelaBusca = (props) => {
 
     const onChangeBusca = (e) => {
         setResultadoBusca(e.target.value)
+        // console.log(e.target.value)
     }
 
     const chooseRestaurants = states.restaurantes.filter(rest => {
@@ -31,7 +32,7 @@ const TelaBusca = (props) => {
         })
     
     const chooseScreen = () => {
-        if (resultadoBusca == '') {
+        if (resultadoBusca === '') {
             return <h4>Busque por nome do restaurante</h4>
         } else if (chooseRestaurants.length >= 1) {
             return <>{chooseRestaurants}</>
