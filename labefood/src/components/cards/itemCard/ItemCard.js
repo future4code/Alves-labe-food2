@@ -11,6 +11,7 @@ import { SettingsSystemDaydreamSharp } from '@mui/icons-material'
 export default function ItemCard(props) {
   const { states, setters } = useContext(GlobalContext)
   const [valueButton, setValueButton] = useState(0)
+  const [checarCarrinho, setChecarCarrinho] = useState([])
 
   const adicionarProduto = (product) => {
 
@@ -40,11 +41,18 @@ export default function ItemCard(props) {
       }
     })
   }
-  // const removerProduto = (id) => {
-  //   if (id == states.carrinho.id) {
-
-  //   }
-  // }
+  const checkQuantity = (product) => {
+    const checar = states.carrinho && states.carrinho?.filter((item) => item.id === product.id)
+    setChecarCarrinho(checar)
+  }
+  const removerProduto = (id) => {
+    if (id == states.carrinho.id) {
+      const novoCarrinho = states.carrinho?.filter((product) => {
+        return product.id !== id
+      })
+      setters.setCarrinho(novoCarrinho)
+    }
+  }
 
   return (
     <>
