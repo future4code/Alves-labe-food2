@@ -7,41 +7,8 @@ import TelaCarrinho from '../../../pages/Carrinho/TelaCarrinho'
 const CardCarrinho = (props) => {
     const { states, setters } = useContext(GlobalContext)
     const [carrinho, setCarrinho] = useState(states.carrinho)
-    const [ qntCarrinho, setQntCarrinho] = useState(props.indice)
-
-    // console.log(states)
-
-
-    const removerProduto = (id , indice_product) => {
-        Swal.fire({
-            title: 'Tem certeza que quer remover esse produto do seu carrinho?',
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            showCancelButton: true,
-            confirmButtonText: 'Sim'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                carrinho.map((product) => {
-                    if(qntCarrinho >= 1 ) {
-                        setQntCarrinho(product.quantity - 1);
-                        setters.setCarrinho(product.quantity - 1)
-                    } else {
-                        carrinho.splice(indice_product, 1);
-                        setCarrinho(carrinho)
-                        setQntCarrinho(carrinho.length)
-                    }
-
-                })
-            } else if (result.isDenied) {
-                Swal.fire('Produto ainda está no carrinho')
-
-            }
-        })
-    };
-
-
-
-
+    const [qntCarrinho, setQntCarrinho] = useState(props.indice)
+   
 
     return (
         <C.ContainerCards>
@@ -55,11 +22,11 @@ const CardCarrinho = (props) => {
             </C.Text>
             <C.ContainerButton>
                 <C.RetanguloIndice>
-                    <C.Indice>{qntCarrinho}</C.Indice>
+                    <C.Indice>{props.indice}</C.Indice>
                 </C.RetanguloIndice>
                 <C.RetanguloBotao>
                     {/* {console.log(props.indice)} */}
-                    <C.BotaoRemover onClick={() => removerProduto(props.produtos.id, props.indice)}>remover</C.BotaoRemover>
+                    <C.BotaoRemover onClick={props.onClick} >remover</C.BotaoRemover>
                 </C.RetanguloBotao>
             </C.ContainerButton>
         </C.ContainerCards>

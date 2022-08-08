@@ -7,6 +7,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import ImgSplashScreen from './assets/SplashScreen.png'
 import Celular from "./assets/celular.png"
+import loading from './assets/loading2.gif'
 import InfoCelular from './components/infoCelular/InfoCelular';
 const App = () => {
 
@@ -17,20 +18,28 @@ const App = () => {
     }, 2000);
   }, []);
 
+  const GifLoading = styled.img `
+    width: 15%;
+  
+  `
+
    const Override = styled.img`
-   display: block;
+   display: flex;
    margin: auto;
-   border-color: red;
-   width: 30vw;
-   align-items: center;
-   color: black;
+   width: 30%;
+
   `;
   const TelaSplash = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background: black;
 
   @media screen and (max-width:414px) {
     max-width: 414px ;
     min-height: 100vh;
+    height: 100%;
     max-height: 915px;
   }
 
@@ -47,7 +56,8 @@ const App = () => {
     <TelaSplash>
 
       <Override src={ImgSplashScreen} isLoading={isLoading}/>
-      {/* <div className="ldBar" data-preset="circle" data-value="50"></div> */}
+      <GifLoading src={loading} isLoading={isLoading} />
+     
      
     </TelaSplash> :
     <div className="App">

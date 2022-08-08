@@ -89,7 +89,7 @@ export const  LetraEndereco = styled.p`
   color: var(--black);
 `
 export const  CardHistoricoP = styled.p`
-/* margin: 8px 16px 0px 16px; */
+margin: 16px 16px 16px;
 width: 328px;
 height: 102px;
 border: 1px solid #b8b8b8;
