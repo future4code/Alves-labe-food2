@@ -13,7 +13,7 @@ import CardCarrinho from '../../components/cards/cardCarrinho/CardCarrinho'
 import restaurantImg from '../../assets/homepage.png'
 import shoppingCartImg from '../../assets/active-shopping-cart.png'
 import avatarImg from '../../assets/avatar.png'
-import useForm from '../../hooks/useForm'
+import Swal from 'sweetalert2'
 import { ConfirmOrder } from '../../services/restaurants'
 import Swal from 'sweetalert2'
 
@@ -21,10 +21,12 @@ import Swal from 'sweetalert2'
 const TelaCarrinho = () => {
     const { states, setters } = useContext(GlobalContext)
     const [carrinho, setCarrinho] = useState(states.carrinho)
+    const [qntCarrinho, setQntCarrinho] = useState(Number)
     const [frete, setFrete] = useState(0)
     const [price, setTotalPrice] = useState(0)
     const [pagamento, setPagamento] = useState("")
     const [order, setOrder] = useState([])
+   
 
 
     const navigate = useNavigate()
@@ -57,6 +59,37 @@ const TelaCarrinho = () => {
 
     }
 
+    const removerProduto = (id, quantidade ) => {
+        Swal.fire({
+            title: 'Tem certeza que quer remover esse produto do seu carrinho?',
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            showCancelButton: true,
+            confirmButtonText: 'Sim'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                carrinho?.map((product, index) => {
+                    let qntCarrinho = product.quantity
+                    if(qntCarrinho >= 1 ) {
+                        setters.setCarrinho(product.quantity - 1)
+                        setQntCarrinho(product.quantity - 1)
+                        console.log(carrinho)
+                    } else {
+                        carrinho.splice(index);
+                        console.log(index)
+                        setters.setCarrinho(carrinho)
+                    }
+
+                })
+            } else if (result.isDenied) {
+                Swal.fire('Produto ainda está no carrinho')
+
+            }
+        })
+    };
+
+
+
     useEffect(() => {
 
         states.restaurantes.map((res) => {
@@ -73,8 +106,8 @@ const TelaCarrinho = () => {
                 setTotalPrice(subTotal.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }))
             });
         }
-    }, [])
-    console.log(carrinho)
+    }, [states.carrinho])
+
 
     return (
         <C.Container >
@@ -115,8 +148,7 @@ const TelaCarrinho = () => {
 
                             return (
                                 <>
-                                    <CardCarrinho produtos={produtos} indice={produtos.quantity} />
-
+                                    <CardCarrinho produtos={produtos} indice={produtos.quantity} onClick={() => removerProduto(produtos.id, qntCarrinho)} />
                                 </>
                             )
                         })

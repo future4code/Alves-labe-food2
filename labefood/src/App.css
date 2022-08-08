@@ -6,19 +6,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-/* @media(min-width: 500px) {
-
-  body {
-    position: relative;
-    width: 400px ;
-    margin-left: 30%;
-    height:650px;
-    border: solid 1px black;
-    margin-top: 10px;
-  }
-} */
-
 /* Phone */
 @media screen and (max-width:414px) {
   body {

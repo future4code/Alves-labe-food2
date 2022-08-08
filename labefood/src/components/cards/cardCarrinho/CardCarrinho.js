@@ -8,7 +8,6 @@ const CardCarrinho = (props) => {
     const { states, setters } = useContext(GlobalContext)
     const [carrinho, setCarrinho] = useState(states.carrinho)
     const [qntCarrinho, setQntCarrinho] = useState(props.indice)
-
     useEffect(() => {
         refesh()
     }, [carrinho])

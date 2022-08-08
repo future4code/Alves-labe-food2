@@ -1,17 +1,16 @@
+
 import React, { useContext, useEffect, useState } from 'react'
+
 import * as C from './Styled'
 import { ContainerCategorias } from '../../../pages/Restaurantes/TelaDetalhe/Styled'
 import GlobalContext from '../../../global/GlobalContext'
 import Swal from 'sweetalert2'
+import { SettingsSystemDaydreamSharp } from '@mui/icons-material'
 
 
 export default function ItemCard(props) {
   const { states, setters } = useContext(GlobalContext)
-  const [checarCarrinho, setChecarCarrinho] = useState([])
-
-  // useEffect(()=>{
-  //   const carrinhoCheck = states.carrinho && states.carrinho?.filter((item)=>item.id === product.id )
-  // },[states.carrinho])
+  const [valueButton, setValueButton] = useState(0)
 
   const adicionarProduto = (product) => {
 
@@ -41,17 +40,12 @@ export default function ItemCard(props) {
       }
     })
   }
-  const removerProduto = (id) => {
-    if (id == states.carrinho.id) {
+  // const removerProduto = (id) => {
+  //   if (id == states.carrinho.id) {
 
-    }
-  }
+  //   }
+  // }
 
-  const checkQuantity = (product) => {
-    const checar = states.carrinho && states.carrinho?.filter((item) => item.id === product.id)
-    setChecarCarrinho(checar)
-  }
-  console.log(checarCarrinho)
   return (
     <>
       {props.categories && props.categories?.map((element, i) => {
@@ -66,13 +60,11 @@ export default function ItemCard(props) {
                     <div>
                       <img src={product.photoUrl} alt='Ilustração do alimento' />
                     </div>
-
                     <C.TextoProduto>
                       <h3>{product.name}</h3>
                       <p>{product.description}</p>
                       <h4>{product.price.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</h4>
                     </C.TextoProduto>
-
                     <C.ContainerButton>
                       {checarCarrinho?.length == 0 ?
                         <C.RetanguloBotaoAdd>
@@ -93,6 +85,7 @@ export default function ItemCard(props) {
                         </>
                       }
                       {/* {chooseButtons(product, product.id)} */}
+
                     </C.ContainerButton>
 
                   </C.MainDiv>
