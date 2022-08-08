@@ -40,11 +40,14 @@ export default function ItemCard(props) {
       }
     })
   }
-  // const removerProduto = (id) => {
-  //   if (id == states.carrinho.id) {
-
-  //   }
-  // }
+  const removerProduto = (id) => {
+    if (id == states.carrinho.id) {
+      const novoCarrinho = states.carrinho?.filter((product) => {
+        return product.id !== id
+      })
+      setters.setCarrinho(novoCarrinho)
+    }
+  }
 
   return (
     <>
