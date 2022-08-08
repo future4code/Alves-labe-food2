@@ -15,6 +15,8 @@ import shoppingCartImg from '../../assets/active-shopping-cart.png'
 import avatarImg from '../../assets/avatar.png'
 import Swal from 'sweetalert2'
 import { ConfirmOrder } from '../../services/restaurants'
+import Swal from 'sweetalert2'
+
 
 const TelaCarrinho = () => {
     const { states, setters } = useContext(GlobalContext)
@@ -25,6 +27,7 @@ const TelaCarrinho = () => {
     const [pagamento, setPagamento] = useState("")
     const [order, setOrder] = useState([])
    
+
 
     const navigate = useNavigate()
 
@@ -103,8 +106,8 @@ const TelaCarrinho = () => {
                 setTotalPrice(subTotal.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }))
             });
         }
-
     }, [states.carrinho])
+
 
     return (
         <C.Container >
@@ -141,7 +144,7 @@ const TelaCarrinho = () => {
             <C.Carrinho>
                 {
                     states.carrinho.length === 0 ? <C.CarrinhoVazio>Carrinho Vazio</C.CarrinhoVazio> :
-                        carrinho.map((produtos, indice) => {
+                        carrinho?.map((produtos, indice) => {
 
                             return (
                                 <>
