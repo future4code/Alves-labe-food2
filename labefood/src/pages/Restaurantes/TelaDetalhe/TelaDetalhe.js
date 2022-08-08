@@ -60,23 +60,7 @@ export default function TelaDetalhe() {
                             categories={productCategory}
                             products={details.products}
                         />
-                        {/* {details.products.map((product) => {
-                            return (
-                                <MainDishesDiv key={product.id}>
-                                    <h4>{product.category}</h4>
-                                    <hr />
-                                    <ItemCard
-                                        key={product.id}
-                                        image={product.photoUrl}
-                                        name={product.name}
-                                        description={product.description}
-                                        price={product.price}
-                                    />
-                                    <button onClick={() => adicionarProduto(product)}>Adicionar ao Carrinho</button>
-                                </MainDishesDiv>
-                            )
-                        })
-                        } */}
+                       
                     </C.ContainerProdutos>
                 </C.ContainerTelaDetalhe >
             )

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import * as C from './Styled'
 import { ContainerCategorias } from '../../../pages/Restaurantes/TelaDetalhe/Styled'
 import GlobalContext from '../../../global/GlobalContext'
@@ -7,7 +7,11 @@ import Swal from 'sweetalert2'
 
 export default function ItemCard(props) {
   const { states, setters } = useContext(GlobalContext)
-  console.log(states)
+  const [checarCarrinho, setChecarCarrinho] = useState([])
+
+  // useEffect(()=>{
+  //   const carrinhoCheck = states.carrinho && states.carrinho?.filter((item)=>item.id === product.id )
+  // },[states.carrinho])
 
   const adicionarProduto = (product) => {
 
@@ -43,33 +47,11 @@ export default function ItemCard(props) {
     }
   }
 
-  const chooseButtons = (product, id) => {
-    if (states.carrinho.length === 0) {
-      return (
-        <>
-          <C.RetanguloBotaoAdd>
-            <C.BotaoAdicionar
-              onClick={() => adicionarProduto(product)}
-            >adicionar</C.BotaoAdicionar>
-          </C.RetanguloBotaoAdd>
-        </>
-      )
-    } else {
-      return (
-        <>
-          <C.RetanguloIndice>
-            <C.Indice></C.Indice>
-          </C.RetanguloIndice>
-          <C.RetanguloBotaoRem>
-            <C.BotaoRemover
-              onClick={() => removerProduto(id)}
-            >remover</C.BotaoRemover>
-          </C.RetanguloBotaoRem>
-        </>
-      )
-    }
+  const checkQuantity = (product) => {
+    const checar = states.carrinho && states.carrinho?.filter((item) => item.id === product.id)
+    setChecarCarrinho(checar)
   }
-
+  console.log(checarCarrinho)
   return (
     <>
       {props.categories && props.categories?.map((element, i) => {
@@ -81,7 +63,6 @@ export default function ItemCard(props) {
               if (product.category == element) {
                 return (
                   <C.MainDiv key={product.id}>
-
                     <div>
                       <img src={product.photoUrl} alt='Ilustração do alimento' />
                     </div>
@@ -91,9 +72,27 @@ export default function ItemCard(props) {
                       <p>{product.description}</p>
                       <h4>{product.price.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</h4>
                     </C.TextoProduto>
-                    
+
                     <C.ContainerButton>
-                      {chooseButtons(product, product.id)}
+                      {checarCarrinho?.length == 0 ?
+                        <C.RetanguloBotaoAdd>
+                          <C.BotaoAdicionar
+                            onClick={() => adicionarProduto(product)}
+                          >adicionar</C.BotaoAdicionar>
+                        </C.RetanguloBotaoAdd>
+                        :
+                        <>
+                          <C.RetanguloIndice>
+                            <C.Indice></C.Indice>
+                          </C.RetanguloIndice>
+                          <C.RetanguloBotaoRem>
+                            <C.BotaoRemover
+                              onClick={() => removerProduto(product.id)}
+                            >remover</C.BotaoRemover>
+                          </C.RetanguloBotaoRem>
+                        </>
+                      }
+                      {/* {chooseButtons(product, product.id)} */}
                     </C.ContainerButton>
 
                   </C.MainDiv>
