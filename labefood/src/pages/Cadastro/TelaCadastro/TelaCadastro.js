@@ -18,12 +18,14 @@ import IconButton from "@material-ui/core/IconButton";
 import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
 import { withStyles } from "@material-ui/core/styles";
 import { goBack } from "../../../router/coordenator";
+import { hover } from "@testing-library/user-event/dist/hover";
 
 const StyledButton = withStyles({
   root: {
     padding: "0.7rem",
     marginTop: "0,7rem",
     marginBottom: "1rem",
+    backgroundColor: "#5cb646",
   },
 })(Button);
 
@@ -50,10 +52,6 @@ const TelaCadastro = () => {
     setConfirm(!confirm);
   };
 
-  // const goBack = () => {
-  //   navigate.goBack();
-  // };
-
   const onSubmitForm = (event) => {
     event.preventDefault();
     if (confirm === form.password) {
@@ -78,6 +76,7 @@ const TelaCadastro = () => {
             label={"Nome"}
             variant={"outlined"}
             fullWidth
+            color={'primary'}
             margin={"normal"}
             required
             type={"text"}
@@ -167,7 +166,7 @@ const TelaCadastro = () => {
             type={"submit"}
             fullWidth
             variant={"contained"}
-            color={"primary"}
+            color={'primary'}
             padding={10}
           >
             {Loading ? (
@@ -181,11 +180,12 @@ const TelaCadastro = () => {
       <ArrowBackContainer>
         <IconButton
           onClick={() => goBack(navigate)}
-          size="larger"
+          size="small"
           type="submit"
           aria-label="ArrowBackIos"
+
         >
-          <ArrowBackIos style={{ fill: "black" }} fontSize="large" />
+          <ArrowBackIos style={{ fill: "#5CB646" }} fontSize="large" />
         </IconButton>
       </ArrowBackContainer>
     </ScreenContainer>

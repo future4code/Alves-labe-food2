@@ -1,4 +1,4 @@
-import React, {useEffect, useState }  from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
 import Header from '../../components/header/Header'
 import backButton from '../../assets/back-button.png'
@@ -7,6 +7,12 @@ import Footer from '../../components/footer/Footer'
 import { goBack } from '../../router/coordenator'
 import { useNavigate } from 'react-router-dom'
 import { TextField } from "@material-ui/core";
+import restaurantImg from '../../assets/homepage.png'
+import shoppingCartImg from '../../assets/shopping-cart.png'
+import avatarImg from '../../assets/active-avatar.png'
+import Swal from 'sweetalert2'
+
+import GlobalContext from '../../global/GlobalContext';
 
 const PaiDeTodos = styled.div`
 display: grid;
@@ -15,7 +21,7 @@ display: grid;
 const PaidaSessoes = styled.div`
 grid-template-rows:100%;
 display: grid;
-margin: 75px 20px 0px 16px;
+margin: 25% 20px 0px 16px;
 `
 const InputEdit = styled.input`
  width: 264px;
@@ -37,114 +43,111 @@ align-items: center;
 justify-content: center;
 border: none;
 font-weight: bold;
-` 
+`
 
 
 const EditarPerfil = () => {
   const navigate = useNavigate()
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [cpf, setCpf] = useState("")
+  const { states, setters } = useContext(GlobalContext)
+  const [name, setName] = useState(states.profile.name)
+  const [email, setEmail] = useState(states.profile.email)
+  const [cpf, setCpf] = useState(states.profile.cpf)
 
   const chamarName = (event) => {   //Serve para guarda as informações no estado
-    setName( event.target.value )
+    setName(event.target.value)
   }
- const chamarEmail = (event) => {
-    setEmail( event.target.value )
+  const chamarEmail = (event) => {
+    setEmail(event.target.value)
   }
   const chamarCpf = (event) => {
     setCpf(event.target.value)
   }
 
   const token = localStorage.getItem('token')
- 
- 
-  // useEffect (() => {
-    
-  //   editar()
-  
-  // },[])
-  
-function editar (event) {
-  
-  event.preventDefault()
-  const url = "https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/profile"
-  const body = {
-    name: name,
-    email: email,
-    cpf: cpf
-  }
-  console.log(body)
-  axios.put(url, body, {
-    headers: {
-      auth: token
+
+  function editar(event) {
+
+    event.preventDefault()
+    const url = "https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/profile"
+    const body = {
+      name: name,
+      email: email,
+      cpf: cpf
     }
-  }) .then ((res) => {
-    console.log(res)
-    navigate("/perfil")
+    console.log(body)
+    axios.put(url, body, {
+      headers: {
+        auth: token
+      }
+    }).then((res) => {
+      setters.setProfile(res.data.user)
+      navigate("/perfil")
 
 
-   }).catch ((erro) => {
-   console.log(erro)
+    }).catch((erro) => {
+      if(erro.response.request.status == 409) {
+        Swal.fire('Email ou CPF já cadastrados')
+      }
 
-   })
-}
-//axios não funciona
-// const navigate = useNavigate()
-    return (
-      <PaiDeTodos>
-        <Header
-        backButton={<img onClick={() => goBack(navigate)} src={backButton}/>}
-      name= "Editar Perfil"
-        />
-        <PaidaSessoes>
+    })
+  }
+
+  return (
+    <PaiDeTodos>
+      <Header
+        backButton={<img onClick={() => goBack(navigate)} src={backButton} />}
+        name="Editar Perfil"
+      />
+      <PaidaSessoes>
         <form onSubmit={editar}>
 
-	              <TextField 
-                           name={"name"}
-                           label={"Nome"}
-                           variant={"outlined"}
-                           fullWidth
-                           margin={"normal"}
-                           required
-                           type={"text"}
-                           placeholder={"Nome e sobrenome"}
-                           onChange={chamarName}
- 
-                 />
+          <TextField
+            name={"name"}
+            variant={"outlined"}
+            fullWidth
+            margin={"normal"}
+            required
+            placeholder={states.profile.name}
+            type={"text"}
+            onChange={chamarName}
 
-	              <TextField 
-                name="email" 
-                label={"E-mail"}
-                variant={"outlined"}
-                fullWidth
-                margin={"normal"}
-                required
-                type={"email"}
-                placeholder={"email@email.com"} 
-                onChange={chamarEmail} />
-			
-	              <TextField 
-                id='cpf' 
-                name='cpf'   
-                label={"CPF"}
-                variant={"outlined"}
-                fullWidth
-                margin={"normal"}
-                required
-                type={"number"}
-                placeholder={"000.000.000-00 (apenas números)"}
-                inputProps={{ pattern: "^d{3}.d{3}.d{3}-d{2}$" }}
-                onChange={chamarCpf} 
-                minlength="3" />
-                <Button> Salvar</Button>
-                </form>
+          />
 
-        </PaidaSessoes>
-        <Footer/>
-  
-      </PaiDeTodos>
-    )
-  }
-  
-  export default EditarPerfil
+          <TextField
+            name="email"
+            variant={"outlined"}
+            fullWidth
+            margin={"normal"}
+            required
+            type={"email"}
+            placeholder={states.profile.email}
+            onChange={chamarEmail} />
+
+          <TextField
+            name='cpf'
+            variant={"outlined"}
+            fullWidth
+            margin={"normal"}
+            required
+            type={"number"}
+            placeholder={states.profile.cpf}
+            mask="999.999.999-99"
+            maskChar=" "
+            inputProps={{ pattern: "^d{3}.d{3}.d{3}-d{2}$" }}
+            onChange={chamarCpf}
+            minLength={3} />
+          <Button> Salvar</Button>
+        </form>
+
+      </PaidaSessoes>
+      <Footer
+        restaurantImg={restaurantImg}
+        shoppingCartImg={shoppingCartImg}
+        avatarImg={avatarImg}
+      />
+
+    </PaiDeTodos>
+  )
+}
+
+export default EditarPerfil
