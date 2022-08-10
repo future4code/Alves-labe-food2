@@ -4,14 +4,34 @@ export const ScreenContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
+
+  /* Phone */
+  @media screen and (max-width:414px) {
+    max-width: 414px;
+    width:100%;
+    height: 600px;
+  }
+
+/* Tablet */
+  @media screen and (min-width:415px) and (max-width:912px) {
+    max-width: 912px ;
+    height: 100%;
+    margin:auto;
+}
+
+/* Desktop */
+  @media screen and (min-width:913px) {
+    width: 400px ;
+    min-height:650px;
+}
+
 `;
 
 export const InputsContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 80vw;
-  max-width: 450px;
+  max-width: 350px;
   align-items: center;
   margin-bottom: 20px;
 `;
@@ -26,15 +46,28 @@ export const LoginFormContainer = styled.div`
 `;
 
 export const ArrowBackContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: -40rem;
-  margin-left: -25rem;
 
-  @media screen and (min-device-width: 200px) and (max-device-width: 667px) {
-    margin-top: -40rem;
-    margin-left: -16rem;
+  /* Phone */
+  @media screen and (max-width:414px) {
+    position: absolute;
+    top: 8%;
+    left: 8%;
   }
+
+/* Tablet */
+  @media screen and (min-width:415px) and (max-width:912px) {
+   
+}
+
+/* Desktop */
+  @media screen and (min-width:913px) {
+    /* display: flex; */
+    position: absolute;
+    top: 10%;
+    left: 32%;
+
+}
+
 `;
 
 export const LogoImag = styled.img`

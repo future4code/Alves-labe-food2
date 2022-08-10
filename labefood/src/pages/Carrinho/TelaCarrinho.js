@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 import backButton from '../../assets/back-button.png'
 import { goBack } from '../../router/coordenator'
 import { useNavigate } from 'react-router-dom'
 import GlobalContext from '../../global/GlobalContext';
-import { useContext } from 'react'
 import * as C from './styled'
-import { BASE_URL } from '../../constants/url'
-import axios from 'axios'
 import CardCarrinho from '../../components/cards/cardCarrinho/CardCarrinho'
 import restaurantImg from '../../assets/homepage.png'
 import shoppingCartImg from '../../assets/active-shopping-cart.png'
@@ -91,14 +88,18 @@ const TelaCarrinho = () => {
 
     useEffect(() => {
 
-        states.restaurantes.map((res) => {
-            if (res.id == states.id) {
-                setFrete(res.shipping)
-            }
-        })
-
         let totalPrice = 0
-        if (states.carrinho.length > 0) {
+        if (states.carrinho.length == 0) {
+            setFrete(0)
+            setTotalPrice(0)
+        } else if (states.carrinho.length > 0) {
+
+            states.restaurantes.map((res) => {
+                if (res.id == states.id) {
+                    setFrete(res.shipping)
+                }
+            })
+
             states.carrinho.forEach(element => {
                 totalPrice = totalPrice + element.price * element.quantity
                 const subTotal = totalPrice + frete
