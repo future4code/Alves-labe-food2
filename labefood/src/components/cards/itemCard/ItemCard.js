@@ -6,18 +6,19 @@ import { ContainerCategorias } from '../../../pages/Restaurantes/TelaDetalhe/Sty
 import GlobalContext from '../../../global/GlobalContext'
 import Swal from 'sweetalert2'
 import { SettingsSystemDaydreamSharp } from '@mui/icons-material'
+import ItemCard2 from './ItemCard2'
 
 
 export default function ItemCard(props) {
   const { states, setters } = useContext(GlobalContext)
   const [valueButton, setValueButton] = useState(0)
-  const [checarCarrinho, setChecarCarrinho] = useState([])
 
   const adicionarProduto = (product) => {
 
     Swal.fire({
       text: 'Selecione a quantidade desejada',
       input: 'select',
+      timer: 9000,
       inputOptions: {
         1: 1,
         2: 2,
@@ -37,22 +38,36 @@ export default function ItemCard(props) {
           quantity: value
         }
         setters.setCarrinho([...states.carrinho, newProduct])
-
+        const carrinhoLocal = [...states.carrinho, newProduct]
+        localStorage.setItem('cart', JSON.stringify(carrinhoLocal))
       }
     })
   }
-  const checkQuantity = (product) => {
-    const checar = states.carrinho && states.carrinho?.filter((item) => item.id === product.id)
-    setChecarCarrinho(checar)
-  }
-  const removerProduto = (id) => {
-    if (id == states.carrinho.id) {
-      const novoCarrinho = states.carrinho?.filter((product) => {
-        return product.id !== id
-      })
-      setters.setCarrinho(novoCarrinho)
-    }
-  }
+
+  const removerProduto = (id, indice_product) => {
+    Swal.fire({
+      title: 'Tem certeza que quer remover esse produto do seu carrinho?',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      showCancelButton: true,
+      confirmButtonText: 'Sim'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const novoCarrinho = states.carrinho.filter((product) => {
+          return product.id !== id
+        })
+        setters.setCarrinho(novoCarrinho)
+        Swal.fire({
+          text: 'Produto removido!',
+          showConfirmButton: false,
+          timer: 1600
+        })
+      } else if (result.isDenied) {
+        Swal.fire('Produto ainda está no carrinho')
+
+      }
+    })
+  };
 
   return (
     <>
@@ -74,26 +89,11 @@ export default function ItemCard(props) {
                       <h4>{product.price.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</h4>
                     </C.TextoProduto>
                     <C.ContainerButton>
-                      {checarCarrinho?.length == 0 ?
-                        <C.RetanguloBotaoAdd>
-                          <C.BotaoAdicionar
-                            onClick={() => adicionarProduto(product)}
-                          >adicionar</C.BotaoAdicionar>
-                        </C.RetanguloBotaoAdd>
-                        :
-                        <>
-                          <C.RetanguloIndice>
-                            <C.Indice></C.Indice>
-                          </C.RetanguloIndice>
-                          <C.RetanguloBotaoRem>
-                            <C.BotaoRemover
-                              onClick={() => removerProduto(product.id)}
-                            >remover</C.BotaoRemover>
-                          </C.RetanguloBotaoRem>
-                        </>
-                      }
-                      {/* {chooseButtons(product, product.id)} */}
-
+                      <ItemCard2
+                        removerProduto={() => removerProduto(product.id)}
+                        adicionarProduto={() => adicionarProduto(product)}
+                        productId={product.id}
+                      />
                     </C.ContainerButton>
 
                   </C.MainDiv>

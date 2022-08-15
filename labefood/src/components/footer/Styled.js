@@ -9,22 +9,19 @@ export const MainDiv = styled.div`
     height: 60px;
     border-top: solid grey 1px;
     background-color: white;
+    width: 100vw;
+
     /* box-shadow: 0 10px 30px black inset,0 -10px red inset, -10px 0 blue inset, 10px 0 green inset; */
     /* overflow:hidden; */
     
     /* Phone */
-    @media screen and (max-width:414px) {
-    width: 100% ;
+    @media screen and (min-width:415px) and (max-width:912px) {
+        width: 100vw;
+        
     }
-    /* Tablet */
-    @media screen and (min-width:280px) and (max-width:912px) {
-    width: 100% 
+    @media(min-width:913px){
+        width: 400px;
     }
-    /* Desktop */
-    @media screen and (min-width:415px) {
-    width: 400px ;
-}
-
       
     button{
         border: 0;

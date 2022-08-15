@@ -78,7 +78,7 @@ const TelaPerfil = () => {
       <C.CardHistoricoP key={indice}>
         <C.TituloHistorico>{orders.restaurantName}</C.TituloHistorico>
         <C.DataEndereco>{data.getDate()}/{data.getMonth()}/{data.getFullYear()}</C.DataEndereco>
-        <C.Subtotal>Subtotal: {orders.totalPrice}</C.Subtotal>
+        <C.Subtotal>Subtotal: {orders.totalPrice.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</C.Subtotal>
       </C.CardHistoricoP>
 
     )

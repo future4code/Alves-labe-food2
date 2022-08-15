@@ -27,7 +27,6 @@ const GlobalState = (props) => {
     })
             .then((res) => {
                 setRestaurantes(res.data.restaurants)
-                // console.log(res.data.restaurants)
             }).catch((err) => {
                 console.log(err)
             })
@@ -38,7 +37,6 @@ const GlobalState = (props) => {
                 }
             }).then((res) => {
                 setProfile(res.data.user)
-                // console.log(res.data.user)
             }).catch((err) => {
                 console.log(err)
             })
