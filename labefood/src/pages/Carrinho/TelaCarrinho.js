@@ -22,7 +22,7 @@ const TelaCarrinho = () => {
     const [price, setTotalPrice] = useState(0)
     const [pagamento, setPagamento] = useState("")
     const [order, setOrder] = useState([])
-   
+
 
 
     const navigate = useNavigate()
@@ -35,8 +35,6 @@ const TelaCarrinho = () => {
         setPagamento(e.target.value)
     }
 
-    // console.log(states.pedidoFeito)
-
     const confirmarPedido = () => {
         states.carrinho.map((product) => {
             const produto = {
@@ -48,14 +46,14 @@ const TelaCarrinho = () => {
             }
 
             return (
-                ConfirmOrder(states.id, produto, setOrder, setters.setPedidoFeito, navigate)
+                ConfirmOrder(states.id, produto, setOrder, navigate, setters.setCarrinho)
             )
 
         })
 
     }
 
-    const removerProduto = (id, quantidade ) => {
+    const removerProduto = (id, quantidade) => {
         Swal.fire({
             title: 'Tem certeza que quer remover esse produto do seu carrinho?',
             confirmButtonColor: '#3085d6',
@@ -66,7 +64,7 @@ const TelaCarrinho = () => {
             if (result.isConfirmed) {
                 carrinho?.map((product, index) => {
                     let qntCarrinho = product.quantity
-                    if(qntCarrinho >= 1 ) {
+                    if (qntCarrinho >= 1) {
                         setters.setCarrinho(product.quantity - 1)
                         setQntCarrinho(product.quantity - 1)
                         console.log(carrinho)
@@ -143,7 +141,7 @@ const TelaCarrinho = () => {
 
             <C.Carrinho>
                 {
-                    states.carrinho.length === 0 ? <C.CarrinhoVazio>Carrinho Vazio</C.CarrinhoVazio> :
+                    states.carrinho?.length === 0 ? <C.CarrinhoVazio>Carrinho Vazio</C.CarrinhoVazio> :
                         carrinho?.map((produtos, indice) => {
 
                             return (
@@ -174,7 +172,7 @@ const TelaCarrinho = () => {
                 </C.CheckBox>
 
                 <C.CheckBox>
-                    <input type="radio" name="pagamento" id="cartao" value="cardcredit" onChange={onChangeCard} />
+                    <input type="radio" name="pagamento" id="cartao" value="creditcard" onChange={onChangeCard} />
                     <label htmlFor="cartao-de-credito">Cartão de Crédito</label>
                 </C.CheckBox>
 

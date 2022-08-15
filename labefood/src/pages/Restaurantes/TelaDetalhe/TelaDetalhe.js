@@ -24,8 +24,6 @@ export default function TelaDetalhe() {
     const navigate = useNavigate()
     const [details, setDetails] = useState([])
 
-    // console.log(details.products)
-
     useEffect(() => {
         GetRestaurantDetail(states.id, setDetails)
     }, [])

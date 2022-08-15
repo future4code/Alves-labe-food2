@@ -3,13 +3,11 @@ import styled from "styled-components";
 export const MainDiv = styled.div`
     display: flex;
     justify-content: space-between;
-    /* flex-direction: column; */
-    /* display:grid; */
-    /* grid-template-columns: 96px 232px; */
     border: solid #b8b8b8 1px;
     border-radius:8px;
     width: 328px;
     min-height: 112px;
+    max-height: 113px;
     word-wrap: normal;
     margin: 10px 0 10px;
 
@@ -38,24 +36,31 @@ export const TextoProduto = styled.div`
         font-size: 12px;
     }
 `
-export const RetanguloIndice = styled.div `
+export const RetanguloIndice = styled.div`
     width: 33px;
     display:flex;
     align-items:center;
     justify-content:center;
     height: 33px;
     margin: 0 0 11px 16px;
-    /* padding: 5px; */
     border-top-right-radius: 8px;
     border-bottom-left-radius: 8px;
     border: 1px solid #5cb646;
+    p{
+        text-align: center;
+
+    }
 `;
 
 export const Indice = styled.p`
+    display:flex;
+    align-items:center;
+    justify-content:center;
     color: #5cb646;
     font-size: 16px;
+    text-align: center;
 `
-export const RetanguloBotaoRem = styled.div `
+export const RetanguloBotaoRem = styled.div`
     width: 90px;
     height: 31px;
     color: #e02020;
@@ -66,7 +71,7 @@ export const RetanguloBotaoRem = styled.div `
     border-top-left-radius: 8px;
     border-bottom-right-radius: 8px;
 `
-export const RetanguloBotaoAdd = styled.div `
+export const RetanguloBotaoAdd = styled.div`
     width: 90px;
     height: 31px;
     color: #e02020;
@@ -78,21 +83,21 @@ export const RetanguloBotaoAdd = styled.div `
     border-bottom-right-radius: 8px;
 `
 
-export const BotaoRemover = styled.button `
+export const BotaoRemover = styled.button`
     color: #e02020;
     font-size: 12px;
     background-color: transparent;
     border:none;
     cursor:pointer;
 `
-export const BotaoAdicionar = styled.button `
+export const BotaoAdicionar = styled.button`
     color: #5cb646;
     font-size: 12px;
     background-color: transparent;
     border:none;
     cursor:pointer;
 `
-export const ContainerButton = styled.div `
+export const ContainerButton = styled.div`
     display:flex;
     flex-direction:column;
     justify-content:space-between; 

@@ -16,7 +16,8 @@ import PropTypes from 'prop-types';
 import restaurantImg from '../../assets/active-homepage.png'
 import shoppingCartImg from '../../assets/shopping-cart.png'
 import avatarImg from '../../assets/avatar.png'
-// import CardPedido from '../../components/cards/cardPedidoFeito'
+import CardPedido from '../../components/cards/cardPedidoFeito/CardPedido'
+import { GetActiveOrder } from '../../services/restaurants';
 
 const TelaRestaurantes = (props) => {
 
@@ -25,6 +26,8 @@ const TelaRestaurantes = (props) => {
   const [value, setValue] = useState(0)
   const [category, setCategory] = useState("")
   const navigate = useNavigate()
+
+  GetActiveOrder()
 
   useEffect(() => {
     switch (value) {
@@ -59,18 +62,9 @@ const TelaRestaurantes = (props) => {
         setCategory('Mexicana')
         break
     };
-  
+
+    pedidoFeito()
   })
-
-  const pegarId = (id) => {
-    setters.setId(id)
-    console.log(id)
-    goToDetail(navigate, id)
-  }
-
-  const onChangeBusca = (e) => {
-    setResultadoBusca(e.target.value)
-  }
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -120,14 +114,16 @@ const TelaRestaurantes = (props) => {
     })
     return card
   }
-
-  // const pedidoFeito = () => {
-  //   if (states.pedidoFeito.length !== 0) {
-  //     return <CardPedido />
-  //   }
-  // }
-
-
+  const pedidoFeito = () => {
+    if (states.pedidoFeito?.length !== 0 && states.pedidoFeito !== null) {
+      return (
+        <CardPedido
+          name={states.pedidoFeito?.restaurantName}
+          price={states.pedidoFeito?.totalPrice}
+        />
+      )
+    }
+  }
   return (
     <C.Container>
       <Header
@@ -194,7 +190,7 @@ const TelaRestaurantes = (props) => {
           </TabPanel>
         </C.ContainerRestaurantes>
       </Box>
-
+      {pedidoFeito()}
       <Footer
         restaurantImg={restaurantImg}
         shoppingCartImg={shoppingCartImg}
