@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Phone */
+@media screen and (max-width:414px) {
+  body {
+    /* position: relative; */
+    max-width: 414px;;
+    width: 100%;
+    height: 100%;
+    /* margin-top: 10px; */
+  }
+}
+
+/* Tablet */
+@media screen and (min-width:415px) and (max-width:912px) {
+  body {
+    /* position: relative; */
+    max-width: 912px ;
+    height: 100%;
+    /* margin-top: 10px; */
+    margin:auto;
+  }
+}
+
+/* Desktop */
+@media screen and (min-width:913px) {
+  body {
+    /* position: relative; */
+    width: 400px ;
+    margin-left: 30%;
+    min-height:650px;
+    height: 100%;
+    border: solid 1px #aaa;
+    /* background-image: url(./assets/celular.png);
+    background-attachment: fixed;
+    background-position: 50px 150px;
+    background-repeat: no-repeat; */
+    border-radius: 10px;
+    /* margin-top: 10px; */
+  }
+}
