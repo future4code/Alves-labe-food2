@@ -12,19 +12,20 @@ const GlobalState = (props) => {
     const [id, setId] = useState([])
     const [carrinho, setCarrinho] = useState([])
     const [pedidoFeito, setPedidoFeito] = useState([])
+    const [auth, setAuth] = useState([])
     var cardPedido
     useEffect(() => {
-        
-        if (states.pedidoFeito.length !== 0) {
+
+        if (states.pedidoFeito?.length !== 0) {
             return cardPedido = <CardPedido />
         }
-    
 
-       axios.get(`${BASE_URL}/restaurants`, {
-        headers: {
-            auth: localStorage.getItem('token')
-        }
-    })
+
+        axios.get(`${BASE_URL}/restaurants`, {
+            headers: {
+                auth: localStorage.getItem('token')
+            }
+        })
             .then((res) => {
                 setRestaurantes(res.data.restaurants)
             }).catch((err) => {
@@ -32,24 +33,24 @@ const GlobalState = (props) => {
             })
 
         axios.get(`${BASE_URL}/profile`, {
-                headers: {
-                    auth: localStorage.getItem('token')
-                }
-            }).then((res) => {
-                setProfile(res.data.user)
-            }).catch((err) => {
-                console.log(err)
-            })
+            headers: {
+                auth: localStorage.getItem('token')
+            }
+        }).then((res) => {
+            setProfile(res.data.user)
+        }).catch((err) => {
+            console.log(err)
+        })
 
-    }, [])
+    }, [auth])
 
-const states = { restaurantes, profile, id, carrinho, pedidoFeito }
-const setters = { setRestaurantes, setProfile, setId, setCarrinho, setPedidoFeito }
+    const states = { restaurantes, profile, id, carrinho, pedidoFeito }
+    const setters = { setRestaurantes, setProfile, setId, setCarrinho, setPedidoFeito, setAuth }
 
-return (
-    <GlobalContext.Provider value={{ states, setters }}>
-        {props.children}
-    </GlobalContext.Provider>
-)
+    return (
+        <GlobalContext.Provider value={{ states, setters }}>
+            {props.children}
+        </GlobalContext.Provider>
+    )
 }
 export default GlobalState
