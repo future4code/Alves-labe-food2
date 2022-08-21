@@ -9,7 +9,7 @@ Este projeto foi feito para bootcamp Labenu, como projeto final de Front-End. O 
 
 <div align="center">
   <h4>Link Surge</h4>
-  - https://possessive-sneeze.surge.sh
+  - https://charming-goose.surge.sh
 </div>
 
 <div align="center">
