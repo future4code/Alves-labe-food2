@@ -1,7 +1,7 @@
 import axios from "axios";
 import { BASE_URL } from "../constants/url";
 
-export const addAdress = (body, navigate, cleanFields, goToLogin) => {
+export const addAdress = (body, navigate, cleanFields, goToRestaurants) => {
   const config = {
     method: "put",
     url: BASE_URL + "/address",
@@ -11,13 +11,12 @@ export const addAdress = (body, navigate, cleanFields, goToLogin) => {
   axios(config)
     .then((res) => {
       localStorage.setItem("token", res.data.token);
-      window.alert("Seu endereço foi salvo!");
+      alert("Seu endereço foi salvo!");
       cleanFields();
-      goToLogin(navigate);
+      goToRestaurants(navigate);
     })
 
     .catch((err) => {
-      window.alert(err.response);
       console.log(err.response.data);
     });
 };

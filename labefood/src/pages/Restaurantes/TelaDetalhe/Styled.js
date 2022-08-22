@@ -12,8 +12,20 @@ export const ContainerTelaDetalhe = styled.div`
     display: grid;
     justify-items: center;
     gap:16px;
+    margin: 0 0 15%;
     
 `
+
+export const GifLoading = styled.img `
+    display: flex;
+    margin-top: 70%;
+    width: 50px;
+    height: 50px;
+    align-self: center;
+    justify-content: center;
+
+`
+
 export const InfoRestaurante = styled.div`
     display: flex;
     flex-direction:column;
@@ -39,9 +51,11 @@ export const InfoRestaurante = styled.div`
 `
 export const ContainerFrete = styled.div`
     display: flex;
-    p{
-        width: 104px;
-    }
+`
+
+export const Frete  = styled.p`
+    margin: 0 10px 0;
+
 `
 
 export const ContainerProdutos = styled.div `
@@ -57,11 +71,5 @@ export const ContainerCategorias = styled.div`
     gap: 8px;
     width: 328px;
     margin: 10px 16px 9%;
-    /* border:1px solid; */
-
-    p{
-        margin: 16px 16px 8px;
-        font-size: 16px;
-    }
     
 `

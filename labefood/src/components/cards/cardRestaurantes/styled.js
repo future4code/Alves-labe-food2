@@ -16,12 +16,14 @@ export const CardRestaurante = styled.div`
     border-top-right-radius:8px;
     }
 
-    h3{
+`
+
+export const H3 = styled.h3 `
     font-size: 16px;
     font-weight: normal;
     margin: 12px 16px 4px;
     color:#5cb646;
-    }
+
 `
 
 export const ContainerDados = styled.div `

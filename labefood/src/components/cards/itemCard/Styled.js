@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const MainDiv = styled.div`
     display: flex;
+    box-sizing: border-box;
     justify-content: space-between;
     border: solid #b8b8b8 1px;
     border-radius:8px;
@@ -10,30 +11,40 @@ export const MainDiv = styled.div`
     max-height: 113px;
     word-wrap: normal;
     margin: 10px 0 10px;
-
-    img{
-        width: 96px;
-        height: 112px;
-        border-bottom-left-radius: 8px;
-        border-top-left-radius: 8px;
-        object-fit:cover;
-    }
 `
+
+export const ImageProduto = styled.div`
+        
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+        
+    img {
+    width: 96px;
+    height: 112px;
+    object-fit:cover;
+    }
+`;
 
 export const TextoProduto = styled.div`
     display: flex;
-    justify-content: center;
     flex-direction:column;
-    border:1px solid transparent;
+    align-self: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 10px 0;
+    
 
-    h3{
+    h4{
         color: #5cb646;
+        margin:0;
+        
     }
 
     p{
-        margin:0;
+        
         color: #b8b8b8;
         font-size: 12px;
+        
     }
 `
 export const RetanguloIndice = styled.div`

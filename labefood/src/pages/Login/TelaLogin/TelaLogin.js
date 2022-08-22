@@ -28,8 +28,9 @@ const TelaLogin = () => {
       email: email,
       password: password
     };
-    console.log(body)
+
     axios.post("https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/login", body)
+
       .then((response) => {
         localStorage.setItem('token', response.data.token)
         setters.setAuth(true)
@@ -42,6 +43,7 @@ const TelaLogin = () => {
         console.log(erro.message)
         alert("Usuário incorreto ou não exite!!")
       })
+
   }
 
   return (

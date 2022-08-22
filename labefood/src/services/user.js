@@ -17,14 +17,13 @@ export const Login = (body, clear, navigate) => {
 
 export const Signup = (body, clear, navigate) => {
   axios
-    .post(`${BASE_URL}/user/signup`, body)
+    .post(`${BASE_URL}/signup`, body)
     .then((res) => {
       localStorage.setItem("token", res.data.token);
-      console.log("Usuario criado com sucesso");
       goToAddress(navigate);
     })
     .catch((err) => {
       alert("Erro no login");
-      console.log(err);
+      console.log(err.response);
     });
 };

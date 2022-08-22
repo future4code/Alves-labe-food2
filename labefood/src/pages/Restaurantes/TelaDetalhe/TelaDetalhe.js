@@ -10,7 +10,7 @@ import ItemCard from '../../../components/cards/itemCard/ItemCard'
 import * as C from './Styled'
 import { SettingsPowerSharp } from '@material-ui/icons'
 import { GetRestaurantDetail } from '../../../services/restaurants'
-
+import LoadingGif from '../../../assets/loading-detalhe.gif'
 import Swal from 'sweetalert2'
 import restaurantImg from '../../../assets/active-homepage.png'
 import shoppingCartImg from '../../../assets/shopping-cart.png'
@@ -38,7 +38,7 @@ export default function TelaDetalhe() {
 
     const chooseScreen = () => {
         if (details.length === 0) {
-            return <h1>Carregando</h1>
+            return <C.GifLoading src={LoadingGif} alt="loading" />
         } else {
             return (
                 <C.ContainerTelaDetalhe>
@@ -48,7 +48,7 @@ export default function TelaDetalhe() {
                         <p>{details.category}</p>
                         <C.ContainerFrete>
                             <p>{details.deliveryTime - 10} - {details.deliveryTime} min</p>
-                            <p>Frete {details.shipping.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</p>
+                            <C.Frete>Frete {details.shipping.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</C.Frete>
                         </C.ContainerFrete>
                         <p>{details.address}</p>
                     </C.InfoRestaurante>

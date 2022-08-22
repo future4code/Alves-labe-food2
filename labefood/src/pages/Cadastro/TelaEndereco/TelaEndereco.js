@@ -15,7 +15,7 @@ import IconButton from "@material-ui/core/IconButton";
 import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
 import { withStyles } from "@material-ui/core/styles";
 import useProtectedPage from "../../../hooks/useProtectedPage";
-import { goToLogin } from "../../../router/coordenator";
+import { goToRestaurants } from "../../../router/coordenator";
 import { goBack } from "../../../router/coordenator"
 
 
@@ -46,7 +46,7 @@ const TelaEndereco = () => {
 
   const onSubmitForm = (event) => {
     event.preventDefault();
-    addAdress(form, navigate, clear, goToLogin);
+    addAdress(form, navigate, clear, goToRestaurants);
   };
 
   return (
@@ -155,7 +155,6 @@ const TelaEndereco = () => {
       <ArrowBackContainer>
         <IconButton
           onClick={() => goBack(navigate)}
-          size="larger"
           type="submit"
           aria-label="ArrowBackIos"
         >
