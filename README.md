@@ -2,14 +2,14 @@
 [![Typing SVG](https://readme-typing-svg.herokuapp.com/?color=5cb646&size=35&center=true&vCenter=true&width=1000&lines=Bem+Vindo+ao+Projeto+FutureEats;Peça+a+sua+comida+agora+:%29)](https://git.io/typing-svg)
 
 <div align="center">
-Este projeto foi feito para bootcamp Labenu, como projeto final de Front-End. O objetivo era fazer fazer um aplicativo de entrega de comida, que tivesse : Tela de Login; Tela de Cadastro, Menu de Restaurantes, Tela de Produtos do Restaurantes Escolhido, Carrinho e Tela com o Pedido em Andamento
+Este projeto foi feito para bootcamp Labenu, como projeto final de Front-End. O objetivo era fazer um aplicativo de entrega de comida, que tivesse : Tela de Login; Tela de Cadastro, Menu de Restaurantes, Tela de Produtos do Restaurantes Escolhido, Carrinho e Tela com o Pedido em Andamento
 </div>
 
  <br/>
 
 <div align="center">
   <h4>Link Surge</h4>
-  - https://possessive-sneeze.surge.sh
+  - https://charming-goose.surge.sh
 </div>
 
 <div align="center">
