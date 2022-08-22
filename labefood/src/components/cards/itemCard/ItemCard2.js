@@ -31,7 +31,7 @@ export default function ItemCard2(props) {
                             {states.carrinho && states.carrinho?.map((product) => {
                                 if (product.id === props.productId) {
                                     return (
-                                        <>{product.quantity}</>
+                                        <div key={product.id}>{product.quantity}</div>
                                     )
                                 } else {
                                     <>

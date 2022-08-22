@@ -25,11 +25,11 @@ const TelaLogin = () => {
       email: email,
       password: password
     };
-    console.log(body)
+
     axios.post("https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/login", body)
     .then((response) => {
       localStorage.setItem('token', response.data.token)
-      console.log(response)
+
       navigate("/restaurantes")
       if (response.data.user.hasAddress === true) {
         navigate("/restaurantes")} else {navigate("/signup")}
@@ -48,7 +48,7 @@ const TelaLogin = () => {
           <TextField
           value={email}
           onChange={OnChangeEmail}
-          type='email'
+          type ='email'
           label={"Email"}
           variant={"outlined"}
           margin={"normal"}
@@ -56,7 +56,7 @@ const TelaLogin = () => {
           <TextField
           value={password}
           onChange={OnChangePassword}
-          type='password'
+          type ='password'
           label={"Senha"}
           variant={"outlined"}
           margin={"normal"}

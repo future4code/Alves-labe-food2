@@ -80,14 +80,17 @@ export default function ItemCard(props) {
               if (product.category == element) {
                 return (
                   <C.MainDiv key={product.id}>
-                    <div>
+
+                    <C.ImageProduto>
                       <img src={product.photoUrl} alt='Ilustração do alimento' />
-                    </div>
+                    </C.ImageProduto>
+
                     <C.TextoProduto>
-                      <h3>{product.name}</h3>
+                      <h4>{product.name}</h4>
                       <p>{product.description}</p>
                       <h4>{product.price.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}</h4>
                     </C.TextoProduto>
+
                     <C.ContainerButton>
                       <ItemCard2
                         removerProduto={() => removerProduto(product.id)}
