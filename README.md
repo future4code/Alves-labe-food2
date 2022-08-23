@@ -9,7 +9,7 @@ Este projeto foi feito para bootcamp Labenu, como projeto final de Front-End. O 
 
 <div align="center">
   <h4>Link Surge</h4>
-  - https://charming-goose.surge.sh
+  - oafish-quince.surge.sh
 </div>
 
 <div align="center">
