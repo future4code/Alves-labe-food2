@@ -1,6 +1,7 @@
 import { BASE_URL } from "../constants/url";
 import axios from "axios";
 import { goToAddress } from "../router/coordenator";
+import Swal from "sweetalert2";
 
 export const Login = (body, clear, navigate) => {
   axios
@@ -15,7 +16,7 @@ export const Login = (body, clear, navigate) => {
     });
 };
 
-export const Signup = (body, clear, navigate) => {
+export const Signup = (body, clear, navigate, setLoading) => {
   axios
     .post(`${BASE_URL}/signup`, body)
     .then((res) => {
@@ -23,7 +24,9 @@ export const Signup = (body, clear, navigate) => {
       goToAddress(navigate);
     })
     .catch((err) => {
-      alert("Erro no login");
-      console.log(err.response);
+      setLoading(false)
+      Swal.fire({
+        text: "Email ou CPF já cadastrados"
+      })
     });
 };

@@ -19,6 +19,7 @@ import ArrowBackIos from "@material-ui/icons/ArrowBackIos";
 import { withStyles } from "@material-ui/core/styles";
 import { goBack } from "../../../router/coordenator";
 import { hover } from "@testing-library/user-event/dist/hover";
+import Swal from "sweetalert2";
 
 const StyledButton = withStyles({
   root: {
@@ -54,8 +55,13 @@ const TelaCadastro = () => {
 
   const onSubmitForm = (event) => {
     event.preventDefault();
+    setLoading(true)
     if (confirm === form.password) {
-      Signup(form, clear, navigate);
+      Signup(form, clear, navigate, setLoading);
+    }else{
+      Swal.fire({
+        text: "As senhas não conferem."
+      })
     }
   };
 
@@ -107,7 +113,9 @@ const TelaCadastro = () => {
             required
             type={"number"}
             placeholder={"000.000.000-00 (apenas números)"}
-            inputProps={{ pattern: "^d{3}.d{3}.d{3}-d{2}$" }}
+            pattern={'^.{11,}'}
+            title='CPF inválido'
+            inputProps={{ pattern: "^.{11,}" }}
           />
 
           <TextField
@@ -121,7 +129,8 @@ const TelaCadastro = () => {
             required
             type={confirm ? "text" : "password"}
             placeholder={"Mínimo de 6 caracteres"}
-            inputProps={{ pattern: "^.{6,}" }}
+            pattern={'^.{6,}'}
+            title='Mínimo de 6 caracteres'
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -147,7 +156,8 @@ const TelaCadastro = () => {
             required
             type={confirm ? "text" : "password"}
             placeholder={"confirme a senha anterior"}
-            inputprops={{ pattern: "^.{6}" }}
+            pattern={'^.{6,}'}
+            title='Mínimo de 6 caracteres'
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
