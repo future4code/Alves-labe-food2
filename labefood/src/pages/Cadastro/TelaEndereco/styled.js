@@ -4,16 +4,53 @@ export const ScreenContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
+  
+
+  /* Phone */
+  @media screen and (max-width:414px) {
+    max-width: 414px;
+    width:100%;
+    height: 600px;
+  }
+
+/* Tablet */
+  @media screen and (min-width:415px) and (max-width:912px) {
+    max-width: 912px ;
+    margin:auto;
+}
+
+/* Desktop */
+  @media screen and (min-width:913px) {
+    width: 400px ;
+    height: 660px;
+    overflow:hidden;
+    overflow-y: auto;
+  }
 `;
 
 export const InputsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 80vw;
-  max-width: 450px;
   align-items: center;
-  margin-bottom: 20px;
+  
+
+  /* Phone */
+    @media screen and (max-width:414px) {
+      width: 80vw;
+      max-width: 450px;
+     
+  }
+
+  /* Tablet */
+  @media screen and (min-width:415px) and (max-width:912px) {
+    max-width: 370px;
+    margin:auto;
+}
+
+/* Desktop */
+  @media screen and (min-width:913px) {
+    max-width: 370px;
+}
 `;
 
 export const LoginFormContainer = styled.div`
