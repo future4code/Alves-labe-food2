@@ -25,10 +25,6 @@ export const ScreenContainer = styled.div`
     height: 660px;
     overflow:hidden;
     overflow-y: auto;
-    ::-webkit-scrollbar {
-        display: none;
-    
-}
   }
 `;
 
